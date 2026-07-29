@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { supabase, dbFetchOrders, dbInsertOrder, dbUpdateOrder, dbDeleteOrder, dbFetchSettings, dbSaveSetting } from "./db.js";
 
 const T = {
   bg:"#FDFAF6", bgDeep:"#F5EFE4", bgDark:"#16100A", bgDark2:"#1E1610",
@@ -931,7 +932,7 @@ const Booking = ({services,addOrder}) => {
             {step>0?<Btn variant="ghost" sm onClick={()=>sStep(s=>s-1)}>← Back</Btn>:<div/>}
             {step<steps.length-1
               ?<Btn variant="gold" onClick={()=>sStep(s=>s+1)} disabled={!steps[step].ok} style={{fontSize:12}}>Continue →</Btn>
-              :<Btn variant="gold" style={{fontSize:12,padding:"13px 36px"}} onClick={()=>{addOrder({id:`WL-${1010+Math.floor(Math.random()*90)}`,name:f.name,phone:f.phone,service:f.service,type:f.type,condition:f.condition,status:"Booked",paxi:"",eta:new Date(Date.now()+5*864e5).toISOString().split("T")[0],amount:svc?.price||0,logistic:f.logistic,branch:f.branch,notes:f.notes});sDone(true);}}>Confirm Booking</Btn>
+              :<Btn variant="gold" style={{fontSize:12,padding:"13px 36px"}} onClick={()=>{addOrder({id:`WL-${Date.now().toString().slice(-6)}`,name:f.name,phone:f.phone,email:f.email,service:f.service,type:f.type,condition:f.condition,status:"Booked",paxi:"",eta:new Date(Date.now()+5*864e5).toISOString().split("T")[0],amount:svc?.price||0,logistic:f.logistic,branch:f.branch,notes:f.notes});sDone(true);}}>Confirm Booking</Btn>
             }
           </div>
         </Card>
@@ -1151,11 +1152,11 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
   // Soft delete order → goes to bin
   const deleteOrder=(id)=>{
     const o=orders.find(x=>x.id===id);
-    if(o){sTrash(t=>[o,...t]);setOrders(x=>x.filter(x=>x.id!==id));sExp(null);}
+    if(o){dbDeleteOrder(id);sTrash(t=>[o,...t]);setOrders(x=>x.filter(x=>x.id!==id));sExp(null);}
   };
   const restoreOrder=(id)=>{
     const o=trash.find(x=>x.id===id);
-    if(o){setOrders(x=>[o,...x]);sTrash(t=>t.filter(x=>x.id!==id));}
+    if(o){dbInsertOrder(o);setOrders(x=>[o,...x]);sTrash(t=>t.filter(x=>x.id!==id));}
   };
 
   // Gallery media upload — images compress client-side (same approach as Wig of the
@@ -2470,6 +2471,7 @@ export default function App() {
   const sGallery=(update)=>{
     sGalleryRaw(prev=>{
       const next = typeof update==='function' ? update(prev) : update;
+      dbSaveSetting('gallery', next);
       try { localStorage.setItem('lavishwig_gallery', JSON.stringify(next)); } catch(e){ /* quota exceeded — keep in memory for this session */ }
       return next;
     });
@@ -2501,6 +2503,7 @@ export default function App() {
   });
   const saveContact=(update)=>{
     const next = typeof update==='function' ? update(contactInfo) : update;
+    dbSaveSetting('contact', next);
     try { localStorage.setItem('lavishwig_contact', JSON.stringify(next)); } catch(e){}
     sContactInfo(next);
   };
@@ -2516,6 +2519,7 @@ export default function App() {
   const sWigOfWeek=(update)=>{
     const next = typeof update==='function' ? update(wigOfWeek) : update;
     sWigOfWeekRaw(next);
+    dbSaveSetting('wigofweek', next);
     try {
       localStorage.setItem('lavishwig_wigofweek', JSON.stringify(next));
     } catch(e) {
@@ -2537,9 +2541,26 @@ export default function App() {
   });
   const toggleSection=(key)=>sSectionsOn(p=>{
     const next = {...p,[key]:!p[key]};
+    dbSaveSetting('sections', next);
     try { localStorage.setItem('lavishwig_sections', JSON.stringify(next)); } catch(e){}
     return next;
   });
+
+  // Load shared data from Supabase on startup — when configured, the database
+  // is the source of truth; localStorage stays as the offline fallback.
+  useEffect(()=>{
+    if(!supabase) return;
+    dbFetchOrders().then(rows=>{ if(rows) sOrders(rows); });
+    dbFetchSettings().then(s=>{
+      if(!s) return;
+      if(s.gallery) sGalleryRaw(s.gallery);
+      if(s.contact) sContactInfo(p=>({...p,...s.contact}));
+      if(s.wigofweek) sWigOfWeekRaw(s.wigofweek);
+      if(s.sections) sSectionsOn(p=>({...p,...s.sections}));
+      if(s.services) sSvcs(s.services);
+      if(s.specials) sSpecials(s.specials);
+    });
+  },[]);
 
   // ═══════════════════════════════════════════════════
   // HIDDEN DASHBOARD ACCESS — multiple secret methods
@@ -2585,8 +2606,18 @@ export default function App() {
     }
   };
 
-  const addOrder=useCallback(o=>sOrders(p=>[o,...p]),[]);
-  const updateOrder=useCallback((id,ch)=>sOrders(p=>p.map(o=>o.id===id?{...o,...ch}:o)),[]);
+  const addOrder=useCallback(o=>{dbInsertOrder(o);sOrders(p=>[o,...p]);},[]);
+  const updateOrder=useCallback((id,ch)=>{dbUpdateOrder(id,ch);sOrders(p=>p.map(o=>o.id===id?{...o,...ch}:o));},[]);
+  const saveServices=useCallback(update=>sSvcs(prev=>{
+    const next = typeof update==='function' ? update(prev) : update;
+    dbSaveSetting('services', next);
+    return next;
+  }),[]);
+  const saveSpecials=useCallback(update=>sSpecials(prev=>{
+    const next = typeof update==='function' ? update(prev) : update;
+    dbSaveSetting('specials', next);
+    return next;
+  }),[]);
   const addCart=useCallback(()=>sCart(c=>c+1),[]);
   const isDash=page==="dashboard";
   return (
@@ -2624,7 +2655,7 @@ export default function App() {
         {page==="gallery"&&<GalleryPage gallery={gallery} setPage={sPage}/>}
         {page==="track"&&<TrackOrder orders={orders} setPage={sPage}/>}
         {page==="book"&&<Booking services={services} addOrder={addOrder}/>}
-        {page==="dashboard"&&<Dashboard orders={orders} setOrders={sOrders} updateOrder={updateOrder} services={services} setServices={sSvcs} gallery={gallery} setGallery={sGallery} specials={specials} setSpecials={sSpecials} setPage={sPage} sectionsOn={sectionsOn} toggleSection={toggleSection} contactInfo={contactInfo} setContactInfo={saveContact} wigOfWeek={wigOfWeek} setWigOfWeek={sWigOfWeek}/>}
+        {page==="dashboard"&&<Dashboard orders={orders} setOrders={sOrders} updateOrder={updateOrder} services={services} setServices={saveServices} gallery={gallery} setGallery={sGallery} specials={specials} setSpecials={saveSpecials} setPage={sPage} sectionsOn={sectionsOn} toggleSection={toggleSection} contactInfo={contactInfo} setContactInfo={saveContact} wigOfWeek={wigOfWeek} setWigOfWeek={sWigOfWeek}/>}
       </main>
       {(page==="gallery"||page==="book")&&(
         <footer style={{background:"#16100A",padding:"36px 28px"}}>
