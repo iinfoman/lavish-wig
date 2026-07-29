@@ -1,2 +1,0 @@
-# lavish-wig
-Wig washing
