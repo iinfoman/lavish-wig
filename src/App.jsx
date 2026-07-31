@@ -1,6 +1,12 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { supabase, dbFetchOrders, dbInsertOrder, dbUpdateOrder, dbDeleteOrder, dbFetchSettings, dbSaveSetting } from "./db.js";
 
+// Passwords are never stored in plain text — only this hash is kept.
+const sha256Hex = async (s) => {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,"0")).join("");
+};
+
 const T = {
   bg:"#FDFAF6", bgDeep:"#F5EFE4", bgDark:"#241611", bgDark2:"#1E1610",
   gold:"#C0838E", goldLt:"#E2AEB6", goldDk:"#A05A66", goldPale:"#F2DCDF",
@@ -119,6 +125,7 @@ const GS = () => (
     @keyframes sparkleTwinkle{0%,100%{opacity:1;transform:scale(1) rotate(0deg)}50%{opacity:.55;transform:scale(.82) rotate(14deg)}}
     @keyframes sheen{0%{left:-45%}100%{left:130%}}
     @keyframes waveDrift{from{transform:translateX(0)}to{transform:translateX(-25%)}}
+    @keyframes wigSway{0%,100%{transform:rotate(0deg) translateY(0)}30%{transform:rotate(.7deg) translateY(-5px)}70%{transform:rotate(-.5deg) translateY(-2px)}}
     .hm1{animation:riseIn .7s .05s both}.hm2{animation:riseIn .8s .15s both}.hm3{animation:riseIn .8s .28s both}
     .hm4{animation:riseIn .6s 1.9s both}.hm5{animation:riseIn .7s .55s both}
     .hm6{animation:riseIn .6s .7s both}.hm7{animation:riseIn .6s .84s both}.hm8{animation:riseIn .6s .98s both}
@@ -403,10 +410,10 @@ const HERO_FEATS = [
 ];
 
 const HERO_BUBBLES = [
-  {l:"56%",s:9, dl:0,   t:7},   {l:"66%",s:5, dl:1.8, t:6},
-  {l:"76%",s:12,dl:3.2, t:8},   {l:"84%",s:6, dl:0.9, t:5.5},
-  {l:"92%",s:8, dl:2.6, t:7.5}, {l:"70%",s:4, dl:4.4, t:6.5},
-  {l:"61%",s:7, dl:5.1, t:7},   {l:"88%",s:10,dl:3.9, t:8.5},
+  {l:"34%",s:9, dl:0,   t:7},   {l:"46%",s:5, dl:1.8, t:6},
+  {l:"58%",s:12,dl:3.2, t:8},   {l:"70%",s:6, dl:0.9, t:5.5},
+  {l:"82%",s:8, dl:2.6, t:7.5}, {l:"52%",s:4, dl:4.4, t:6.5},
+  {l:"40%",s:7, dl:5.1, t:7},   {l:"76%",s:10,dl:3.9, t:8.5},
 ];
 
 const Hero = ({setPage, waNumber}) => {
@@ -418,14 +425,15 @@ const Hero = ({setPage, waNumber}) => {
       {/* Warm backdrop glow behind the photo's top edge */}
       <div style={{position:"absolute",top:0,right:0,width:"75%",height:"46%",background:"radial-gradient(ellipse at 78% 18%,rgba(196,138,92,.30),transparent 68%)",pointerEvents:"none",zIndex:0}}/>
 
-      {/* The wash photo, blended into the cream on its left/top and the dark base below */}
-      <div className="hero-photo" style={{position:"absolute",top:"calc(var(--nav-h) + 8px)",right:0,bottom:"27%",width:"64%",zIndex:1}}>
-        <div style={{position:"absolute",inset:0,backgroundImage:"url(/img/hero.png)",backgroundSize:"cover",backgroundPosition:"center top",animation:"kenBurns 16s ease-in-out infinite alternate"}}/>
-        <div style={{position:"absolute",inset:0,background:"linear-gradient(90deg,#F8EFE5 0%,rgba(248,239,229,.82) 20%,rgba(248,239,229,.35) 42%,transparent 62%),linear-gradient(180deg,rgba(248,239,229,.95) 0%,transparent 18%),linear-gradient(0deg,rgba(46,28,22,.6) 0%,transparent 26%)"}}/>
-        {/* Rising soap bubbles */}
+      {/* Layered photo — warm backdrop, soap bubbles rising BEHIND the wig, then the wig cutout in front */}
+      <div className="hero-photo" style={{position:"absolute",top:0,right:0,bottom:"24%",width:"66%",zIndex:1}}>
+        <div style={{position:"absolute",inset:0,backgroundImage:"url(/img/hero-backdrop.webp)",backgroundSize:"cover",backgroundPosition:"center"}}/>
         {HERO_BUBBLES.map((b,i)=>(
-          <span key={i} style={{position:"absolute",left:b.l,bottom:-14,width:b.s,height:b.s,borderRadius:"50%",background:"radial-gradient(circle at 32% 30%,rgba(255,255,255,.95),rgba(255,255,255,.2))",boxShadow:"0 0 6px rgba(255,255,255,.45)",animation:`bubbleRise ${b.t}s linear ${b.dl}s infinite`,opacity:0,pointerEvents:"none"}}/>
+          <span key={i} style={{position:"absolute",left:b.l,bottom:"6%",width:b.s,height:b.s,borderRadius:"50%",background:"radial-gradient(circle at 32% 30%,rgba(255,255,255,.95),rgba(255,255,255,.2))",boxShadow:"0 0 6px rgba(255,255,255,.45)",animation:`bubbleRise ${b.t}s linear ${b.dl}s infinite`,opacity:0,pointerEvents:"none"}}/>
         ))}
+        <img src="/img/wig-cutout.webp" alt="" aria-hidden="true" style={{position:"absolute",right:0,bottom:"-1%",width:"102%",height:"96%",objectFit:"contain",objectPosition:"right bottom",filter:"drop-shadow(0 26px 48px rgba(30,15,8,.45))",animation:"wigSway 9s ease-in-out infinite",transformOrigin:"50% 92%"}}/>
+        {/* Cream wash over the left edge so the hair melts into the page, exactly like the mock */}
+        <div style={{position:"absolute",inset:0,pointerEvents:"none",background:"linear-gradient(90deg,#F8EFE5 0%,rgba(248,239,229,.72) 18%,rgba(248,239,229,.22) 42%,transparent 64%),linear-gradient(180deg,rgba(248,239,229,.9) 0%,transparent 20%),linear-gradient(0deg,rgba(46,28,22,.4) 0%,transparent 18%)"}}/>
       </div>
 
       {/* Headline + feature badges */}
@@ -1031,7 +1039,36 @@ const TrackOrder = ({orders, setPage}) => {
   );
 };
 
-const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,setGallery,specials,setSpecials,setPage,sectionsOn,toggleSection,contactInfo,setContactInfo,wigOfWeek,setWigOfWeek}) => {
+const SecurityCard = ({changePassword}) => {
+  const [cur,sCur]=useState("");const [nw,sNw]=useState("");const [cf,sCf]=useState("");
+  const [msg,sMsg]=useState(null);
+  const [busy,sBusy]=useState(false);
+  const inp={width:"100%",padding:"12px 14px",borderRadius:10,fontSize:14,fontFamily:"'Jost',sans-serif",marginBottom:10,boxSizing:"border-box"};
+  const submit=async()=>{
+    if(busy) return;
+    if(!cur||!nw){sMsg({ok:false,text:"Fill in your current and new password."});return;}
+    if(nw.length<6){sMsg({ok:false,text:"New password must be at least 6 characters."});return;}
+    if(nw!==cf){sMsg({ok:false,text:"New passwords don't match."});return;}
+    sBusy(true);
+    const ok=await changePassword(cur,nw);
+    sBusy(false);
+    if(ok){sMsg({ok:true,text:"Password updated! Use the new one next time you open the dashboard."});sCur("");sNw("");sCf("");}
+    else sMsg({ok:false,text:"Current password is incorrect."});
+  };
+  return (
+    <div style={{background:"#fff",borderRadius:14,padding:"18px",border:"1px solid rgba(160,90,102,0.1)",marginTop:20}}>
+      <div style={{fontSize:10,fontWeight:700,color:"#96707A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>🔐 Dashboard Password</div>
+      <div style={{fontSize:10,color:"#C9A3A8",marginBottom:12,lineHeight:1.6}}>This is the password you enter after tapping the logo 5 times. It saves to your account, so it works on all your devices.</div>
+      <input type="password" value={cur} onChange={e=>sCur(e.target.value)} placeholder="Current password" style={inp} autoComplete="current-password"/>
+      <input type="password" value={nw} onChange={e=>sNw(e.target.value)} placeholder="New password (min 6 characters)" style={inp} autoComplete="new-password"/>
+      <input type="password" value={cf} onChange={e=>sCf(e.target.value)} placeholder="Repeat new password" style={inp} autoComplete="new-password" onKeyDown={e=>e.key==="Enter"&&submit()}/>
+      {msg&&<div style={{fontSize:11,fontWeight:600,color:msg.ok?"#4A8A5A":"#A84040",marginBottom:10,lineHeight:1.5}}>{msg.ok?"✓":"✕"} {msg.text}</div>}
+      <button onClick={submit} disabled={busy} style={{background:"linear-gradient(135deg,#C0838E,#A05A66)",border:"none",borderRadius:10,padding:"11px 22px",cursor:busy?"wait":"pointer",color:"#fff",fontSize:12,fontWeight:700,fontFamily:"'Jost',sans-serif",opacity:busy?.6:1}}>{busy?"Saving…":"Change Password"}</button>
+    </div>
+  );
+};
+
+const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,setGallery,specials,setSpecials,setPage,sectionsOn,toggleSection,contactInfo,setContactInfo,wigOfWeek,setWigOfWeek,changePassword}) => {
   const [tab,sTab]=useState("orders");
   const [exp,sExp]=useState(null);
   const [editSvc,sEditSvc]=useState(null);
@@ -1661,6 +1698,8 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
           <div style={{background:"#F2DCDF",borderRadius:10,padding:"12px 14px",fontSize:11,color:"#A05A66",lineHeight:1.7}}>
             💡 To find your WhatsApp number: Open WhatsApp → tap 3 dots → Settings → your number shows at top. Remove the + and spaces: +27 82 123 4567 → <strong>27821234567</strong>
           </div>
+
+          <SecurityCard changePassword={changePassword}/>
         </div>}
 
         {/* ════════════════════════════
@@ -2467,13 +2506,28 @@ export default function App() {
       if(s.sections) sSectionsOn(p=>({...p,...s.sections}));
       if(s.services) sSvcs(s.services);
       if(s.specials) sSpecials(s.specials);
+      if(s.admin_pw_hash) sPwHash(s.admin_pw_hash);
     });
   },[]);
 
   // ═══════════════════════════════════════════════════
   // HIDDEN DASHBOARD ACCESS — multiple secret methods
   // ═══════════════════════════════════════════════════
-  const SECRET_CODE = "wig2025admin"; // ← CHANGE THIS to your own private password
+  // Admin password, stored as a SHA-256 hash. The owner changes it from
+  // Dashboard → Contact → Security; it syncs via Supabase settings so the
+  // new password works on every device. Default: wig2025admin
+  const DEFAULT_PW_HASH = "962482bb07dadbc3a2a0697a967758d78c2f8ec898c1df61746fe7815a1cf805";
+  const [pwHash,sPwHash]=useState(()=>{
+    try { return localStorage.getItem('lavishwig_pwhash') || DEFAULT_PW_HASH; } catch(e){ return DEFAULT_PW_HASH; }
+  });
+  const changePassword=useCallback(async(current,next)=>{
+    if(await sha256Hex(current)!==pwHash) return false;
+    const nh=await sha256Hex(next);
+    sPwHash(nh);
+    try{ localStorage.setItem('lavishwig_pwhash',nh); }catch(e){}
+    dbSaveSetting('admin_pw_hash',nh);
+    return true;
+  },[pwHash]);
 
   // Keyboard shortcut (desktop only) — Ctrl+Shift+A opens the password prompt
   useEffect(()=>{
@@ -2502,8 +2556,8 @@ export default function App() {
       sPage("home");
     }
   };
-  const submitPassword=()=>{
-    if(pwInput===SECRET_CODE){
+  const submitPassword=async()=>{
+    if(await sha256Hex(pwInput)===pwHash){
       sShowPwPrompt(false);
       sPwInput("");
       sPwError(false);
@@ -2563,7 +2617,7 @@ export default function App() {
         {page==="gallery"&&<GalleryPage gallery={gallery} setPage={sPage}/>}
         {page==="track"&&<TrackOrder orders={orders} setPage={sPage}/>}
         {page==="book"&&<Booking services={services} addOrder={addOrder}/>}
-        {page==="dashboard"&&<Dashboard orders={orders} setOrders={sOrders} updateOrder={updateOrder} services={services} setServices={saveServices} gallery={gallery} setGallery={sGallery} specials={specials} setSpecials={saveSpecials} setPage={sPage} sectionsOn={sectionsOn} toggleSection={toggleSection} contactInfo={contactInfo} setContactInfo={saveContact} wigOfWeek={wigOfWeek} setWigOfWeek={sWigOfWeek}/>}
+        {page==="dashboard"&&<Dashboard orders={orders} setOrders={sOrders} updateOrder={updateOrder} services={services} setServices={saveServices} gallery={gallery} setGallery={sGallery} specials={specials} setSpecials={saveSpecials} setPage={sPage} sectionsOn={sectionsOn} toggleSection={toggleSection} contactInfo={contactInfo} setContactInfo={saveContact} wigOfWeek={wigOfWeek} setWigOfWeek={sWigOfWeek} changePassword={changePassword}/>}
       </main>
       {(page==="gallery"||page==="book")&&(
         <footer style={{background:"#241611",padding:"36px 28px"}}>
