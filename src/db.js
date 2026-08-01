@@ -39,6 +39,35 @@ export function dbDeleteOrder(id) {
     .then(({ error }) => { if (error) warn("delete order", error); });
 }
 
+// ─── owner auth (Supabase Auth) ───
+
+export async function dbSignIn(email, password) {
+  if (!supabase) return "no-supabase";
+  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  return error ? (error.message || "sign-in failed") : null;
+}
+
+export async function dbHasSession() {
+  if (!supabase) return false;
+  const { data } = await supabase.auth.getSession();
+  return !!data?.session;
+}
+
+export async function dbUpdatePassword(newPassword) {
+  if (!supabase) return "no-supabase";
+  const { error } = await supabase.auth.updateUser({ password: newPassword });
+  return error ? (error.message || "update failed") : null;
+}
+
+// Public order tracking through the track_order() RPC — returns one order's
+// public fields, or null when nothing matched / the RPC isn't installed yet.
+export async function dbTrackOrder(q) {
+  if (!supabase) return null;
+  const { data, error } = await supabase.rpc("track_order", { q });
+  if (error) { warn("track order", error); return null; }
+  return data && data.length ? data[0] : null;
+}
+
 // ─── settings (key → jsonb value) ───
 
 export async function dbFetchSettings() {

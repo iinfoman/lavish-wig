@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { supabase, dbFetchOrders, dbInsertOrder, dbUpdateOrder, dbDeleteOrder, dbFetchSettings, dbSaveSetting } from "./db.js";
+import { supabase, dbFetchOrders, dbInsertOrder, dbUpdateOrder, dbDeleteOrder, dbFetchSettings, dbSaveSetting, dbSignIn, dbHasSession, dbUpdatePassword, dbTrackOrder } from "./db.js";
+
+// The Supabase Auth account that owns the dashboard. Must match the email in
+// supabase/migrations/002_tighten_security.sql.
+const OWNER_EMAIL = "iinfoworks@gmail.com";
 
 // Passwords are never stored in plain text — only this hash is kept.
 const sha256Hex = async (s) => {
@@ -874,9 +878,15 @@ const TrackOrder = ({orders, setPage}) => {
   const [notFound, sNotFound] = useState(false);
   const [searched, sSearched] = useState(false);
 
-  const search = () => {
-    const q = input.trim().toUpperCase();
-    const found = orders.find(o => o.id.toUpperCase() === q || o.phone.replace(/\s/g,"") === input.replace(/\s/g,""));
+  const search = async () => {
+    // Preferred: the track_order() database lookup, which works for every
+    // customer without exposing the orders table. Falls back to the local
+    // list before the migration is applied (or without Supabase).
+    let found = await dbTrackOrder(input.trim());
+    if(!found){
+      const q = input.trim().toUpperCase();
+      found = orders.find(o => o.id.toUpperCase() === q || o.phone.replace(/\s/g,"") === input.replace(/\s/g,""));
+    }
     sSearched(true);
     if(found){ sResult(found); sNotFound(false); }
     else { sResult(null); sNotFound(true); }
@@ -2497,7 +2507,9 @@ export default function App() {
   // is the source of truth; localStorage stays as the offline fallback.
   useEffect(()=>{
     if(!supabase) return;
-    dbFetchOrders().then(rows=>{ if(rows) sOrders(rows); });
+    // Public fetch works before the tightened policies; afterwards it only
+    // succeeds when the owner's session is still signed in on this device.
+    dbHasSession().then(()=>dbFetchOrders().then(rows=>{ if(rows) sOrders(rows); }));
     dbFetchSettings().then(s=>{
       if(!s) return;
       if(s.gallery) sGalleryRaw(s.gallery);
@@ -2521,11 +2533,15 @@ export default function App() {
     try { return localStorage.getItem('lavishwig_pwhash') || DEFAULT_PW_HASH; } catch(e){ return DEFAULT_PW_HASH; }
   });
   const changePassword=useCallback(async(current,next)=>{
+    // Preferred: verify + change through Supabase Auth. Legacy hash flow
+    // remains for local/offline mode before the owner account exists.
+    if(supabase && await dbSignIn(OWNER_EMAIL,current)===null){
+      return (await dbUpdatePassword(next))===null;
+    }
     if(await sha256Hex(current)!==pwHash) return false;
     const nh=await sha256Hex(next);
     sPwHash(nh);
     try{ localStorage.setItem('lavishwig_pwhash',nh); }catch(e){}
-    dbSaveSetting('admin_pw_hash',nh);
     return true;
   },[pwHash]);
 
@@ -2557,7 +2573,17 @@ export default function App() {
     }
   };
   const submitPassword=async()=>{
-    if(await sha256Hex(pwInput)===pwHash){
+    // Preferred: real Supabase Auth sign-in (required once the tightened RLS
+    // policies are live). Falls back to the legacy local hash so the
+    // dashboard stays reachable before the owner account exists.
+    let ok=false;
+    if(supabase && await dbSignIn(OWNER_EMAIL,pwInput)===null){
+      ok=true;
+      dbFetchOrders().then(rows=>{ if(rows) sOrders(rows); });
+    } else if(await sha256Hex(pwInput)===pwHash){
+      ok=true;
+    }
+    if(ok){
       sShowPwPrompt(false);
       sPwInput("");
       sPwError(false);
