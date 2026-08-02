@@ -2373,6 +2373,7 @@ const Home = ({setPage,services,specials,addCart,sectionsOn,wigOfWeek,gallery,wa
         <div>
           <div className="serif" style={{fontSize:22,color:"#E2AEB6",fontStyle:"italic",marginBottom:4}}>Lavish Wig</div>
           <div style={{fontSize:8.5,color:"rgba(192,131,142,.3)",letterSpacing:"0.2em",textTransform:"uppercase"}}>Premium Wig Care · Cape Town · © 2025</div>
+            <button onClick={()=>setPage("policy")} style={{background:"none",border:"none",cursor:"pointer",fontSize:9,color:"rgba(192,131,142,.45)",fontFamily:"'Jost',sans-serif",letterSpacing:"0.1em",marginTop:4,textDecoration:"underline"}}>Privacy Policy · Terms · Cancellation Policy</button>
         </div>
         <div style={{fontSize:11,color:"rgba(192,131,142,.22)",lineHeight:1.8,textAlign:"right"}}>
           <div>Premium Wig Laundry · Cape Town</div>
@@ -2387,6 +2388,113 @@ const Home = ({setPage,services,specials,addCart,sectionsOn,wigOfWeek,gallery,wa
     </footer>
   </>
 );
+
+const PolicyPage = ({setPage}) => {
+  const [tab,sTab]=useState("privacy");
+  const TABS=[
+    {id:"privacy",l:"Privacy Policy"},
+    {id:"terms",l:"Terms of Service"},
+    {id:"cancellation",l:"Cancellation & Refunds"},
+  ];
+  return (
+    <div style={{background:"#FDFAF6",paddingTop:"var(--nav-h)",minHeight:"100dvh"}}>
+      <div style={{maxWidth:720,margin:"0 auto",padding:"40px 24px 80px"}}>
+        <button onClick={()=>setPage("home")} style={{background:"none",border:"none",cursor:"pointer",fontSize:12,color:"#C0838E",fontFamily:"'Jost',sans-serif",fontWeight:600,marginBottom:24,padding:0}}>← Back to Home</button>
+        <div style={{textAlign:"center",marginBottom:32}}>
+          <div style={{fontSize:9.5,fontWeight:700,letterSpacing:"0.2em",color:"#C0838E",textTransform:"uppercase",marginBottom:8}}>Legal</div>
+          <h1 className="serif" style={{fontSize:"clamp(26px,5vw,40px)",fontWeight:300,color:"#150E06",margin:0}}>Our Policies</h1>
+        </div>
+        
+        {/* Tab switcher */}
+        <div style={{display:"flex",gap:6,marginBottom:28,flexWrap:"wrap"}}>
+          {TABS.map(t=>(
+            <button key={t.id} onClick={()=>sTab(t.id)} style={{
+              background:tab===t.id?"#150E06":"transparent",
+              color:tab===t.id?"#fff":"#96707A",
+              border:"1.5px solid",borderColor:tab===t.id?"#150E06":"rgba(160,90,102,0.22)",
+              borderRadius:8,padding:"8px 16px",fontSize:11,fontWeight:600,
+              fontFamily:"'Jost',sans-serif",cursor:"pointer",letterSpacing:"0.04em",
+              transition:"all .2s",
+            }}>{t.l}</button>
+          ))}
+        </div>
+
+        <div style={{background:"#fff",borderRadius:16,padding:"28px 24px",border:"1px solid rgba(160,90,102,0.1)",lineHeight:1.85,fontSize:13.5,color:"#4A3A2A"}}>
+        
+          {tab==="privacy"&&<div>
+            <h2 style={{fontSize:18,color:"#150E06",marginBottom:16,fontFamily:"'Cormorant Garamond',serif",fontWeight:400}}>Privacy Policy</h2>
+            <p style={{color:"#96707A",fontSize:11.5,marginBottom:20}}>Last updated: August 2026</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>1. Information We Collect</h3>
+            <p style={{marginBottom:12}}>When you place a booking through our website, we collect your name, phone number, email address, and details about your wig (type, condition, service requested). We also collect your chosen Paxi or PostNet branch for shipping purposes.</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>2. How We Use Your Information</h3>
+            <p style={{marginBottom:12}}>Your information is used solely to process your wig care order, communicate order updates via WhatsApp, and return your wig to your chosen branch. We do not sell, share, or rent your personal information to any third parties.</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>3. Data Storage</h3>
+            <p style={{marginBottom:12}}>Order information is stored securely and retained for a period of 12 months for service record purposes. You may request deletion of your personal data at any time by contacting us on WhatsApp.</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>4. Photos & Gallery</h3>
+            <p style={{marginBottom:12}}>Before and after transformation photos may be used on our website and social media platforms for marketing purposes. If you do not wish your wig's transformation to be shared, please inform us when you submit your booking.</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>5. Cookies</h3>
+            <p style={{marginBottom:12}}>Our website uses browser local storage to save your session preferences. We do not use tracking cookies or third-party analytics that collect personal data.</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>6. Contact</h3>
+            <p>For privacy-related queries, contact us via WhatsApp. We are based in Cape Town, South Africa and operate under the Protection of Personal Information Act (POPIA).</p>
+          </div>}
+
+          {tab==="terms"&&<div>
+            <h2 style={{fontSize:18,color:"#150E06",marginBottom:16,fontFamily:"'Cormorant Garamond',serif",fontWeight:400}}>Terms of Service</h2>
+            <p style={{color:"#96707A",fontSize:11.5,marginBottom:20}}>Last updated: August 2026</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>1. Service Agreement</h3>
+            <p style={{marginBottom:12}}>By booking a service with Lavish Wig, you agree to these terms. Lavish Wig is a professional wig care service based in Cape Town, South Africa, offering wig washing, restoration, and lace detox services nationwide.</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>2. Wig Submission</h3>
+            <p style={{marginBottom:12}}>You are responsible for packaging your wig securely before dropping it at your chosen Paxi (PEP Store) or PostNet branch. Lavish Wig is not liable for damage that occurs during courier transit to us.</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>3. Pre-Service Inspection</h3>
+            <p style={{marginBottom:12}}>Every wig is inspected upon arrival. If we identify pre-existing damage, severe shedding, or issues that could worsen during treatment, we will contact you via WhatsApp before proceeding. We will not begin any service without your confirmation.</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>4. Turnaround Times</h3>
+            <p style={{marginBottom:12}}>Turnaround times listed (2–7 business days depending on service) are estimates and may vary during peak periods. We will communicate any delays promptly via WhatsApp.</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>5. Payment</h3>
+            <p style={{marginBottom:12}}>Payment is due before your wig is dispatched back to you. We accept EFT and cash. Your wig will not be released until payment is confirmed. Banking details will be sent via WhatsApp upon completion.</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>6. Limitation of Liability</h3>
+            <p>While we exercise the highest level of care, Lavish Wig's liability is limited to the cost of the service rendered. We are not liable for pre-existing damage, normal wear, or issues arising from the wig's age or prior care history.</p>
+          </div>}
+
+          {tab==="cancellation"&&<div>
+            <h2 style={{fontSize:18,color:"#150E06",marginBottom:16,fontFamily:"'Cormorant Garamond',serif",fontWeight:400}}>Cancellation & Refund Policy</h2>
+            <p style={{color:"#96707A",fontSize:11.5,marginBottom:20}}>Last updated: August 2026</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>Cancellations Before Drop-Off</h3>
+            <p style={{marginBottom:12}}>If you cancel your booking before dropping your wig at the courier branch, no charge applies. Simply notify us via WhatsApp and your booking will be cancelled with no penalty.</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>Cancellations After Drop-Off</h3>
+            <p style={{marginBottom:12}}>Once your wig has been received and the service has begun, a handling fee of R100 applies. If the full service has been completed, the full service price is due before the wig is returned.</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>Refunds</h3>
+            <p style={{marginBottom:12}}>We take great pride in our work. If you are genuinely dissatisfied with your service result, please contact us within 48 hours of receiving your wig. We will assess the concern and, where appropriate, offer a complimentary re-treatment or partial refund at our discretion.</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>Uncollected Wigs</h3>
+            <p style={{marginBottom:12}}>Wigs not collected from the Paxi or PostNet branch within 7 days of dispatch will be returned to us. A re-delivery fee applies for a second dispatch.</p>
+            
+            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>How to Request a Cancellation or Refund</h3>
+            <p>All cancellation and refund requests must be made via WhatsApp. We aim to respond within 24 hours on business days.</p>
+            
+            <div style={{marginTop:24,background:"#F5EFE4",borderRadius:10,padding:"14px 16px",fontSize:12,color:"#A05A66",lineHeight:1.7}}>
+              💛 We are a small, proudly South African business and we genuinely care about every client and every wig. If something isn't right, please talk to us first — we will always try to make it right.
+            </div>
+          </div>}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function App() {
   // Page state wired to browser history so the phone's back button works.
@@ -2643,6 +2751,7 @@ export default function App() {
         {page==="gallery"&&<GalleryPage gallery={gallery} setPage={sPage}/>}
         {page==="track"&&<TrackOrder orders={orders} setPage={sPage}/>}
         {page==="book"&&<Booking services={services} addOrder={addOrder}/>}
+        {page==="policy"&&<PolicyPage setPage={sPage}/>}
         {page==="dashboard"&&<Dashboard orders={orders} setOrders={sOrders} updateOrder={updateOrder} services={services} setServices={saveServices} gallery={gallery} setGallery={sGallery} specials={specials} setSpecials={saveSpecials} setPage={sPage} sectionsOn={sectionsOn} toggleSection={toggleSection} contactInfo={contactInfo} setContactInfo={saveContact} wigOfWeek={wigOfWeek} setWigOfWeek={sWigOfWeek} changePassword={changePassword}/>}
       </main>
       {(page==="gallery"||page==="book")&&(
@@ -2655,6 +2764,7 @@ export default function App() {
               <button onClick={()=>sPage("book")} style={{background:"rgba(192,131,142,.12)",border:"1px solid rgba(192,131,142,.25)",borderRadius:8,color:"#E2AEB6",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",padding:"9px 20px",cursor:"pointer"}}>Book Now</button>
             </div>
             <div style={{fontSize:8.5,color:"rgba(192,131,142,.3)",letterSpacing:"0.2em",textTransform:"uppercase"}}>Premium Wig Care · Cape Town · © 2025</div>
+            <button onClick={()=>sPage("policy")} style={{background:"none",border:"none",cursor:"pointer",fontSize:9,color:"rgba(192,131,142,.45)",fontFamily:"'Jost',sans-serif",letterSpacing:"0.1em",marginTop:4,textDecoration:"underline"}}>Privacy Policy · Terms · Cancellation Policy</button>
           </div>
         </footer>
       )}
