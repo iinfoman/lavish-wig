@@ -53,6 +53,15 @@ export async function dbHasSession() {
   return !!data?.session;
 }
 
+// The email of whoever is currently signed in — used so "change password"
+// re-verifies against the real logged-in account rather than one hardcoded
+// owner, now that more than one person can hold their own login.
+export async function dbCurrentEmail() {
+  if (!supabase) return null;
+  const { data } = await supabase.auth.getUser();
+  return data?.user?.email || null;
+}
+
 export async function dbUpdatePassword(newPassword) {
   if (!supabase) return "no-supabase";
   const { error } = await supabase.auth.updateUser({ password: newPassword });
