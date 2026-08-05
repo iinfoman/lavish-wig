@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { supabase, dbFetchOrders, dbInsertOrder, dbUpdateOrder, dbDeleteOrder, dbFetchSettings, dbSaveSetting, dbSignIn, dbHasSession, dbUpdatePassword, dbTrackOrder } from "./db.js";
+import { supabase, dbFetchOrders, dbInsertOrder, dbUpdateOrder, dbDeleteOrder, dbFetchSettings, dbSaveSetting, dbSignIn, dbHasSession, dbCurrentEmail, dbUpdatePassword, dbTrackOrder } from "./db.js";
 
-// The Supabase Auth account that owns the dashboard. Must match the email in
-// supabase/migrations/002_tighten_security.sql.
-const OWNER_EMAIL = "iinfoworks@gmail.com";
+// Dashboard access is a real Supabase Auth account. Any email listed in the
+// database's is_owner() function (supabase/migrations/003_multi_owner.sql)
+// can sign in with its own password — there is no single hardcoded owner.
 
 // Passwords are never stored in plain text — only this hash is kept.
 const sha256Hex = async (s) => {
@@ -2641,9 +2641,12 @@ export default function App() {
     try { return localStorage.getItem('lavishwig_pwhash') || DEFAULT_PW_HASH; } catch(e){ return DEFAULT_PW_HASH; }
   });
   const changePassword=useCallback(async(current,next)=>{
-    // Preferred: verify + change through Supabase Auth. Legacy hash flow
-    // remains for local/offline mode before the owner account exists.
-    if(supabase && await dbSignIn(OWNER_EMAIL,current)===null){
+    // Preferred: verify + change through Supabase Auth, against whichever
+    // account is actually signed in right now — each owner (agency, client)
+    // manages only their own password. Legacy hash flow remains for
+    // local/offline mode before any owner account exists.
+    const email=supabase?await dbCurrentEmail():null;
+    if(email && await dbSignIn(email,current)===null){
       return (await dbUpdatePassword(next))===null;
     }
     if(await sha256Hex(current)!==pwHash) return false;
@@ -2667,6 +2670,7 @@ export default function App() {
 
   // Logo tap: single tap always goes home. 5 taps within 2.5s opens a password prompt.
   const [showPwPrompt,sShowPwPrompt]=useState(false);
+  const [pwEmail,sPwEmail]=useState("");
   const [pwInput,sPwInput]=useState("");
   const [pwError,sPwError]=useState(false);
   const onLogoClick=()=>{
@@ -2681,11 +2685,13 @@ export default function App() {
     }
   };
   const submitPassword=async()=>{
-    // Preferred: real Supabase Auth sign-in (required once the tightened RLS
-    // policies are live). Falls back to the legacy local hash so the
-    // dashboard stays reachable before the owner account exists.
+    // Preferred: real Supabase Auth sign-in with whichever email was typed —
+    // any account listed in the database's is_owner() function works, each
+    // with its own password. Falls back to the legacy local hash (password
+    // only, ignores the email field) so the dashboard stays reachable before
+    // any owner account exists.
     let ok=false;
-    if(supabase && await dbSignIn(OWNER_EMAIL,pwInput)===null){
+    if(supabase && pwEmail && await dbSignIn(pwEmail,pwInput)===null){
       ok=true;
       dbFetchOrders().then(rows=>{ if(rows) sOrders(rows); });
     } else if(await sha256Hex(pwInput)===pwHash){
@@ -2693,6 +2699,7 @@ export default function App() {
     }
     if(ok){
       sShowPwPrompt(false);
+      sPwEmail("");
       sPwInput("");
       sPwError(false);
       sPage("dashboard");
@@ -2722,24 +2729,33 @@ export default function App() {
 
       {/* 🔐 Admin password prompt — appears after 5 taps on logo or Ctrl+Shift+A */}
       {showPwPrompt&&(
-        <div onClick={()=>{sShowPwPrompt(false);sPwInput("");}} style={{position:"fixed",inset:0,zIndex:9999,background:"rgba(10,6,2,0.7)",backdropFilter:"blur(6px)",display:"flex",alignItems:"center",justifyContent:"center",padding:20}}>
+        <div onClick={()=>{sShowPwPrompt(false);sPwEmail("");sPwInput("");}} style={{position:"fixed",inset:0,zIndex:9999,background:"rgba(10,6,2,0.7)",backdropFilter:"blur(6px)",display:"flex",alignItems:"center",justifyContent:"center",padding:20}}>
           <div onClick={e=>e.stopPropagation()} style={{background:"#FDFAF6",borderRadius:20,padding:"28px 26px",maxWidth:340,width:"100%",boxShadow:"0 24px 64px rgba(0,0,0,0.4)"}} className="pop">
             <div style={{fontSize:32,textAlign:"center",marginBottom:10}}>🔐</div>
             <div style={{fontSize:16,fontWeight:700,color:"#150E06",textAlign:"center",marginBottom:4,fontFamily:"'Cormorant Garamond',serif",fontStyle:"italic"}}>Admin Access</div>
-            <div style={{fontSize:11,color:"#96707A",textAlign:"center",marginBottom:18}}>Enter your password to continue</div>
+            <div style={{fontSize:11,color:"#96707A",textAlign:"center",marginBottom:18}}>Sign in to manage the site</div>
             <input
+              type="email"
+              value={pwEmail}
+              onChange={e=>sPwEmail(e.target.value)}
+              onKeyDown={e=>e.key==="Enter"&&document.getElementById('admin-pw-field')?.focus()}
+              autoFocus
+              placeholder="Email"
+              style={{width:"100%",padding:"12px 16px",borderRadius:10,border:"1.5px solid rgba(160,90,102,0.25)",fontSize:14,fontFamily:"'Jost',sans-serif",outline:"none",textAlign:"center",marginBottom:10,boxSizing:"border-box"}}
+            />
+            <input
+              id="admin-pw-field"
               type="password"
               value={pwInput}
               onChange={e=>sPwInput(e.target.value)}
               onKeyDown={e=>e.key==="Enter"&&submitPassword()}
-              autoFocus
               placeholder="Password"
               style={{width:"100%",padding:"12px 16px",borderRadius:10,border:`1.5px solid ${pwError?"#A84040":"rgba(160,90,102,0.25)"}`,fontSize:14,fontFamily:"'Jost',sans-serif",outline:"none",textAlign:"center",letterSpacing:"0.15em",marginBottom:pwError?8:16,boxSizing:"border-box"}}
             />
-            {pwError&&<div style={{color:"#A84040",fontSize:11,textAlign:"center",marginBottom:12}}>Incorrect password, try again</div>}
+            {pwError&&<div style={{color:"#A84040",fontSize:11,textAlign:"center",marginBottom:12}}>Incorrect email or password, try again</div>}
             <div style={{display:"flex",gap:8}}>
               <button onClick={submitPassword} style={{flex:1,background:"linear-gradient(135deg,#C0838E,#A05A66)",border:"none",borderRadius:10,padding:"11px",cursor:"pointer",color:"#fff",fontSize:13,fontWeight:700,fontFamily:"'Jost',sans-serif"}}>Enter</button>
-              <button onClick={()=>{sShowPwPrompt(false);sPwInput("");}} style={{background:"none",border:"1px solid rgba(160,90,102,0.22)",borderRadius:10,padding:"11px 18px",cursor:"pointer",color:"#96707A",fontSize:13,fontFamily:"'Jost',sans-serif"}}>Cancel</button>
+              <button onClick={()=>{sShowPwPrompt(false);sPwEmail("");sPwInput("");}} style={{background:"none",border:"1px solid rgba(160,90,102,0.22)",borderRadius:10,padding:"11px 18px",cursor:"pointer",color:"#96707A",fontSize:13,fontFamily:"'Jost',sans-serif"}}>Cancel</button>
             </div>
           </div>
         </div>
