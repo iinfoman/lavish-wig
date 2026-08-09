@@ -247,7 +247,7 @@ const Ticker = () => {
   );
 };
 
-const Nav = ({page,setPage,cart,onLogoClick,specials}) => {
+const Nav = ({page,setPage,cart,onLogoClick,specials,contactInfo}) => {
   const [scrolled,sSc]=useState(false);
   const [menu,sMenu]=useState(false);
   const ref=useRef(null);
@@ -266,6 +266,27 @@ const Nav = ({page,setPage,cart,onLogoClick,specials}) => {
   };
   return (
     <div ref={ref} style={{position:"fixed",top:0,left:0,right:0,zIndex:300}}>
+      {/* Slim utility strip — desktop only, real contact details pulled from the
+          owner-editable settings (never hardcoded), so it's never wrong or fake. */}
+      <div className="dsk" style={{background:"#1A1109",padding:"7px 16px"}}>
+        <div style={{maxWidth:1200,margin:"0 auto",display:"flex",alignItems:"center",justifyContent:"flex-end",gap:20}}>
+          {contactInfo.callNumber&&(
+            <a href={`tel:${contactInfo.callNumber}`} style={{display:"flex",alignItems:"center",gap:6,color:"rgba(226,174,182,.75)",fontSize:11,fontFamily:"'Jost',sans-serif",textDecoration:"none"}}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              {contactInfo.callNumber}
+            </a>
+          )}
+          <span style={{display:"flex",alignItems:"center",gap:6,color:"rgba(226,174,182,.75)",fontSize:11,fontFamily:"'Jost',sans-serif"}}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Cape Town, South Africa
+          </span>
+          {contactInfo.waNumber&&(
+            <a href={`https://wa.me/${contactInfo.waNumber}`} target="_blank" rel="noreferrer" style={{display:"flex",alignItems:"center",color:"rgba(226,174,182,.75)"}} aria-label="WhatsApp">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>
+            </a>
+          )}
+        </div>
+      </div>
       {/* Banner + header stacked together in ONE fixed group — never drifts out of sync */}
       <SpecialsBanner specials={specials}/>
       <header style={{position:"relative",background:scrolled?"rgba(253,250,246,.97)":"#FDFAF6",backdropFilter:scrolled?"blur(18px)":"none",borderBottom:`1px solid ${scrolled?"rgba(160,90,102,0.12)":"transparent"}`,transition:"background .3s, backdrop-filter .3s, border-color .3s"}}>
@@ -289,6 +310,9 @@ const Nav = ({page,setPage,cart,onLogoClick,specials}) => {
                 <button key={p+l} onClick={()=>navTo(p)} style={{background:"none",border:"none",cursor:"pointer",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:500,letterSpacing:"0.1em",textTransform:"uppercase",padding:"6px 14px",color:page===p?"#C0838E":"#96707A",borderBottom:`2px solid ${page===p?"#C0838E":"transparent"}`,transition:"all .2s"}}>{l}</button>
               ))}
             </div>
+
+            {/* Persistent desktop CTA */}
+            <button className="dsk" onClick={()=>navTo("book")} style={{background:"linear-gradient(135deg,#C0838E,#A05A66)",border:"none",borderRadius:8,padding:"9px 18px",cursor:"pointer",color:"#fff",fontSize:11,fontWeight:700,fontFamily:"'Jost',sans-serif",letterSpacing:"0.08em",marginLeft:8}}>BOOK A SERVICE</button>
 
             {/* Hamburger */}
             <button className="mob" onClick={()=>sMenu(m=>!m)} style={{background:"none",border:"1.5px solid rgba(160,90,102,0.22)",borderRadius:7,padding:"8px 9px",cursor:"pointer",display:"flex",flexDirection:"column",gap:4.5,flexShrink:0}}>
@@ -622,6 +646,77 @@ const Trust = () => (
     </div>
   </section>
 );
+
+// Compact 4-point trust strip, sits directly under the Hero.
+const HERO_TRUST_POINTS = [
+  {l:"Deep Clean",         d:HERO_FEATS[0].d},
+  {l:"Gentle Care",        d:HERO_FEATS[1].d},
+  {l:"High Quality",       d:"M6 3L2 9l10 12L22 9l-4-6H6zM2 9h20M9 3l3 6 3-6"},
+  {l:"Nationwide Courier", d:"M3 7h11v9H3zM14 10h4l3 3v3h-7v-6zM6 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"},
+];
+const HeroTrustStrip = () => (
+  <div style={{background:"#150E06",padding:"22px 20px"}}>
+    <div style={{maxWidth:1100,margin:"0 auto",display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(150px,1fr))",gap:18}}>
+      {HERO_TRUST_POINTS.map(f=>(
+        <div key={f.l} style={{display:"flex",alignItems:"center",gap:10,justifyContent:"center"}}>
+          <span style={{width:36,height:36,borderRadius:"50%",flexShrink:0,display:"grid",placeItems:"center",border:"1.5px solid rgba(192,131,142,.4)"}}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0838E" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={f.d}/></svg>
+          </span>
+          <span style={{fontSize:12,fontWeight:600,color:"#F5EFE4",fontFamily:"'Jost',sans-serif"}}>{f.l}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+// Photo-led services showcase — real photography only, reused from the
+// site's actual wash-day shoot (never generic stock imagery).
+const SERVICE_SHOWCASE = [
+  {n:"01",t:"Deep Wash",   img:"/img/svc-wash.webp",      d:"Sulfate-free cleanse that lifts product buildup without stripping the fibre."},
+  {n:"02",t:"Conditioning",img:"/img/svc-condition.webp", d:"A hydrating treatment that restores softness and shine to tired hair."},
+  {n:"03",t:"Restoration", img:"/img/svc-restore.webp",   d:"Full revival for matted, dull, or heavily worn units — like new again."},
+];
+const ServicesShowcase = ({setPage}) => (
+  <section style={{background:"#FDFAF6",padding:"72px 24px"}}>
+    <div style={{maxWidth:1160,margin:"0 auto",display:"grid",gridTemplateColumns:"280px 1fr",gap:48}} className="grid2">
+      <div>
+        <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.2em",color:"#C0838E",textTransform:"uppercase",marginBottom:12}}>Our Services</div>
+        <h2 className="serif" style={{fontSize:"clamp(28px,4vw,44px)",fontWeight:300,color:"#150E06",marginBottom:22,lineHeight:1.15}}>Premium<br/><em>Wig Care</em></h2>
+        <button onClick={()=>setPage("book")} style={{display:"inline-flex",alignItems:"center",gap:6,background:"none",border:"1.5px solid rgba(160,90,102,0.3)",borderRadius:10,padding:"11px 20px",cursor:"pointer",fontSize:11,fontWeight:700,letterSpacing:"0.06em",color:"#A05A66",fontFamily:"'Jost',sans-serif"}}>VIEW ALL SERVICES →</button>
+      </div>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:20}}>
+        {SERVICE_SHOWCASE.map(s=>(
+          <div key={s.t} style={{borderRadius:16,overflow:"hidden",boxShadow:"0 8px 32px rgba(21,14,6,0.1)",background:"#fff"}}>
+            <div style={{position:"relative",height:210,overflow:"hidden"}}>
+              <img src={s.img} alt={s.t} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+              <span style={{position:"absolute",bottom:-16,left:16,width:40,height:40,borderRadius:"50%",background:"#150E06",display:"grid",placeItems:"center",fontSize:11,fontWeight:700,color:"#E2AEB6",boxShadow:"0 6px 16px rgba(0,0,0,.3)"}}>{s.n}</span>
+            </div>
+            <div style={{padding:"26px 18px 20px"}}>
+              <div style={{fontSize:16,fontWeight:700,color:"#150E06",marginBottom:8,fontFamily:"'Jost',sans-serif"}}>{s.t}</div>
+              <div style={{fontSize:12.5,color:"#96707A",lineHeight:1.7}}>{s.d}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+// Surfaces the drag-to-compare slider (used elsewhere for gallery lightboxes)
+// directly on the homepage using the admin's most recent real upload.
+const HomeBeforeAfter = ({gallery,setPage}) => {
+  const item = gallery.find(g=>!g.hidden && (g.before||g.after)) || gallery[0] || {before:null,after:null};
+  return (
+    <section style={{background:"#F5EFE4",padding:"72px 24px",borderTop:"1px solid rgba(160,90,102,0.12)"}}>
+      <div style={{maxWidth:640,margin:"0 auto",textAlign:"center"}}>
+        <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.2em",color:"#C0838E",textTransform:"uppercase",marginBottom:12}}>See The Difference</div>
+        <h2 className="serif" style={{fontSize:"clamp(26px,4vw,40px)",fontWeight:300,color:"#150E06",marginBottom:28}}>Real <em>Transformations</em></h2>
+        <BASlider item={item}/>
+        <button onClick={()=>setPage("gallery")} style={{marginTop:22,background:"none",border:"none",cursor:"pointer",fontSize:12,fontWeight:700,letterSpacing:"0.06em",color:"#A05A66",fontFamily:"'Jost',sans-serif"}}>View Full Gallery →</button>
+      </div>
+    </section>
+  );
+};
 
 // Before/after slider — works with real uploaded media, or a tasteful
 // placeholder if the admin hasn't uploaded photos for this slot yet.
@@ -1736,6 +1831,7 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
             {key:"washProcess",l:"🫧 How We Wash + Prices",d:"6-step wash process and service pricing cards"},
             {key:"fashionFeed",l:"💅 Wigs in Fashion",    d:"Trend inspiration feed for customers"},
             {key:"trust",      l:"🔬 Trust Strip",        d:"Burn test / nationwide delivery / packaging / WhatsApp badges"},
+            {key:"testimonials",l:"💬 Customer Reviews",  d:"⚠️ Currently placeholder text, not real reviews — only switch this on once you've replaced them with genuine customer quotes"},
           ].map(s=>(
             <div key={s.key} style={{display:"flex",alignItems:"center",gap:14,padding:"14px 16px",background:"#fff",borderRadius:12,border:`1.5px solid ${sectionsOn[s.key]!==false?"rgba(192,131,142,0.25)":"rgba(160,90,102,0.08)"}`,marginBottom:10,transition:"border .2s"}}>
               <div style={{flex:1}}>
@@ -2360,11 +2456,14 @@ const FAQ = () => {
 const Home = ({setPage,services,specials,addCart,sectionsOn,wigOfWeek,gallery,waNumber}) => (
   <>
     <Hero setPage={setPage} waNumber={waNumber}/>
+    <HeroTrustStrip/>
+    <Reveal><ServicesShowcase setPage={setPage}/></Reveal>
+    <Reveal><HomeBeforeAfter gallery={gallery} setPage={setPage}/></Reveal>
     <Ticker/>
     <HomeShowcase gallery={gallery} setPage={setPage}/>
     {sectionsOn.wigOfDay!==false && <WigOfDay data={wigOfWeek}/>}
     {sectionsOn.washProcess!==false && <Reveal><WashProcess services={services} setPage={setPage}/></Reveal>}
-    <Reveal><Testimonials/></Reveal>
+    {sectionsOn.testimonials===true && <Reveal><Testimonials/></Reveal>}
     {sectionsOn.fashionFeed!==false && <Reveal><FashionFeed/></Reveal>}
     <Reveal><WigCareTips/></Reveal>
     <Reveal><PricingSnapshot setPage={setPage} services={services}/></Reveal>
@@ -2554,11 +2653,19 @@ export default function App() {
   };
   const [specials,sSpecials]=useState([]);
   // Keep --nav-h in sync so every page's top padding auto-adjusts when the
-  // specials banner shows/hides — no more manual offset math to get wrong.
+  // specials banner shows/hides, or the desktop-only contact strip appears —
+  // no more manual offset math to get wrong.
   useEffect(()=>{
-    try {
-      document.documentElement.style.setProperty('--nav-h', specials.length ? '100px' : '64px');
-    } catch(e){}
+    const update=()=>{
+      try {
+        const desktop = window.innerWidth > 720;
+        const base = specials.length ? 100 : 64;
+        document.documentElement.style.setProperty('--nav-h', `${base + (desktop?30:0)}px`);
+      } catch(e){}
+    };
+    update();
+    window.addEventListener('resize', update);
+    return()=>window.removeEventListener('resize', update);
   },[specials.length]);
   const [cart,sCart]=useState(0);
   const taps=useRef(0);const tapT=useRef(null);
@@ -2607,6 +2714,9 @@ export default function App() {
   const SECTIONS_DEFAULT = {
     washProcess:true, editorial:true, trust:true,
     wigOfDay:true, fashionFeed:true,
+    // Off by default — these are placeholder reviews, not real customer
+    // testimonials. Turn on once genuine reviews have been collected.
+    testimonials:false,
   };
   const [sectionsOn,sSectionsOn]=useState(()=>{
     // Load saved sections from localStorage so toggles persist
@@ -2772,7 +2882,7 @@ export default function App() {
         </div>
       )}
 
-      {!isDash&&(<><Nav page={page} setPage={sPage} cart={cart} onLogoClick={onLogoClick} specials={specials}/><FloatingCTA page={page} waNumber={contactInfo.waNumber} callNumber={contactInfo.callNumber} setPage={sPage}/></>)}
+      {!isDash&&(<><Nav page={page} setPage={sPage} cart={cart} onLogoClick={onLogoClick} specials={specials} contactInfo={contactInfo}/><FloatingCTA page={page} waNumber={contactInfo.waNumber} callNumber={contactInfo.callNumber} setPage={sPage}/></>)}
       <main>
         {page==="home"&&<Home setPage={sPage} services={services} specials={specials} addCart={addCart} sectionsOn={sectionsOn} wigOfWeek={wigOfWeek} gallery={gallery} waNumber={contactInfo.waNumber}/>}
         {page==="gallery"&&<GalleryPage gallery={gallery} setPage={sPage}/>}
