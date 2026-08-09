@@ -100,6 +100,7 @@ const GS = () => (
     .serif{font-family:'Cormorant Garamond',serif}
     .script{font-family:'Great Vibes',cursive}
     .gallery-circle:hover{transform:translateY(-6px) scale(1.04) !important;}
+    .gal-upload-label:hover{background:rgba(192,131,142,0.14) !important;border-color:rgba(192,131,142,0.55) !important;}
     ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:#F2DCDF;border-radius:2px}
     @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
     @keyframes floatWig{0%,100%{transform:translateY(0) rotate(-1.2deg)}50%{transform:translateY(-16px) rotate(1.2deg)}}
@@ -142,10 +143,16 @@ const GS = () => (
     input:focus,textarea:focus,select:focus{border-color:#C0838E!important;box-shadow:0 0 0 3px rgba(192,131,142,.14)!important}
     input::placeholder,textarea::placeholder{color:#C9A3A8}
     select option{background:#fff;color:#150E06}
+    button:focus-visible,a:focus-visible{outline:2.5px solid #C0838E;outline-offset:2px;border-radius:4px}
     .hs::-webkit-scrollbar{height:3px}.hs::-webkit-scrollbar-thumb{background:#F2DCDF;border-radius:2px}
     @media(max-width:720px){
       .dsk{display:none!important}
       .grid2{grid-template-columns:1fr!important}
+    }
+    @media(max-width:480px){
+      .dash-topbar > div:first-child{padding:0 14px!important;height:48px!important;gap:8px!important}
+      .dash-admin-label{display:none!important}
+      .dash-back-btn{padding:6px 10px!important;font-size:11px!important}
     }
     @media(min-width:721px){
       .hero-photo{width:50%!important;bottom:22%!important}
@@ -459,7 +466,7 @@ const Hero = ({setPage, waNumber}) => {
             <div style={{display:"flex",flexDirection:"column",gap:16,paddingBottom:24}}>
               {HERO_FEATS.map((f,i)=>(
                 <div key={f.l} className={`hm${6+i}`} style={{display:"flex",alignItems:"center",gap:16}}>
-                  <span style={{width:"clamp(52px,13vw,60px)",height:"clamp(52px,13vw,60px)",borderRadius:"50%",flexShrink:0,display:"grid",placeItems:"center",background:"rgba(255,252,248,.72)",border:"1.5px solid rgba(183,110,121,.35)",boxShadow:"0 6px 18px rgba(120,70,50,.10)",backdropFilter:"blur(4px)"}}>
+                  <span style={{width:"clamp(52px,13vw,60px)",height:"clamp(52px,13vw,60px)",borderRadius:"50%",flexShrink:0,display:"grid",placeItems:"center",background:"rgba(255,252,248,.6)",border:"1.5px solid rgba(183,110,121,.32)",boxShadow:"0 6px 18px rgba(120,70,50,.10), inset 0 1px 1px rgba(255,255,255,.5)",backdropFilter:"blur(10px)"}}>
                     <svg style={i===0?{animation:"sparkleTwinkle 3s ease-in-out infinite"}:undefined} width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#B76E79" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={f.d}/></svg>
                   </span>
                   <span style={{fontSize:"clamp(16px,4.4vw,19px)",fontWeight:600,color:"#2E1D14",fontFamily:"'Jost',sans-serif"}}>{f.l}</span>
@@ -475,14 +482,14 @@ const Hero = ({setPage, waNumber}) => {
       <div style={{position:"relative",zIndex:3,marginTop:-46}}>
         <div style={{background:"linear-gradient(180deg,rgba(40,25,20,0) 0%,rgba(40,25,20,.72) 30%,#2A1A15 58%,#241611 100%)",paddingTop:72}}>
           <div style={{maxWidth:560,margin:"0 auto",padding:"0 24px"}}>
-            {in_&&<>
-              <div className="hm9" style={{display:"flex",justifyContent:"center",marginBottom:20}}>
-                <span style={{display:"inline-flex",alignItems:"center",gap:10,background:"rgba(128,76,72,.55)",backdropFilter:"blur(8px)",border:"1px solid rgba(255,220,215,.18)",borderRadius:999,padding:"11px 24px"}}>
+            <Reveal><>
+              <div style={{display:"flex",justifyContent:"center",marginBottom:20}}>
+                <span style={{display:"inline-flex",alignItems:"center",gap:10,background:"rgba(128,76,72,.42)",backdropFilter:"blur(14px)",border:"1px solid rgba(255,220,215,.22)",boxShadow:"0 4px 20px rgba(0,0,0,.15), inset 0 1px 1px rgba(255,255,255,.12)",borderRadius:999,padding:"11px 24px"}}>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="#E7A5AD"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
                   <span style={{fontSize:"clamp(11px,3vw,13px)",letterSpacing:"0.22em",color:"#FBEFE8",fontWeight:500,fontFamily:"'Jost',sans-serif",whiteSpace:"nowrap"}}>CAPE TOWN&thinsp;&thinsp;·&thinsp;&thinsp;SOUTH AFRICA</span>
                 </span>
               </div>
-              <div className="hm10" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:28}}>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:28}}>
                 <button onClick={()=>setPage("book")} style={{position:"relative",overflow:"hidden",display:"inline-flex",alignItems:"center",justifyContent:"center",gap:9,background:"linear-gradient(135deg,#C98B94,#A8626E)",border:"none",borderRadius:14,padding:"16px 10px",cursor:"pointer",color:"#fff",fontSize:"clamp(11px,2.9vw,13px)",fontWeight:600,letterSpacing:"0.14em",fontFamily:"'Jost',sans-serif",animation:"ctaBreath 3.4s ease-in-out infinite"}}>
                   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17M8 3v3.5M16 3v3.5M8 13h2M14 13h2M8 16.5h2M14 16.5h2"/></svg>
                   <span style={{whiteSpace:"nowrap"}}>BOOK A SERVICE</span>
@@ -493,7 +500,7 @@ const Hero = ({setPage, waNumber}) => {
                   <span style={{whiteSpace:"nowrap"}}>WHATSAPP US</span>
                 </a>
               </div>
-              <div className="hm11" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"clamp(16px,5vw,34px)",paddingBottom:8}}>
+              <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"clamp(16px,5vw,34px)",paddingBottom:8}}>
                 <img src="/img/care1.png" alt="Wig before care" style={{width:"clamp(78px,22vw,104px)",height:"clamp(78px,22vw,104px)",borderRadius:"50%",objectFit:"cover",border:"2.5px solid rgba(201,139,148,.75)",boxShadow:"0 10px 28px rgba(0,0,0,.4)",animation:"floatA 6s ease-in-out infinite"}}/>
                 <div style={{textAlign:"center"}}>
                   <div style={{fontSize:"clamp(16px,4.6vw,20px)",color:"#FBEFE8",fontWeight:500,fontFamily:"'Jost',sans-serif",lineHeight:1.5}}>Real Care.<br/>Real Results.</div>
@@ -501,7 +508,7 @@ const Hero = ({setPage, waNumber}) => {
                 </div>
                 <img src="/img/care2.png" alt="Wig after care" style={{width:"clamp(78px,22vw,104px)",height:"clamp(78px,22vw,104px)",borderRadius:"50%",objectFit:"cover",border:"2.5px solid rgba(201,139,148,.75)",boxShadow:"0 10px 28px rgba(0,0,0,.4)",animation:"floatB 7s ease-in-out .8s infinite"}}/>
               </div>
-            </>}
+            </></Reveal>
           </div>
           {/* Wave out of the dark base into the cream page below */}
           <div style={{height:74,overflow:"hidden",marginTop:10}}>
@@ -1228,19 +1235,17 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
     <div style={{minHeight:"100dvh",background:"#F5EFE4"}}>
 
       {/* ── TOP BAR ── */}
-      <div style={{background:"#241611",position:"sticky",top:0,zIndex:200,boxShadow:"0 2px 20px rgba(0,0,0,.4)"}}>
-        <div style={{maxWidth:1100,margin:"0 auto",padding:"0 20px",height:50,display:"flex",alignItems:"center",gap:12}}>
-          <button onClick={()=>setPage("home")} style={{background:"rgba(192,131,142,0.15)",border:"1px solid rgba(192,131,142,0.4)",borderRadius:8,padding:"6px 14px",cursor:"pointer",color:"#E2AEB6",fontSize:12,fontFamily:"'Jost',sans-serif",fontWeight:700,letterSpacing:"0.04em"}}>← Back to Site</button>
-          {/* ⚠️ Storage notice */}
-          <div style={{marginLeft:"auto",background:"rgba(168,100,40,0.18)",border:"1px solid rgba(192,131,142,0.3)",borderRadius:8,padding:"4px 10px",fontSize:9.5,color:"rgba(224,184,130,0.7)",display:"flex",alignItems:"center",gap:5}}>
-            <span>⚠️</span><span>Data saves to this device only</span>
+      <div className="dash-topbar" style={{background:"rgba(36,22,17,0.86)",backdropFilter:"blur(14px)",position:"sticky",top:0,zIndex:200,boxShadow:"0 2px 20px rgba(0,0,0,.4)"}}>
+        <div style={{maxWidth:1100,margin:"0 auto",padding:"0 20px",height:52,display:"flex",alignItems:"center",justifyContent:"space-between",gap:12}}>
+          <div style={{display:"flex",alignItems:"center",gap:12,minWidth:0}}>
+            <button onClick={()=>setPage("home")} className="dash-back-btn" style={{background:"rgba(192,131,142,0.15)",border:"1px solid rgba(192,131,142,0.4)",borderRadius:8,padding:"6px 14px",cursor:"pointer",color:"#E2AEB6",fontSize:12,fontFamily:"'Jost',sans-serif",fontWeight:700,letterSpacing:"0.04em",flexShrink:0}}>← Back</button>
+            <div style={{height:14,width:1,background:"rgba(255,255,255,.08)",flexShrink:0}}/>
+            <span className="serif" style={{fontSize:17,color:"#E2AEB6",fontStyle:"italic",whiteSpace:"nowrap"}}>Lavish Wig</span>
+            <span className="dash-admin-label" style={{fontSize:8,color:"rgba(192,131,142,.3)",letterSpacing:"0.2em",textTransform:"uppercase",whiteSpace:"nowrap"}}>ADMIN</span>
           </div>
-          <div style={{height:14,width:1,background:"rgba(255,255,255,.08)"}}/>
-          <span className="serif" style={{fontSize:17,color:"#E2AEB6",fontStyle:"italic"}}>Lavish Wig</span>
-          <span style={{fontSize:8,color:"rgba(192,131,142,.3)",letterSpacing:"0.2em",textTransform:"uppercase"}}>ADMIN</span>
-          <div style={{marginLeft:"auto",display:"flex",alignItems:"center",gap:5}}>
-            <div style={{width:6,height:6,borderRadius:"50%",background:"#4A8A5A"}}/>
-            <span style={{fontSize:10,color:"rgba(253,250,246,.3)"}}>Live</span>
+          <div style={{display:"flex",alignItems:"center",gap:5,flexShrink:0}}>
+            <div style={{width:6,height:6,borderRadius:"50%",background:"#4A8A5A",boxShadow:"0 0 6px rgba(74,138,90,.6)"}}/>
+            <span style={{fontSize:10,color:"rgba(253,250,246,.4)",whiteSpace:"nowrap"}}>Synced</span>
           </div>
         </div>
         <div className="hs" style={{display:"flex",overflowX:"auto",maxWidth:1100,margin:"0 auto",padding:"0 20px",borderTop:"1px solid rgba(255,255,255,.05)"}}>
@@ -1484,19 +1489,25 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
                 {/* Before/after thumbnail pair */}
                 <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",height:110}}>
                   {["before","after"].map(slot=>(
-                    <div key={slot} style={{position:"relative",background:"#1a1208",overflow:"hidden"}}>
+                    <div key={slot} style={{position:"relative",background:item[slot]?"#1a1208":"#FDFAF6",overflow:"hidden"}}>
                       {item[slot] ? (
                         item[slot].type==="video"
                           ? <video src={item[slot].url} muted style={{width:"100%",height:"100%",objectFit:"cover"}}/>
                           : <img src={item[slot].url} alt={slot} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
                       ) : (
-                        <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:9,color:"rgba(255,255,255,0.35)",fontWeight:700}}>No {slot} photo</div>
+                        <label className="gal-upload-label" style={{position:"absolute",inset:0,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:5,cursor:"pointer",border:"1.5px dashed rgba(160,90,102,0.3)",transition:"background .2s,border-color .2s"}}>
+                          <span style={{fontSize:18}}>📸</span>
+                          <span style={{fontSize:9,color:"#C0838E",fontWeight:700,textAlign:"center",letterSpacing:"0.02em"}}>Tap to add<br/>{slot} photo</span>
+                          <input type="file" accept="image/*,video/*" style={{display:"none"}} onChange={e=>handleGalMedia(e,slot,item.id)}/>
+                        </label>
                       )}
-                      <div style={{position:"absolute",top:4,left:4,background:"rgba(0,0,0,0.55)",color:"#fff",fontSize:7.5,fontWeight:700,padding:"2px 6px",borderRadius:10,letterSpacing:"0.06em",textTransform:"uppercase"}}>{slot}</div>
-                      <label style={{position:"absolute",bottom:4,right:4,background:"rgba(192,131,142,0.92)",borderRadius:6,padding:"3px 7px",cursor:"pointer",fontSize:8,color:"#fff",fontWeight:700}}>
-                        📸
-                        <input type="file" accept="image/*,video/*" style={{display:"none"}} onChange={e=>handleGalMedia(e,slot,item.id)}/>
-                      </label>
+                      <div style={{position:"absolute",top:4,left:4,background:item[slot]?"rgba(0,0,0,0.55)":"rgba(192,131,142,0.16)",color:item[slot]?"#fff":"#A05A66",fontSize:7.5,fontWeight:700,padding:"2px 6px",borderRadius:10,letterSpacing:"0.06em",textTransform:"uppercase"}}>{slot}</div>
+                      {item[slot]&&(
+                        <label style={{position:"absolute",bottom:4,right:4,background:"rgba(192,131,142,0.92)",borderRadius:6,padding:"3px 7px",cursor:"pointer",fontSize:8,color:"#fff",fontWeight:700}}>
+                          📸
+                          <input type="file" accept="image/*,video/*" style={{display:"none"}} onChange={e=>handleGalMedia(e,slot,item.id)}/>
+                        </label>
+                      )}
                     </div>
                   ))}
                 </div>
