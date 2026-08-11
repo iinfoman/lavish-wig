@@ -148,17 +148,18 @@ const GS = () => (
     @media(max-width:720px){
       .dsk{display:none!important}
       .grid2{grid-template-columns:1fr!important}
+      .feat-strip{grid-template-columns:1fr 1fr!important}
     }
     @media(max-width:480px){
       .dash-topbar > div:first-child{padding:0 14px!important;height:48px!important;gap:8px!important}
       .dash-admin-label{display:none!important}
       .dash-back-btn{padding:6px 10px!important;font-size:11px!important}
     }
-    @media(min-width:721px){
-      .hero-photo{width:50%!important;bottom:22%!important}
-      .hero-copy{max-width:520px!important;padding-top:3vh}
-    }
     @media(min-width:721px){.mob{display:none!important}}
+    @media(max-width:900px){
+      .hero-grid{grid-template-columns:1fr!important;gap:32px!important;padding:32px 22px!important}
+      .hero-photo-col{order:-1;min-height:300px!important;aspect-ratio:4/3;height:auto!important}
+    }
   `}</style>
 );
 
@@ -247,6 +248,26 @@ const Ticker = () => {
   );
 };
 
+// Small, always-visible announcement bar. Copy is deliberately accurate to
+// how the business actually operates (nationwide Paxi/PostNet drop-off with
+// included return courier) rather than the generic "free collection" line
+// often used as a placeholder — that would promise a door-to-door pickup
+// service that isn't what the real booking flow provides.
+const AnnouncementBar = () => (
+  <div style={{background:"#F3EDE8",padding:"8px 16px"}}>
+    <div style={{maxWidth:1200,margin:"0 auto",display:"flex",alignItems:"center",justifyContent:"center",gap:10,flexWrap:"wrap",fontSize:10.5,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.04em",color:"#6B5B52"}}>
+      <span style={{display:"flex",alignItems:"center",gap:6}}>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7v-6zM6 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+        FREE RETURN COURIER ON EVERY ORDER
+      </span>
+      <span style={{opacity:0.4}}>|</span>
+      <span>3–5 DAY TURNAROUND</span>
+      <span style={{opacity:0.4}}>|</span>
+      <span>QUALITY CARE GUARANTEED</span>
+    </div>
+  </div>
+);
+
 const Nav = ({page,setPage,cart,onLogoClick,specials,contactInfo}) => {
   const [scrolled,sSc]=useState(false);
   const [menu,sMenu]=useState(false);
@@ -258,65 +279,48 @@ const Nav = ({page,setPage,cart,onLogoClick,specials,contactInfo}) => {
     document.addEventListener("mousedown",h);document.addEventListener("touchstart",h,{passive:true});
     return()=>{document.removeEventListener("mousedown",h);document.removeEventListener("touchstart",h);};
   },[menu]);
-  const links=[["home","Home"],["about","About"],["gallery","Gallery"],["track","Track My Wig"],["book","Book Now"]];
+  const links=[["home","Home"],["services","Services"],["how-it-works","How It Works"],["prices","Prices"],["about","About"],["gallery","Gallery"],["track","Track My Wig"],["contact","Contact"]];
+  const anchorMap={services:"services",about:"about","how-it-works":"how-it-works",prices:"prices"};
   const navTo=(p)=>{
-    if(p==="about"){setPage("home");setTimeout(()=>document.getElementById("about")?.scrollIntoView({behavior:"smooth"}),100);}
+    if(p==="contact"){window.open(`https://wa.me/${contactInfo.waNumber||"27600000000"}`,"_blank");sMenu(false);return;}
+    if(anchorMap[p]){setPage("home");setTimeout(()=>document.getElementById(anchorMap[p])?.scrollIntoView({behavior:"smooth"}),100);}
     else setPage(p);
     sMenu(false);
   };
   return (
     <div ref={ref} style={{position:"fixed",top:0,left:0,right:0,zIndex:300}}>
-      {/* Slim utility strip — desktop only, real contact details pulled from the
-          owner-editable settings (never hardcoded), so it's never wrong or fake. */}
-      <div className="dsk" style={{background:"#1A1109",padding:"7px 16px"}}>
-        <div style={{maxWidth:1200,margin:"0 auto",display:"flex",alignItems:"center",justifyContent:"flex-end",gap:20}}>
-          {contactInfo.callNumber&&(
-            <a href={`tel:${contactInfo.callNumber}`} style={{display:"flex",alignItems:"center",gap:6,color:"rgba(226,174,182,.75)",fontSize:11,fontFamily:"'Jost',sans-serif",textDecoration:"none"}}>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              {contactInfo.callNumber}
-            </a>
-          )}
-          <span style={{display:"flex",alignItems:"center",gap:6,color:"rgba(226,174,182,.75)",fontSize:11,fontFamily:"'Jost',sans-serif"}}>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Cape Town, South Africa
-          </span>
-          {contactInfo.waNumber&&(
-            <a href={`https://wa.me/${contactInfo.waNumber}`} target="_blank" rel="noreferrer" style={{display:"flex",alignItems:"center",color:"rgba(226,174,182,.75)"}} aria-label="WhatsApp">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>
-            </a>
-          )}
-        </div>
-      </div>
+      <div className="dsk"><AnnouncementBar/></div>
       {/* Banner + header stacked together in ONE fixed group — never drifts out of sync */}
       <SpecialsBanner specials={specials}/>
       <header style={{position:"relative",background:scrolled?"rgba(253,250,246,.97)":"#FDFAF6",backdropFilter:scrolled?"blur(18px)":"none",borderBottom:`1px solid ${scrolled?"rgba(160,90,102,0.12)":"transparent"}`,transition:"background .3s, backdrop-filter .3s, border-color .3s"}}>
-        <div style={{maxWidth:1200,margin:"0 auto",padding:"0 16px",height:64,display:"flex",alignItems:"center",position:"relative"}}>
+        <div style={{maxWidth:1280,margin:"0 auto",padding:"0 16px",height:72,display:"flex",alignItems:"center",position:"relative"}}>
 
           {/* LEFT — emblem + wordmark grouped together (tap logo 5x for dashboard) */}
           <button onClick={onLogoClick} style={{background:"none",border:"none",cursor:"pointer",padding:0,flexShrink:0,display:"flex",alignItems:"center",gap:11}}>
-            <img src="/img/logo.png" alt="Lavish Wig" style={{height:46,width:46,borderRadius:"50%",display:"block",objectFit:"cover"}}/>
+            <img src="/img/logo.png" alt="Lavish Wig" style={{height:44,width:44,borderRadius:"50%",display:"block",objectFit:"cover"}}/>
             <span style={{textAlign:"left",lineHeight:1}}>
-              <span className="serif" style={{display:"block",fontSize:24,color:"#150E06",fontStyle:"italic",fontWeight:500,letterSpacing:"0.02em",lineHeight:1}}>Lavish Wig</span>
-              <span style={{display:"block",fontSize:7.5,color:"#B98B92",letterSpacing:"0.3em",textTransform:"uppercase",marginTop:3,fontFamily:"'Jost',sans-serif"}}>— Wig Care —</span>
+              <span className="serif" style={{display:"block",fontSize:20,color:"#171515",fontWeight:600,letterSpacing:"0.01em",lineHeight:1}}>LAVISH WIG</span>
+              <span style={{display:"block",fontSize:8.5,color:"#C99582",letterSpacing:"0.14em",textTransform:"uppercase",marginTop:4,fontFamily:"'Jost',sans-serif",fontWeight:600}}>Wig Washing &amp; Care</span>
             </span>
           </button>
 
-          {/* RIGHT — desktop nav + mobile: always-visible Home pill + hamburger */}
-          <div style={{marginLeft:"auto",display:"flex",alignItems:"center",gap:6}}>
+          {/* CENTER — desktop nav, absolutely centered independent of the side widths */}
+          <div className="dsk" style={{position:"absolute",left:"50%",transform:"translateX(-50%)",display:"flex",alignItems:"center",gap:2}}>
+            {links.map(([p,l])=>(
+              <button key={p+l} onClick={()=>navTo(p)} style={{background:"none",border:"none",cursor:"pointer",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.06em",textTransform:"uppercase",padding:"6px 12px",color:page===p?"#C99582":"#171515",borderBottom:`2px solid ${page===p?"#C99582":"transparent"}`,transition:"all .2s",whiteSpace:"nowrap"}}>{l}</button>
+            ))}
+          </div>
 
-            {/* Desktop nav links */}
-            <div className="dsk" style={{display:"flex",alignItems:"center",gap:2}}>
-              {links.map(([p,l])=>(
-                <button key={p+l} onClick={()=>navTo(p)} style={{background:"none",border:"none",cursor:"pointer",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:500,letterSpacing:"0.1em",textTransform:"uppercase",padding:"6px 14px",color:page===p?"#C0838E":"#96707A",borderBottom:`2px solid ${page===p?"#C0838E":"transparent"}`,transition:"all .2s"}}>{l}</button>
-              ))}
-            </div>
-
-            {/* Persistent desktop CTA */}
-            <button className="dsk" onClick={()=>navTo("book")} style={{background:"linear-gradient(135deg,#C0838E,#A05A66)",border:"none",borderRadius:8,padding:"9px 18px",cursor:"pointer",color:"#fff",fontSize:11,fontWeight:700,fontFamily:"'Jost',sans-serif",letterSpacing:"0.08em",marginLeft:8}}>BOOK A SERVICE</button>
+          {/* RIGHT — WhatsApp + Book a Wash (desktop), hamburger (mobile) */}
+          <div style={{marginLeft:"auto",display:"flex",alignItems:"center",gap:12}}>
+            <a href={`https://wa.me/${contactInfo.waNumber||"27600000000"}`} target="_blank" rel="noreferrer" className="dsk" aria-label="WhatsApp us" style={{display:"flex",alignItems:"center",justifyContent:"center",width:36,height:36,borderRadius:"50%",border:"1.5px solid rgba(23,21,21,0.15)",color:"#171515"}}>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>
+            </a>
+            <button className="dsk" onClick={()=>navTo("book")} style={{background:"#C99582",border:"none",borderRadius:8,padding:"11px 22px",cursor:"pointer",color:"#fff",fontSize:11,fontWeight:700,fontFamily:"'Jost',sans-serif",letterSpacing:"0.08em"}}>BOOK A WASH</button>
 
             {/* Hamburger */}
-            <button className="mob" onClick={()=>sMenu(m=>!m)} style={{background:"none",border:"1.5px solid rgba(160,90,102,0.22)",borderRadius:7,padding:"8px 9px",cursor:"pointer",display:"flex",flexDirection:"column",gap:4.5,flexShrink:0}}>
-              {[0,1,2].map(i=><div key={i} style={{width:18,height:1.5,background:"#150E06",borderRadius:1,transition:"all .22s",transform:menu&&i===0?"rotate(45deg) translate(4px,4px)":menu&&i===2?"rotate(-45deg) translate(4px,-4px)":"none",opacity:menu&&i===1?0:1}}/>)}
+            <button className="mob" onClick={()=>sMenu(m=>!m)} style={{background:"none",border:"1.5px solid rgba(23,21,21,0.18)",borderRadius:7,padding:"8px 9px",cursor:"pointer",display:"flex",flexDirection:"column",gap:4.5,flexShrink:0}}>
+              {[0,1,2].map(i=><div key={i} style={{width:18,height:1.5,background:"#171515",borderRadius:1,transition:"all .22s",transform:menu&&i===0?"rotate(45deg) translate(4px,4px)":menu&&i===2?"rotate(-45deg) translate(4px,-4px)":"none",opacity:menu&&i===1?0:1}}/>)}
             </button>
           </div>
         </div>
@@ -324,10 +328,11 @@ const Nav = ({page,setPage,cart,onLogoClick,specials,contactInfo}) => {
 
       {/* Mobile dropdown menu — positioned relative to this same fixed group, always lines up */}
       {menu&&(
-        <div className="mob pop" style={{position:"absolute",top:"100%",right:0,zIndex:299,width:230,background:"rgba(253,250,246,.99)",backdropFilter:"blur(22px)",borderLeft:"1px solid rgba(160,90,102,0.12)",borderBottom:"1px solid rgba(160,90,102,0.12)",borderRadius:"0 0 0 18px",overflow:"hidden",boxShadow:"0 12px 40px rgba(21,14,6,0.18)"}}>
+        <div className="mob pop" style={{position:"absolute",top:"100%",right:0,zIndex:299,width:250,background:"rgba(253,250,246,.99)",backdropFilter:"blur(22px)",borderLeft:"1px solid rgba(23,21,21,0.1)",borderBottom:"1px solid rgba(23,21,21,0.1)",borderRadius:"0 0 0 18px",overflow:"hidden",boxShadow:"0 12px 40px rgba(21,14,6,0.18)"}}>
           {links.map(([p,l])=>(
-            <button key={p+l} onClick={()=>navTo(p)} style={{display:"block",width:"100%",textAlign:"left",background:"none",border:"none",cursor:"pointer",color:page===p?"#C0838E":"#150E06",fontSize:15,fontFamily:"'Jost',sans-serif",fontWeight:500,padding:"16px 26px",borderBottom:"1px solid rgba(160,90,102,0.12)",letterSpacing:"0.04em",transition:"color .2s"}}>{l}</button>
+            <button key={p+l} onClick={()=>navTo(p)} style={{display:"block",width:"100%",textAlign:"left",background:"none",border:"none",cursor:"pointer",color:page===p?"#C99582":"#171515",fontSize:15,fontFamily:"'Jost',sans-serif",fontWeight:500,padding:"15px 26px",borderBottom:"1px solid rgba(23,21,21,0.08)",letterSpacing:"0.04em",transition:"color .2s"}}>{l}</button>
           ))}
+          <button onClick={()=>{setPage("book");sMenu(false);}} style={{display:"block",width:"100%",textAlign:"left",background:"#C99582",border:"none",cursor:"pointer",color:"#fff",fontSize:13,fontWeight:700,fontFamily:"'Jost',sans-serif",padding:"15px 26px",letterSpacing:"0.06em"}}>BOOK A WASH</button>
         </div>
       )}
     </div>
@@ -451,98 +456,74 @@ const HERO_BUBBLES = [
   {l:"40%",s:7, dl:5.1, t:7},   {l:"76%",s:10,dl:3.9, t:8.5},
 ];
 
+// Three simple, no-card inline benefits shown under the hero CTAs.
+const HERO_INLINE_BENEFITS = [
+  {l:"Gentle Care",     d:"M12 3.8c2.8 3.6 5.3 6.7 5.3 9.7a5.3 5.3 0 1 1-10.6 0c0-3 2.5-6.1 5.3-9.7z"},
+  {l:"Quality Products",d:"M6 3L2 9l10 12L22 9l-4-6H6zM2 9h20M9 3l3 6 3-6"},
+  {l:"Wig-Friendly",    d:"M12 21s-7-4.35-9.5-8.5C.5 8.5 3 4 7 4c2 0 4 1.5 5 3.5C13 5.5 15 4 17 4c4 0 6.5 4.5 4.5 8.5C19 16.65 12 21 12 21z"},
+];
+
 const Hero = ({setPage, waNumber}) => {
   const [in_, sIn] = useState(false);
   useEffect(()=>{const t=setTimeout(()=>sIn(true),60);return()=>clearTimeout(t);},[]);
   return (
-    <section style={{position:"relative",overflow:"hidden",minHeight:"100dvh",display:"flex",flexDirection:"column",background:"linear-gradient(160deg,#FAF1E8 0%,#F6E7D8 52%,#EFD9C6 100%)",paddingTop:"var(--nav-h)"}}>
+    <section style={{position:"relative",overflow:"hidden",minHeight:"78dvh",display:"flex",flexDirection:"column",justifyContent:"center",background:"#FAF8F5",paddingTop:"var(--nav-h)"}}>
+      <div className="hero-grid" style={{position:"relative",zIndex:2,width:"100%",maxWidth:1280,margin:"0 auto",padding:"48px 28px",display:"grid",gridTemplateColumns:"1fr 1fr",gap:56,alignItems:"start"}}>
 
-      {/* Warm backdrop glow behind the photo's top edge */}
-      <div style={{position:"absolute",top:0,right:0,width:"75%",height:"46%",background:"radial-gradient(ellipse at 78% 18%,rgba(196,138,92,.30),transparent 68%)",pointerEvents:"none",zIndex:0}}/>
-
-      {/* Layered photo — warm backdrop, soap bubbles rising BEHIND the wig, then the wig cutout in front */}
-      <div className="hero-photo" style={{position:"absolute",top:0,right:0,bottom:"24%",width:"66%",zIndex:1}}>
-        <div style={{position:"absolute",inset:0,backgroundImage:"url(/img/hero-backdrop.webp)",backgroundSize:"cover",backgroundPosition:"center"}}/>
-        {HERO_BUBBLES.map((b,i)=>(
-          <span key={i} style={{position:"absolute",left:b.l,bottom:"6%",width:b.s,height:b.s,borderRadius:"50%",background:"radial-gradient(circle at 32% 30%,rgba(255,255,255,.95),rgba(255,255,255,.2))",boxShadow:"0 0 6px rgba(255,255,255,.45)",animation:`bubbleRise ${b.t}s linear ${b.dl}s infinite`,opacity:0,pointerEvents:"none"}}/>
-        ))}
-        <img src="/img/wig-cutout.webp" alt="" aria-hidden="true" style={{position:"absolute",right:0,bottom:"-1%",width:"102%",height:"96%",objectFit:"contain",objectPosition:"right bottom",filter:"drop-shadow(0 26px 48px rgba(30,15,8,.45))",animation:"wigSway 9s ease-in-out infinite",transformOrigin:"50% 92%"}}/>
-        {/* Cream wash over the left edge so the hair melts into the page, exactly like the mock */}
-        <div style={{position:"absolute",inset:0,pointerEvents:"none",background:"linear-gradient(90deg,#F8EFE5 0%,rgba(248,239,229,.72) 18%,rgba(248,239,229,.22) 42%,transparent 64%),linear-gradient(180deg,rgba(248,239,229,.9) 0%,transparent 20%),linear-gradient(0deg,rgba(46,28,22,.4) 0%,transparent 18%)"}}/>
-      </div>
-
-      {/* Headline + feature badges */}
-      <div style={{position:"relative",zIndex:2,flex:1,width:"100%",maxWidth:1160,margin:"0 auto",padding:"20px 26px 0",display:"flex",flexDirection:"column"}}>
-        <div className="hero-copy" style={{maxWidth:430}}>
+        {/* LEFT — copy */}
+        <div style={{maxWidth:480}}>
           {in_&&<>
-            <div className="hm1" style={{marginBottom:14}}>
-              <span style={{fontSize:"clamp(11px,2.9vw,13px)",letterSpacing:"0.42em",textTransform:"uppercase",color:"#6E584A",fontWeight:500,fontFamily:"'Jost',sans-serif"}}>Luxury Wig Care</span>
+            {/* Crawlable, SEO-real H1 — visually styled as the small eyebrow label so the
+                page keeps correct document structure while matching the reference's
+                visual hierarchy (the big editorial line below is not a heading tag). */}
+            <h1 className="hm1" style={{margin:"0 0 18px",fontSize:11,fontWeight:700,letterSpacing:"0.18em",textTransform:"uppercase",color:"#8A756B",fontFamily:"'Jost',sans-serif"}}>Professional Wig Washing &amp; Care</h1>
+
+            <svg className="hm2" width="30" height="24" viewBox="0 0 24 24" fill="none" stroke="#C99582" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{marginBottom:14,display:"block"}}><path d="M3 8l3 3 4-6 2 5 2-5 4 6 3-3-2 10H5L3 8z"/></svg>
+
+            <p className="serif hm3" style={{margin:0,fontSize:"clamp(42px,6.2vw,72px)",fontWeight:500,lineHeight:1.02,color:"#171515"}}>
+              Clean.<br/>Care.<br/><span style={{color:"#C99582"}}>Confidence.</span>
+            </p>
+            <div className="hm4" style={{width:56,height:2,background:"#D8B8A8",margin:"22px 0"}}/>
+
+            <p className="hm5" style={{margin:"0 0 30px",fontSize:16,lineHeight:1.7,color:"#4A403A",maxWidth:360,fontWeight:400}}>Professional washing and care to keep your wig fresh, soft and beautiful.</p>
+
+            <div className="hm6" style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:30}}>
+              <button onClick={()=>setPage("book")} style={{display:"inline-flex",alignItems:"center",gap:9,background:"#C99582",border:"none",borderRadius:8,padding:"15px 26px",cursor:"pointer",color:"#fff",fontSize:12,fontWeight:700,fontFamily:"'Jost',sans-serif",letterSpacing:"0.08em",transition:"transform .2s,box-shadow .2s"}}
+                onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.boxShadow="0 8px 22px rgba(201,149,130,.4)";}}
+                onMouseLeave={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";}}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17M8 3v3.5M16 3v3.5"/></svg>
+                BOOK A WASH
+              </button>
+              <a href={`https://wa.me/${waNumber||"27600000000"}`} target="_blank" rel="noreferrer" style={{display:"inline-flex",alignItems:"center",gap:9,background:"#fff",border:"1.5px solid rgba(23,21,21,0.16)",borderRadius:8,padding:"15px 26px",cursor:"pointer",color:"#171515",fontSize:12,fontWeight:700,fontFamily:"'Jost',sans-serif",letterSpacing:"0.08em",textDecoration:"none",transition:"border-color .2s"}}
+                onMouseEnter={e=>e.currentTarget.style.borderColor="rgba(201,149,130,.6)"}
+                onMouseLeave={e=>e.currentTarget.style.borderColor="rgba(23,21,21,0.16)"}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#171515" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>
+                WHATSAPP US
+              </a>
             </div>
-            <h1 style={{margin:0,lineHeight:1.0}}>
-              <span className="serif hm2" style={{display:"block",fontSize:"clamp(50px,14vw,92px)",fontWeight:600,color:"#2B1A12",letterSpacing:"-0.01em"}}>Your Wig</span>
-              <span className="serif hm3" style={{display:"block",fontSize:"clamp(48px,13.4vw,88px)",fontWeight:500,color:"#3A251A"}}>Deserves</span>
-              <span style={{display:"block",whiteSpace:"nowrap"}}>
-                <span className="script script-in" style={{display:"inline-block",fontSize:"clamp(44px,12vw,86px)",color:"#B76E79",lineHeight:1.2,paddingRight:10,textShadow:"0 2px 14px rgba(183,110,121,.25)"}}>the Best.</span>
-                <span className="hm4" style={{display:"inline-block",color:"#C98B94",fontSize:"clamp(18px,4.6vw,28px)",verticalAlign:"20%",animation:"heartBeat 2.6s ease-in-out 2.4s infinite"}}>♡</span>
-              </span>
-            </h1>
-            <p className="hm5" style={{margin:"18px 0 28px",fontSize:"clamp(15px,4.1vw,17px)",lineHeight:1.7,color:"#5F4A3E",maxWidth:250,fontWeight:400}}>Professional washing that keeps your wig clean, soft, and beautiful.</p>
-            <div style={{display:"flex",flexDirection:"column",gap:16,paddingBottom:24}}>
-              {HERO_FEATS.map((f,i)=>(
-                <div key={f.l} className={`hm${6+i}`} style={{display:"flex",alignItems:"center",gap:16}}>
-                  <span style={{width:"clamp(52px,13vw,60px)",height:"clamp(52px,13vw,60px)",borderRadius:"50%",flexShrink:0,display:"grid",placeItems:"center",background:"rgba(255,252,248,.6)",border:"1.5px solid rgba(183,110,121,.32)",boxShadow:"0 6px 18px rgba(120,70,50,.10), inset 0 1px 1px rgba(255,255,255,.5)",backdropFilter:"blur(10px)"}}>
-                    <svg style={i===0?{animation:"sparkleTwinkle 3s ease-in-out infinite"}:undefined} width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#B76E79" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={f.d}/></svg>
-                  </span>
-                  <span style={{fontSize:"clamp(16px,4.4vw,19px)",fontWeight:600,color:"#2E1D14",fontFamily:"'Jost',sans-serif"}}>{f.l}</span>
-                </div>
+
+            <div className="hm7" style={{display:"flex",flexWrap:"wrap",gap:"10px 26px"}}>
+              {HERO_INLINE_BENEFITS.map(b=>(
+                <span key={b.l} style={{display:"flex",alignItems:"center",gap:7,fontSize:12,fontWeight:600,color:"#4A403A",fontFamily:"'Jost',sans-serif"}}>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C99582" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={b.d}/></svg>
+                  {b.l}
+                </span>
               ))}
             </div>
           </>}
         </div>
-        <div style={{flex:1}}/>
-      </div>
 
-      {/* Dark base — location pill, CTAs, proof strip, wave out */}
-      <div style={{position:"relative",zIndex:3,marginTop:-46}}>
-        <div style={{background:"linear-gradient(180deg,rgba(40,25,20,0) 0%,rgba(40,25,20,.72) 30%,#2A1A15 58%,#241611 100%)",paddingTop:72}}>
-          <div style={{maxWidth:560,margin:"0 auto",padding:"0 24px"}}>
-            <Reveal><>
-              <div style={{display:"flex",justifyContent:"center",marginBottom:20}}>
-                <span style={{display:"inline-flex",alignItems:"center",gap:10,background:"rgba(128,76,72,.42)",backdropFilter:"blur(14px)",border:"1px solid rgba(255,220,215,.22)",boxShadow:"0 4px 20px rgba(0,0,0,.15), inset 0 1px 1px rgba(255,255,255,.12)",borderRadius:999,padding:"11px 24px"}}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="#E7A5AD"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-                  <span style={{fontSize:"clamp(11px,3vw,13px)",letterSpacing:"0.22em",color:"#FBEFE8",fontWeight:500,fontFamily:"'Jost',sans-serif",whiteSpace:"nowrap"}}>CAPE TOWN&thinsp;&thinsp;·&thinsp;&thinsp;SOUTH AFRICA</span>
-                </span>
-              </div>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:28}}>
-                <button onClick={()=>setPage("book")} style={{position:"relative",overflow:"hidden",display:"inline-flex",alignItems:"center",justifyContent:"center",gap:9,background:"linear-gradient(135deg,#C98B94,#A8626E)",border:"none",borderRadius:14,padding:"16px 10px",cursor:"pointer",color:"#fff",fontSize:"clamp(11px,2.9vw,13px)",fontWeight:600,letterSpacing:"0.14em",fontFamily:"'Jost',sans-serif",animation:"ctaBreath 3.4s ease-in-out infinite"}}>
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17M8 3v3.5M16 3v3.5M8 13h2M14 13h2M8 16.5h2M14 16.5h2"/></svg>
-                  <span style={{whiteSpace:"nowrap"}}>BOOK A SERVICE</span>
-                  <span aria-hidden="true" style={{position:"absolute",top:0,bottom:0,width:"38%",background:"linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent)",animation:"sheen 3.8s ease-in-out 1.2s infinite",pointerEvents:"none"}}/>
-                </button>
-                <a href={`https://wa.me/${waNumber||"27600000000"}`} target="_blank" rel="noreferrer" style={{display:"inline-flex",alignItems:"center",justifyContent:"center",gap:9,background:"rgba(36,22,17,.4)",border:"1.5px solid rgba(201,139,148,.65)",borderRadius:14,padding:"16px 10px",cursor:"pointer",color:"#FBEFE8",fontSize:"clamp(11px,2.9vw,13px)",fontWeight:600,letterSpacing:"0.14em",fontFamily:"'Jost',sans-serif",textDecoration:"none"}}>
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E7A5AD" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/><path d="M8.8 8.9c.3-.7.6-.7.9-.7h.7c.2 0 .5 0 .7.6.3.6.9 2 .9 2s.1.3-.1.5l-.5.6c-.2.2-.1.4 0 .6.2.3.8 1.2 1.7 1.8.7.5 1.3.7 1.6.8.2.1.4 0 .5-.2l.7-.9c.2-.2.4-.2.6-.1.3.1 1.7.8 1.7.8" opacity=".9"/></svg>
-                  <span style={{whiteSpace:"nowrap"}}>WHATSAPP US</span>
-                </a>
-              </div>
-              <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"clamp(16px,5vw,34px)",paddingBottom:8}}>
-                <img src="/img/care1.png" alt="Wig before care" style={{width:"clamp(78px,22vw,104px)",height:"clamp(78px,22vw,104px)",borderRadius:"50%",objectFit:"cover",border:"2.5px solid rgba(201,139,148,.75)",boxShadow:"0 10px 28px rgba(0,0,0,.4)",animation:"floatA 6s ease-in-out infinite"}}/>
-                <div style={{textAlign:"center"}}>
-                  <div style={{fontSize:"clamp(16px,4.6vw,20px)",color:"#FBEFE8",fontWeight:500,fontFamily:"'Jost',sans-serif",lineHeight:1.5}}>Real Care.<br/>Real Results.</div>
-                  <div style={{color:"#C9727E",fontSize:"clamp(15px,4vw,18px)",marginTop:4,animation:"heartBeat 2.6s ease-in-out infinite"}}>♥</div>
-                </div>
-                <img src="/img/care2.png" alt="Wig after care" style={{width:"clamp(78px,22vw,104px)",height:"clamp(78px,22vw,104px)",borderRadius:"50%",objectFit:"cover",border:"2.5px solid rgba(201,139,148,.75)",boxShadow:"0 10px 28px rgba(0,0,0,.4)",animation:"floatB 7s ease-in-out .8s infinite"}}/>
-              </div>
-            </></Reveal>
-          </div>
-          {/* Wave out of the dark base into the cream page below */}
-          <div style={{height:74,overflow:"hidden",marginTop:10}}>
-            <svg viewBox="0 0 1440 74" preserveAspectRatio="none" style={{width:"200%",height:"100%",display:"block",animation:"waveDrift 14s ease-in-out infinite alternate"}}>
-              <path d="M0,44 C240,10 480,74 760,44 C1040,14 1240,64 1440,34 L1440,74 L0,74 Z M1440,44 C1680,10 1920,74 2200,44 C2480,14 2680,64 2880,34 L2880,74 L1440,74 Z" fill="#FDFAF6"/>
-            </svg>
-          </div>
-        </div>
-        <div style={{background:"#FDFAF6",display:"flex",justifyContent:"center",padding:"6px 0 14px"}}>
-          <svg onClick={()=>window.scrollBy({top:window.innerHeight*.8,behavior:"smooth"})} width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C9727E" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{cursor:"pointer",animation:"chevBounce 2s ease-in-out infinite"}}><path d="M5 9l7 7 7-7"/></svg>
+        {/* RIGHT — real photograph, full-bleed, not lazy-loaded (LCP) */}
+        <div className="hero-photo-col" style={{position:"relative",height:640,maxHeight:"70vh",borderRadius:20,overflow:"hidden",opacity:in_?1:0,transform:in_?"none":"scale(0.98)",transition:"opacity .8s ease, transform .8s ease"}}>
+          <img
+            src="/img/lavish-wig-washing-care-south-africa.webp"
+            alt="Professional wig washing and care service cleaning a human hair wig"
+            width={571}
+            height={1218}
+            loading="eager"
+            fetchpriority="high"
+            style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center 20%",display:"block"}}
+          />
         </div>
       </div>
     </section>
@@ -595,7 +576,7 @@ const Collections = ({setPage}) => (
 );
 
 const WashProcess = ({services,setPage}) => (
-  <section style={{background:"#F5EFE4",padding:"80px 28px",borderTop:"1px solid rgba(160,90,102,0.12)",borderBottom:"1px solid rgba(160,90,102,0.12)"}}>
+  <section id="how-it-works" style={{background:"#F5EFE4",padding:"80px 28px",borderTop:"1px solid rgba(160,90,102,0.12)",borderBottom:"1px solid rgba(160,90,102,0.12)",scrollMarginTop:"calc(var(--nav-h) + 12px)"}}>
     <div style={{maxWidth:1200,margin:"0 auto"}}>
       <div style={{textAlign:"center",marginBottom:60}}>
         <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.2em",color:"#C0838E",textTransform:"uppercase",marginBottom:12}}>The Lavish Locks Method</div>
@@ -647,22 +628,25 @@ const Trust = () => (
   </section>
 );
 
-// Compact 4-point trust strip, sits directly under the Hero.
-const HERO_TRUST_POINTS = [
-  {l:"Deep Clean",         d:HERO_FEATS[0].d},
-  {l:"Gentle Care",        d:HERO_FEATS[1].d},
-  {l:"High Quality",       d:"M6 3L2 9l10 12L22 9l-4-6H6zM2 9h20M9 3l3 6 3-6"},
-  {l:"Nationwide Courier", d:"M3 7h11v9H3zM14 10h4l3 3v3h-7v-6zM6 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"},
+// Light 4-point service strip under the hero. Copy is kept accurate to how
+// the business actually fulfils orders (see AnnouncementBar note above) —
+// "free collection" was swapped for the real included-return-courier policy.
+const BOTTOM_FEATURE_STRIP = [
+  {l:"Free Return Courier", s:"Included on every order", d:"M3 7h11v9H3zM14 10h4l3 3v3h-7v-6zM6 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"},
+  {l:"3–5 Day Turnaround",  s:"Fast & reliable",         d:"M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6v6l4 2"},
+  {l:"Quality Care",        s:"Wig-safe products",        d:"M12 3l7 3v6c0 4.5-3 8.2-7 9-4-.8-7-4.5-7-9V6l7-3zM9 12l2 2 4-4"},
+  {l:"Made With Care",      s:"Every wig matters",        d:"M12 21s-7-4.35-9.5-8.5C.5 8.5 3 4 7 4c2 0 4 1.5 5 3.5C13 5.5 15 4 17 4c4 0 6.5 4.5 4.5 8.5C19 16.65 12 21 12 21z"},
 ];
-const HeroTrustStrip = () => (
-  <div style={{background:"#150E06",padding:"22px 20px"}}>
-    <div style={{maxWidth:1100,margin:"0 auto",display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(150px,1fr))",gap:18}}>
-      {HERO_TRUST_POINTS.map(f=>(
-        <div key={f.l} style={{display:"flex",alignItems:"center",gap:10,justifyContent:"center"}}>
-          <span style={{width:36,height:36,borderRadius:"50%",flexShrink:0,display:"grid",placeItems:"center",border:"1.5px solid rgba(192,131,142,.4)"}}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0838E" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={f.d}/></svg>
+const BottomFeatureStrip = () => (
+  <div style={{background:"#F3EDE8",padding:"36px 20px"}}>
+    <div className="feat-strip" style={{maxWidth:1100,margin:"0 auto",display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:18}}>
+      {BOTTOM_FEATURE_STRIP.map(f=>(
+        <div key={f.l} style={{display:"flex",alignItems:"center",gap:12}}>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C99582" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><path d={f.d}/></svg>
+          <span style={{lineHeight:1.4}}>
+            <span style={{display:"block",fontSize:13,fontWeight:700,color:"#171515",fontFamily:"'Jost',sans-serif"}}>{f.l}</span>
+            <span style={{display:"block",fontSize:11.5,color:"#7A6B62"}}>{f.s}</span>
           </span>
-          <span style={{fontSize:12,fontWeight:600,color:"#F5EFE4",fontFamily:"'Jost',sans-serif"}}>{f.l}</span>
         </div>
       ))}
     </div>
@@ -677,7 +661,7 @@ const SERVICE_SHOWCASE = [
   {n:"03",t:"Restoration", img:"/img/svc-restore.webp",   d:"Full revival for matted, dull, or heavily worn units — like new again."},
 ];
 const ServicesShowcase = ({setPage}) => (
-  <section style={{background:"#FDFAF6",padding:"72px 24px"}}>
+  <section id="services" style={{background:"#FDFAF6",padding:"72px 24px",scrollMarginTop:"calc(var(--nav-h) + 12px)"}}>
     <div style={{maxWidth:1160,margin:"0 auto",display:"grid",gridTemplateColumns:"280px 1fr",gap:48}} className="grid2">
       <div>
         <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.2em",color:"#C0838E",textTransform:"uppercase",marginBottom:12}}>Our Services</div>
@@ -2370,7 +2354,7 @@ const WigCareTips = () => {
 // 💰 PRICING SNAPSHOT — anchors value before they get to booking
 // ══════════════════════════════════════════════════════════════
 const PricingSnapshot = ({setPage,services}) => (
-  <section style={{padding:"56px 20px",background:"linear-gradient(160deg,#F5EFE4,#FDF4E8)"}}>
+  <section id="prices" style={{padding:"56px 20px",background:"linear-gradient(160deg,#F5EFE4,#FDF4E8)",scrollMarginTop:"calc(var(--nav-h) + 12px)"}}>
     <div style={{maxWidth:680,margin:"0 auto"}}>
       <div style={{textAlign:"center",marginBottom:28}}>
         <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.24em",color:"#C0838E",textTransform:"uppercase",marginBottom:8}}>Simple Pricing</div>
@@ -2456,7 +2440,7 @@ const FAQ = () => {
 const Home = ({setPage,services,specials,addCart,sectionsOn,wigOfWeek,gallery,waNumber}) => (
   <>
     <Hero setPage={setPage} waNumber={waNumber}/>
-    <HeroTrustStrip/>
+    <BottomFeatureStrip/>
     <Reveal><ServicesShowcase setPage={setPage}/></Reveal>
     <Reveal><HomeBeforeAfter gallery={gallery} setPage={setPage}/></Reveal>
     <Ticker/>
@@ -2659,7 +2643,7 @@ export default function App() {
     const update=()=>{
       try {
         const desktop = window.innerWidth > 720;
-        const base = specials.length ? 100 : 64;
+        const base = specials.length ? 108 : 72;
         document.documentElement.style.setProperty('--nav-h', `${base + (desktop?30:0)}px`);
       } catch(e){}
     };
