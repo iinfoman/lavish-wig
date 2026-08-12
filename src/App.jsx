@@ -131,8 +131,14 @@ const GS = () => (
     @keyframes sheen{0%{left:-45%}100%{left:130%}}
     @keyframes waveDrift{from{transform:translateX(0)}to{transform:translateX(-25%)}}
     @keyframes wigSway{0%,100%{transform:rotate(0deg) translateY(0)}30%{transform:rotate(.7deg) translateY(-5px)}70%{transform:rotate(-.5deg) translateY(-2px)}}
+    @keyframes floatSlow{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+    @keyframes rippleDrift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-24px,18px) scale(1.08)}}
+    @keyframes rippleDrift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,-16px) scale(1.06)}}
+    @keyframes scrollDot{0%{transform:translateY(-12px);opacity:0}30%{opacity:1}100%{transform:translateY(34px);opacity:0}}
+    @keyframes navFadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+    .floaty{animation:floatSlow 7s ease-in-out infinite}
     .hm1{animation:riseIn .7s .05s both}.hm2{animation:riseIn .8s .15s both}.hm3{animation:riseIn .8s .28s both}
-    .hm4{animation:riseIn .6s 1.9s both}.hm5{animation:riseIn .7s .55s both}
+    .hm4{animation:riseIn .6s .4s both}.hm5{animation:riseIn .7s .55s both}
     .hm6{animation:riseIn .6s .7s both}.hm7{animation:riseIn .6s .84s both}.hm8{animation:riseIn .6s .98s both}
     .hm9{animation:riseIn .7s 1.1s both}.hm10{animation:riseIn .7s 1.25s both}.hm11{animation:riseIn .7s 1.4s both}
     .script-in{animation:scriptIn 1.5s cubic-bezier(.55,.06,.4,.9) .8s both}
@@ -149,6 +155,7 @@ const GS = () => (
       .dsk{display:none!important}
       .grid2{grid-template-columns:1fr!important}
       .feat-strip{grid-template-columns:1fr 1fr!important}
+      .wash-grid{grid-template-columns:1fr 1fr!important}
     }
     @media(max-width:480px){
       .dash-topbar > div:first-child{padding:0 14px!important;height:48px!important;gap:8px!important}
@@ -288,7 +295,7 @@ const Nav = ({page,setPage,cart,onLogoClick,specials,contactInfo}) => {
     sMenu(false);
   };
   return (
-    <div ref={ref} style={{position:"fixed",top:0,left:0,right:0,zIndex:300}}>
+    <div ref={ref} style={{position:"fixed",top:0,left:0,right:0,zIndex:300,animation:"navFadeDown .6s ease both"}}>
       <div className="dsk"><AnnouncementBar/></div>
       {/* Banner + header stacked together in ONE fixed group — never drifts out of sync */}
       <SpecialsBanner specials={specials}/>
@@ -465,47 +472,104 @@ const HERO_INLINE_BENEFITS = [
 
 const Hero = ({setPage, waNumber}) => {
   const [in_, sIn] = useState(false);
+  const [imgHover, sImgHover] = useState(false);
+  const [headlineHover, sHeadlineHover] = useState(false);
+  const heroRef = useRef(null);
+  const photoRef = useRef(null);
+  const textRef = useRef(null);
   useEffect(()=>{const t=setTimeout(()=>sIn(true),60);return()=>clearTimeout(t);},[]);
+
+  // Mouse parallax (desktop/fine-pointer only) + scroll-linked parallax and
+  // fade on the hero, all skipped under prefers-reduced-motion. Applied via
+  // direct ref styling (not React state) so it stays smooth at 60fps.
+  useEffect(()=>{
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+    let mx=0, my=0, hov=false, raf=null;
+    const paint=()=>{
+      raf=null;
+      if(!heroRef.current) return;
+      const r = heroRef.current.getBoundingClientRect();
+      const scrollT = Math.min(1, Math.max(0, -r.top / (r.height*0.7)));
+      if(photoRef.current){
+        const scale = hov ? 1.02 : 1;
+        photoRef.current.style.transform = `translate3d(${mx*9}px, ${my*9 - scrollT*36}px, 0) scale(${scale})`;
+        photoRef.current.style.filter = hov ? "brightness(1.03) contrast(1.02)" : "none";
+        photoRef.current.style.boxShadow = hov ? "0 24px 60px rgba(185,122,101,.28)" : "0 10px 32px rgba(41,37,34,.08)";
+      }
+      if(textRef.current){
+        textRef.current.style.opacity = String(1-scrollT*0.85);
+        textRef.current.style.transform = `translateY(${-scrollT*30}px)`;
+      }
+    };
+    const schedule=()=>{ if(!raf) raf=requestAnimationFrame(paint); };
+    const onMove=e=>{
+      if(!heroRef.current) return;
+      const r = heroRef.current.getBoundingClientRect();
+      mx = (e.clientX-r.left)/r.width - 0.5;
+      my = (e.clientY-r.top)/r.height - 0.5;
+      schedule();
+    };
+    const onScroll=()=>schedule();
+    if(isFinePointer) window.addEventListener('mousemove', onMove, {passive:true});
+    window.addEventListener('scroll', onScroll, {passive:true});
+    paint();
+    return ()=>{
+      if(isFinePointer) window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('scroll', onScroll);
+      if(raf) cancelAnimationFrame(raf);
+    };
+  },[imgHover]);
+
   return (
-    <section style={{position:"relative",overflow:"hidden",minHeight:"78dvh",display:"flex",flexDirection:"column",justifyContent:"center",background:"#FAF8F5",paddingTop:"var(--nav-h)"}}>
+    <section ref={heroRef} style={{position:"relative",overflow:"hidden",minHeight:"78dvh",display:"flex",flexDirection:"column",justifyContent:"center",background:"#F8F5F1",paddingTop:"var(--nav-h)"}}>
+
+      {/* Water-inspired ambient effect — soft, barely-visible drifting circles.
+          Purely decorative, so aria-hidden and excluded from layout flow. */}
+      <div aria-hidden="true" style={{position:"absolute",inset:0,zIndex:0,overflow:"hidden",pointerEvents:"none"}}>
+        <div style={{position:"absolute",top:"8%",left:"58%",width:420,height:420,borderRadius:"50%",background:"radial-gradient(circle,rgba(215,168,154,.13),transparent 70%)",animation:"rippleDrift1 22s ease-in-out infinite"}}/>
+        <div style={{position:"absolute",bottom:"4%",left:"6%",width:340,height:340,borderRadius:"50%",background:"radial-gradient(circle,rgba(185,122,101,.09),transparent 70%)",animation:"rippleDrift2 26s ease-in-out infinite"}}/>
+      </div>
+
       <div className="hero-grid" style={{position:"relative",zIndex:2,width:"100%",maxWidth:1280,margin:"0 auto",padding:"48px 28px",display:"grid",gridTemplateColumns:"1fr 1fr",gap:56,alignItems:"start"}}>
 
         {/* LEFT — copy */}
-        <div style={{maxWidth:480}}>
+        <div ref={textRef} style={{maxWidth:480,transition:"opacity .2s linear,transform .2s linear"}}>
           {in_&&<>
             {/* Crawlable, SEO-real H1 — visually styled as the small eyebrow label so the
                 page keeps correct document structure while matching the reference's
                 visual hierarchy (the big editorial line below is not a heading tag). */}
-            <h1 className="hm1" style={{margin:"0 0 18px",fontSize:11,fontWeight:700,letterSpacing:"0.18em",textTransform:"uppercase",color:"#8A756B",fontFamily:"'Jost',sans-serif"}}>Professional Wig Washing &amp; Care</h1>
+            <h1 className="hm1" style={{margin:"0 0 16px",fontSize:11,fontWeight:700,letterSpacing:"0.22em",textTransform:"uppercase",color:"#9B7468",fontFamily:"'Jost',sans-serif"}}>Professional Wig Washing &amp; Care</h1>
 
-            <svg className="hm2" width="30" height="24" viewBox="0 0 24 24" fill="none" stroke="#C99582" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{marginBottom:14,display:"block"}}><path d="M3 8l3 3 4-6 2 5 2-5 4 6 3-3-2 10H5L3 8z"/></svg>
-
-            <p className="serif hm3" style={{margin:0,fontSize:"clamp(42px,6.2vw,72px)",fontWeight:500,lineHeight:1.02,color:"#171515"}}>
-              Clean.<br/>Care.<br/><span style={{color:"#C99582"}}>Confidence.</span>
+            <p className="serif" style={{margin:0,fontSize:"clamp(42px,6.2vw,72px)",fontWeight:500,lineHeight:1.02,color:"#292522"}}
+              onMouseEnter={()=>sHeadlineHover(true)} onMouseLeave={()=>sHeadlineHover(false)}>
+              <span className="hm2" style={{display:"block"}}>Clean.</span>
+              <span className="hm3" style={{display:"block"}}>Care.</span>
+              <span className="hm4" style={{display:"block",color:headlineHover?"#C68E77":"#B97A65",transition:"color .5s ease"}}>Confidence.</span>
             </p>
-            <div className="hm4" style={{width:56,height:2,background:"#D8B8A8",margin:"22px 0"}}/>
+            <div className="hm5" style={{width:56,height:2,background:"#D7A89A",margin:"22px 0"}}/>
 
-            <p className="hm5" style={{margin:"0 0 30px",fontSize:16,lineHeight:1.7,color:"#4A403A",maxWidth:360,fontWeight:400}}>Professional washing and care to keep your wig fresh, soft and beautiful.</p>
+            <p className="hm6" style={{margin:"0 0 30px",fontSize:16,lineHeight:1.7,color:"#6F6863",maxWidth:360,fontWeight:400}}>Professional washing and care to keep your wig fresh, soft and beautiful.</p>
 
-            <div className="hm6" style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:30}}>
-              <button onClick={()=>setPage("book")} style={{display:"inline-flex",alignItems:"center",gap:9,background:"#C99582",border:"none",borderRadius:8,padding:"15px 26px",cursor:"pointer",color:"#fff",fontSize:12,fontWeight:700,fontFamily:"'Jost',sans-serif",letterSpacing:"0.08em",transition:"transform .2s,box-shadow .2s"}}
-                onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.boxShadow="0 8px 22px rgba(201,149,130,.4)";}}
-                onMouseLeave={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";}}>
+            <div className="hm7" style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:30}}>
+              <button onClick={()=>setPage("book")} style={{display:"inline-flex",alignItems:"center",gap:9,background:"#B97A65",border:"none",borderRadius:8,padding:"15px 26px",cursor:"pointer",color:"#fff",fontSize:12,fontWeight:700,fontFamily:"'Jost',sans-serif",letterSpacing:"0.08em",transition:"transform .25s ease,box-shadow .25s ease,background .25s ease"}}
+                onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.boxShadow="0 10px 24px rgba(185,122,101,.4)";e.currentTarget.style.background="#A96855";}}
+                onMouseLeave={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";e.currentTarget.style.background="#B97A65";}}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17M8 3v3.5M16 3v3.5"/></svg>
                 BOOK A WASH
               </button>
-              <a href={`https://wa.me/${waNumber||"27600000000"}`} target="_blank" rel="noreferrer" style={{display:"inline-flex",alignItems:"center",gap:9,background:"#fff",border:"1.5px solid rgba(23,21,21,0.16)",borderRadius:8,padding:"15px 26px",cursor:"pointer",color:"#171515",fontSize:12,fontWeight:700,fontFamily:"'Jost',sans-serif",letterSpacing:"0.08em",textDecoration:"none",transition:"border-color .2s"}}
-                onMouseEnter={e=>e.currentTarget.style.borderColor="rgba(201,149,130,.6)"}
-                onMouseLeave={e=>e.currentTarget.style.borderColor="rgba(23,21,21,0.16)"}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#171515" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>
+              <a href={`https://wa.me/${waNumber||"27600000000"}`} target="_blank" rel="noreferrer" style={{display:"inline-flex",alignItems:"center",gap:9,background:"#FFFFFF",border:"1.5px solid #E6DDD7",borderRadius:8,padding:"15px 26px",cursor:"pointer",color:"#292522",fontSize:12,fontWeight:700,fontFamily:"'Jost',sans-serif",letterSpacing:"0.08em",textDecoration:"none",transition:"all .25s ease"}}
+                onMouseEnter={e=>{e.currentTarget.style.background="#F8EFEA";e.currentTarget.style.borderColor="#D7A89A";e.currentTarget.style.transform="translateY(-1px)";}}
+                onMouseLeave={e=>{e.currentTarget.style.background="#FFFFFF";e.currentTarget.style.borderColor="#E6DDD7";e.currentTarget.style.transform="none";}}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#292522" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>
                 WHATSAPP US
               </a>
             </div>
 
-            <div className="hm7" style={{display:"flex",flexWrap:"wrap",gap:"10px 26px"}}>
+            <div className="hm8" style={{display:"flex",flexWrap:"wrap",gap:"10px 26px"}}>
               {HERO_INLINE_BENEFITS.map(b=>(
-                <span key={b.l} style={{display:"flex",alignItems:"center",gap:7,fontSize:12,fontWeight:600,color:"#4A403A",fontFamily:"'Jost',sans-serif"}}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C99582" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={b.d}/></svg>
+                <span key={b.l} style={{display:"flex",alignItems:"center",gap:7,fontSize:12,fontWeight:600,color:"#6F6863",fontFamily:"'Jost',sans-serif"}}>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B97A65" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={b.d}/></svg>
                   {b.l}
                 </span>
               ))}
@@ -513,18 +577,29 @@ const Hero = ({setPage, waNumber}) => {
           </>}
         </div>
 
-        {/* RIGHT — real photograph, full-bleed, not lazy-loaded (LCP) */}
-        <div className="hero-photo-col" style={{position:"relative",height:640,maxHeight:"70vh",borderRadius:20,overflow:"hidden",opacity:in_?1:0,transform:in_?"none":"scale(0.98)",transition:"opacity .8s ease, transform .8s ease"}}>
+        {/* RIGHT — real photograph, full-bleed, not lazy-loaded (LCP).
+            Cinematic entrance (zoom+fade), then a barely-perceptible float,
+            plus mouse/scroll parallax and hover response handled in the ref
+            effect above. */}
+        <div className="hero-photo-col floaty" style={{position:"relative",height:640,maxHeight:"70vh",borderRadius:20,overflow:"hidden",clipPath:in_?"inset(0% 0% 0% 0% round 20px)":"inset(4% 4% 4% 4% round 20px)",opacity:in_?1:0,transition:"opacity 1s cubic-bezier(.22,1,.36,1), clip-path 1.1s cubic-bezier(.22,1,.36,1)"}}>
           <img
+            ref={photoRef}
+            onMouseEnter={()=>sImgHover(true)}
+            onMouseLeave={()=>sImgHover(false)}
             src="/img/lavish-wig-washing-care-south-africa.webp"
             alt="Professional wig washing and care service cleaning a human hair wig"
             width={571}
             height={1218}
             loading="eager"
             fetchpriority="high"
-            style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center 20%",display:"block"}}
+            style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center 20%",display:"block",transform:in_?"scale(1)":"scale(1.1)",transition:"transform 1.1s cubic-bezier(.22,1,.36,1), filter .4s ease, box-shadow .4s ease"}}
           />
         </div>
+      </div>
+
+      {/* Scroll indicator — thin line, small dot drifting down, no text */}
+      <div aria-hidden="true" style={{position:"absolute",left:"50%",bottom:18,transform:"translateX(-50%)",width:1,height:34,background:"#E6DDD7",overflow:"hidden",zIndex:2}}>
+        <div style={{width:1,height:10,background:"#B97A65",animation:"scrollDot 2.6s ease-in-out infinite"}}/>
       </div>
     </section>
   );
@@ -575,26 +650,73 @@ const Collections = ({setPage}) => (
   </section>
 );
 
+// Six wash steps, redesigned as a compact icon-forward grid (2 rows of 3
+// instead of a tall 6-row list) with a scroll-triggered stagger and small
+// hover interactions — replaces the old plain vertical list.
+const WASH_STEPS = [
+  {n:"01",t:"Pre-Soak",       d:"Micellar water dissolves product buildup",              icon:"M12 3.8c2.8 3.6 5.3 6.7 5.3 9.7a5.3 5.3 0 1 1-10.6 0c0-3 2.5-6.1 5.3-9.7z"},
+  {n:"02",t:"Shampoo",        d:"Sulfate-free cleanse root to tip",                      icon:"M9 9a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM16 6a1.4 1.4 0 1 1 0 2.8A1.4 1.4 0 0 1 16 6zM14 14a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"},
+  {n:"03",t:"Deep Condition", d:"30-min hydration mask for ultimate softness",           icon:"M12 21c-4-3-7-7-7-11a7 7 0 0 1 14 0c0 4-3 8-7 11zM9 12c1.5-.5 3-2 3-4"},
+  {n:"04",t:"Detangle",       d:"Wet comb in sections — zero breakage",                  icon:"M5 4h14v3H5zM7 7v13M11 7v10M15 7v13"},
+  {n:"05",t:"Air Dry",        d:"Flat on a stand to preserve perfect shape",             icon:"M4 10h11a2.5 2.5 0 1 0-2.2-3.7M4 14h14a2.5 2.5 0 1 1-2.2 3.7M4 18h8"},
+  {n:"06",t:"QC Check",       d:"Photographed & inspected before dispatch",              icon:"M12 3l7 3v6c0 4.5-3 8.2-7 9-4-.8-7-4.5-7-9V6l7-3zM9 12l2 2 4-4"},
+];
+const WashStepCard = ({s,i,shown}) => {
+  const [h,sH]=useState(false);
+  return (
+    <div style={{
+      background:"#fff",border:"1px solid #E6DDD7",borderRadius:14,padding:"20px 18px",display:"flex",flexDirection:"column",gap:10,cursor:"default",
+      opacity:shown?1:0,
+      transform:shown?(h?"translateY(-4px)":"translateY(0)"):"translateY(22px)",
+      boxShadow:h?"0 14px 32px rgba(185,122,101,.16)":"0 2px 8px rgba(41,37,34,.05)",
+      borderColor:h?"#D7A89A":"#E6DDD7",
+      transition:`opacity .6s ease ${i*0.09}s, transform .5s cubic-bezier(.22,1,.36,1) ${shown?i*0.09:0}s, box-shadow .3s ease, border-color .3s ease`,
+    }}
+      onMouseEnter={()=>sH(true)} onMouseLeave={()=>sH(false)}>
+      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+        <span style={{width:42,height:42,borderRadius:"50%",display:"grid",placeItems:"center",background:h?"#B97A65":"#F1EBE5",transition:"background .3s ease"}}>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke={h?"#fff":"#B97A65"} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{transition:"stroke .3s ease,transform .3s ease",transform:h?"scale(1.1)":"none"}}><path d={s.icon}/></svg>
+        </span>
+        <span style={{fontSize:11,fontWeight:700,color:"#D7A89A",letterSpacing:"0.08em"}}>{s.n}</span>
+      </div>
+      <div style={{fontSize:14,fontWeight:700,color:"#292522"}}>{s.t}</div>
+      <div style={{fontSize:12,color:"#6F6863",lineHeight:1.55}}>{s.d}</div>
+    </div>
+  );
+};
+
+// Scroll-triggered wrapper that exposes a "shown" boolean to staggered
+// children, rather than Reveal's single-block fade (which can't stagger
+// individual items).
+const StaggerReveal = ({children}) => {
+  const ref=useRef(null);
+  const [shown,sShown]=useState(false);
+  useEffect(()=>{
+    const el=ref.current; if(!el) return;
+    const obs=new IntersectionObserver(([entry])=>{
+      if(entry.isIntersecting){ sShown(true); obs.unobserve(el); }
+    }, {threshold:0.15, rootMargin:"0px 0px -40px 0px"});
+    obs.observe(el);
+    return()=>obs.disconnect();
+  },[]);
+  return <div ref={ref}>{children(shown)}</div>;
+};
+
 const WashProcess = ({services,setPage}) => (
-  <section id="how-it-works" style={{background:"#F5EFE4",padding:"80px 28px",borderTop:"1px solid rgba(160,90,102,0.12)",borderBottom:"1px solid rgba(160,90,102,0.12)",scrollMarginTop:"calc(var(--nav-h) + 12px)"}}>
+  <section id="how-it-works" style={{background:"#F1EBE5",padding:"72px 28px",borderTop:"1px solid #E6DDD7",borderBottom:"1px solid #E6DDD7",scrollMarginTop:"calc(var(--nav-h) + 12px)"}}>
     <div style={{maxWidth:1200,margin:"0 auto"}}>
-      <div style={{textAlign:"center",marginBottom:60}}>
-        <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.2em",color:"#C0838E",textTransform:"uppercase",marginBottom:12}}>The Lavish Locks Method</div>
-        <h2 className="serif" style={{fontSize:"clamp(30px,4.5vw,54px)",fontWeight:300,color:"#150E06",marginBottom:14}}>How We Wash<br/><em>Your Wig</em></h2>
-        <p style={{fontSize:14,color:"#96707A",maxWidth:500,margin:"0 auto",lineHeight:1.85}}>Every unit goes through our signature 6-step laundry ritual before anything else. Your wig returns fresh, soft, and looking brand new.</p>
+      <div style={{textAlign:"center",marginBottom:36}}>
+        <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.2em",color:"#B97A65",textTransform:"uppercase",marginBottom:12}}>The Lavish Locks Method</div>
+        <h2 className="serif" style={{fontSize:"clamp(28px,4.2vw,48px)",fontWeight:500,color:"#292522",marginBottom:14}}>How We Wash <em style={{color:"#B97A65",fontStyle:"italic"}}>Your Wig</em></h2>
+        <p style={{fontSize:14,color:"#6F6863",maxWidth:480,margin:"0 auto",lineHeight:1.8}}>Every unit goes through our signature 6-step laundry ritual — fresh, soft, and looking brand new.</p>
       </div>
-      <div style={{display:"flex",flexDirection:"column",gap:0,marginBottom:48,border:"1px solid rgba(160,90,102,0.12)",borderRadius:14,overflow:"hidden",background:"#FFFFFF"}}>
-        {[{n:"01",t:"Pre-Soak",d:"Micellar water dissolves product buildup",e:"💧"},{n:"02",t:"Shampoo",d:"Sulfate-free cleanse root to tip",e:"🫧"},{n:"03",t:"Deep Condition",d:"30-min hydration mask for ultimate softness",e:"🌿"},{n:"04",t:"Detangle",d:"Wet comb in sections — zero breakage",e:"🪮"},{n:"05",t:"Air Dry",d:"Flat on a stand to preserve perfect shape",e:"💨"},{n:"06",t:"QC Check",d:"Photographed & inspected before dispatch",e:"✅"}].map((s,idx)=>(
-          <div key={s.n} style={{display:"flex",alignItems:"center",gap:14,padding:"13px 20px",borderBottom:idx<5?"1px solid rgba(160,90,102,0.08)":"none",transition:"background .2s"}} onMouseEnter={e=>e.currentTarget.style.background="#FDFAF6"} onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
-            <div style={{fontSize:9,fontWeight:700,color:"#C0838E",letterSpacing:"0.1em",minWidth:22,flexShrink:0}}>{s.n}</div>
-            <div style={{fontSize:18,flexShrink:0}}>{s.e}</div>
-            <div style={{flex:1}}>
-              <div style={{fontSize:13,fontWeight:600,color:"#150E06"}}>{s.t}</div>
-              <div style={{fontSize:11,color:"#96707A",lineHeight:1.5}}>{s.d}</div>
-            </div>
+      <StaggerReveal>
+        {shown=>(
+          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:14,marginBottom:48}} className="wash-grid">
+            {WASH_STEPS.map((s,i)=><WashStepCard key={s.n} s={s} i={i} shown={shown}/>)}
           </div>
-        ))}
-      </div>
+        )}
+      </StaggerReveal>
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:18}} className="grid2">
         {services.map((s,i)=>{
           const f=i===2;
