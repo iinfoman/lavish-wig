@@ -581,18 +581,18 @@ const Hero = ({setPage, waNumber}) => {
             Cinematic entrance (zoom+fade), then a barely-perceptible float,
             plus mouse/scroll parallax and hover response handled in the ref
             effect above. */}
-        <div className="hero-photo-col floaty" style={{position:"relative",height:640,maxHeight:"70vh",borderRadius:20,overflow:"hidden",clipPath:in_?"inset(0% 0% 0% 0% round 20px)":"inset(4% 4% 4% 4% round 20px)",opacity:in_?1:0,transition:"opacity 1s cubic-bezier(.22,1,.36,1), clip-path 1.1s cubic-bezier(.22,1,.36,1)"}}>
+        <div className="hero-photo-col floaty" style={{position:"relative",aspectRatio:"1400/933",maxHeight:"70vh",borderRadius:20,overflow:"hidden",clipPath:in_?"inset(0% 0% 0% 0% round 20px)":"inset(4% 4% 4% 4% round 20px)",opacity:in_?1:0,transition:"opacity 1s cubic-bezier(.22,1,.36,1), clip-path 1.1s cubic-bezier(.22,1,.36,1)"}}>
           <img
             ref={photoRef}
             onMouseEnter={()=>sImgHover(true)}
             onMouseLeave={()=>sImgHover(false)}
             src="/img/lavish-wig-washing-care-south-africa.webp"
-            alt="Professional wig washing and care service cleaning a human hair wig"
-            width={571}
-            height={1218}
+            alt="Professional wig washing and care service washing a human hair wig with Lavish Wig care products"
+            width={1400}
+            height={933}
             loading="eager"
             fetchpriority="high"
-            style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center 20%",display:"block",transform:in_?"scale(1)":"scale(1.1)",transition:"transform 1.1s cubic-bezier(.22,1,.36,1), filter .4s ease, box-shadow .4s ease"}}
+            style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center center",display:"block",transform:in_?"scale(1)":"scale(1.1)",transition:"transform 1.1s cubic-bezier(.22,1,.36,1), filter .4s ease, box-shadow .4s ease"}}
           />
         </div>
       </div>
