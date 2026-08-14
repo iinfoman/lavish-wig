@@ -3,3 +3,9 @@ dist
 .env
 .env.local
 .DS_Store
+
+# Output from the designlang / design-extract tool. It writes here by default
+# when run from the repo root, and its artifacts capture page *content* (copy,
+# prices, contact details) — not just styles. Kept out of git so an extraction
+# of any signed-in view can never be swept in by a routine `git add .`.
+design-extract-output/
