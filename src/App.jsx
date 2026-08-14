@@ -12,11 +12,11 @@ const sha256Hex = async (s) => {
 };
 
 const T = {
-  bg:"#FDFAF6", bgDeep:"#F5EFE4", bgDark:"#241611", bgDark2:"#1E1610",
-  gold:"#C0838E", goldLt:"#E2AEB6", goldDk:"#A05A66", goldPale:"#F2DCDF",
-  ink:"#150E06", inkMid:"#5C3D20", inkSoft:"#96707A", inkGhost:"#C9A3A8",
-  border:"rgba(160,90,102,0.12)", borderMd:"rgba(160,90,102,0.22)",
-  white:"#FFFFFF", shadow:"rgba(21,14,6,0.08)", shadowLg:"rgba(21,14,6,0.18)",
+  bg:"#F8F5F1", bgDeep:"#F1EBE5", bgDark:"#241611", bgDark2:"#1E1610",
+  gold:"#B97A65", goldLt:"#D7A89A", goldDk:"#A96855", goldPale:"#F8EFEA",
+  ink:"#292522", inkMid:"#6F6863", inkSoft:"#6F6863", inkGhost:"#A69C95",
+  border:"rgba(41,37,34,0.12)", borderMd:"rgba(41,37,34,0.22)",
+  white:"#FFFFFF", shadow:"rgba(41,37,34,0.08)", shadowLg:"rgba(41,37,34,0.18)",
   green:"#4A8A5A", red:"#A84040", blue:"#4A6A9A", mauve:"#8A5A78",
 };
 
@@ -96,12 +96,12 @@ const GS = () => (
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     :root{--nav-h:64px}
-    body{background:#FDFAF6;color:#150E06;font-family:'Jost',sans-serif;font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    body{background:#F8F5F1;color:#292522;font-family:'Jost',sans-serif;font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
     .serif{font-family:'Cormorant Garamond',serif}
     .script{font-family:'Great Vibes',cursive}
     .gallery-circle:hover{transform:translateY(-6px) scale(1.04) !important;}
-    .gal-upload-label:hover{background:rgba(192,131,142,0.14) !important;border-color:rgba(192,131,142,0.55) !important;}
-    ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:#F2DCDF;border-radius:2px}
+    .gal-upload-label:hover{background:rgba(185,122,101,0.14) !important;border-color:rgba(185,122,101,0.55) !important;}
+    ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:#F8EFEA;border-radius:2px}
     @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
     @keyframes floatWig{0%,100%{transform:translateY(0) rotate(-1.2deg)}50%{transform:translateY(-16px) rotate(1.2deg)}}
     @keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
@@ -126,7 +126,7 @@ const GS = () => (
     @keyframes kenBurns{from{transform:scale(1) translateY(0)}to{transform:scale(1.07) translateY(-8px)}}
     @keyframes heartBeat{0%,30%,100%{transform:scale(1)}10%{transform:scale(1.3)}20%{transform:scale(1.1)}}
     @keyframes chevBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
-    @keyframes ctaBreath{0%,100%{box-shadow:0 8px 22px rgba(190,115,128,.32)}50%{box-shadow:0 12px 34px rgba(222,140,155,.58)}}
+    @keyframes ctaBreath{0%,100%{box-shadow:0 8px 22px rgba(169,104,85,.32)}50%{box-shadow:0 12px 34px rgba(215,168,154,.58)}}
     @keyframes sparkleTwinkle{0%,100%{opacity:1;transform:scale(1) rotate(0deg)}50%{opacity:.55;transform:scale(.82) rotate(14deg)}}
     @keyframes sheen{0%{left:-45%}100%{left:130%}}
     @keyframes waveDrift{from{transform:translateX(0)}to{transform:translateX(-25%)}}
@@ -145,12 +145,12 @@ const GS = () => (
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
     .f1{animation:fadeUp .55s .04s both}.f2{animation:fadeUp .55s .16s both}.f3{animation:fadeUp .55s .28s both}
     .f4{animation:fadeUp .55s .42s both}.f5{animation:fadeUp .55s .56s both}.pop{animation:popIn .32s cubic-bezier(.34,1.56,.64,1) both}
-    input,textarea,select{background:#fff!important;border:1.5px solid rgba(160,90,102,0.22)!important;color:#150E06!important;border-radius:10px;padding:13px 16px;font-family:'Jost',sans-serif;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s;width:100%}
-    input:focus,textarea:focus,select:focus{border-color:#C0838E!important;box-shadow:0 0 0 3px rgba(192,131,142,.14)!important}
-    input::placeholder,textarea::placeholder{color:#C9A3A8}
-    select option{background:#fff;color:#150E06}
-    button:focus-visible,a:focus-visible{outline:2.5px solid #C0838E;outline-offset:2px;border-radius:4px}
-    .hs::-webkit-scrollbar{height:3px}.hs::-webkit-scrollbar-thumb{background:#F2DCDF;border-radius:2px}
+    input,textarea,select{background:#fff!important;border:1.5px solid rgba(41,37,34,0.22)!important;color:#292522!important;border-radius:10px;padding:13px 16px;font-family:'Jost',sans-serif;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s;width:100%}
+    input:focus,textarea:focus,select:focus{border-color:#B97A65!important;box-shadow:0 0 0 3px rgba(185,122,101,.14)!important}
+    input::placeholder,textarea::placeholder{color:#A69C95}
+    select option{background:#fff;color:#292522}
+    button:focus-visible,a:focus-visible{outline:2.5px solid #B97A65;outline-offset:2px;border-radius:4px}
+    .hs::-webkit-scrollbar{height:3px}.hs::-webkit-scrollbar-thumb{background:#F8EFEA;border-radius:2px}
     @media(max-width:720px){
       .dsk{display:none!important}
       .grid2{grid-template-columns:1fr!important}
@@ -174,21 +174,21 @@ const Btn = ({children,variant="gold",onClick,style={},disabled,sm,full}) => {
   const [h,sH]=useState(false);
   const base={display:"inline-flex",alignItems:"center",justifyContent:"center",gap:7,border:"none",cursor:disabled?"not-allowed":"pointer",fontFamily:"'Jost',sans-serif",fontWeight:500,letterSpacing:"0.06em",fontSize:sm?11:13,padding:sm?"8px 20px":"13px 32px",transition:"all .22s cubic-bezier(.4,0,.2,1)",outline:"none",opacity:disabled?.4:1,width:full?"100%":"auto",textTransform:"uppercase"};
   const V={
-    gold:{background:h?"#A05A66":"#C0838E",color:"#fff",borderRadius:4,boxShadow:h?"0 6px 24px rgba(192,131,142,.45)":"0 2px 8px rgba(192,131,142,.22)"},
-    ink:{background:h?"#2a1a08":"#150E06",color:"#fff",borderRadius:4,boxShadow:h?"0 6px 22px rgba(21,14,6,.35)":"0 2px 8px rgba(21,14,6,.15)"},
-    outline:{background:h?"#F2DCDF":"transparent",color:"#C0838E",border:"1.5px solid #C0838E",borderRadius:4},
-    ghost:{background:h?"rgba(21,14,6,.05)":"transparent",color:"#96707A",border:"1.5px solid rgba(160,90,102,0.22)",borderRadius:4},
-    white:{background:h?"rgba(255,255,255,.9)":"#FFFFFF",color:"#150E06",borderRadius:4,boxShadow:h?"0 6px 22px rgba(0,0,0,.22)":"0 2px 10px rgba(0,0,0,.12)"},
+    gold:{background:h?"#A96855":"#B97A65",color:"#fff",borderRadius:4,boxShadow:h?"0 6px 24px rgba(185,122,101,.45)":"0 2px 8px rgba(185,122,101,.22)"},
+    ink:{background:h?"#3A3430":"#292522",color:"#fff",borderRadius:4,boxShadow:h?"0 6px 22px rgba(41,37,34,.35)":"0 2px 8px rgba(41,37,34,.15)"},
+    outline:{background:h?"#F8EFEA":"transparent",color:"#B97A65",border:"1.5px solid #B97A65",borderRadius:4},
+    ghost:{background:h?"rgba(41,37,34,.05)":"transparent",color:"#6F6863",border:"1.5px solid rgba(41,37,34,0.22)",borderRadius:4},
+    white:{background:h?"rgba(255,255,255,.9)":"#FFFFFF",color:"#292522",borderRadius:4,boxShadow:h?"0 6px 22px rgba(0,0,0,.22)":"0 2px 10px rgba(0,0,0,.12)"},
     danger:{background:h?"rgba(168,64,64,.1)":"transparent",color:"#A84040",border:"1.5px solid #A84040",borderRadius:4},
   };
   return <button style={{...base,...V[variant],...style}} onClick={disabled?undefined:onClick} onMouseEnter={()=>sH(true)} onMouseLeave={()=>sH(false)}>{children}</button>;
 };
 
-const Tag = ({children,color="#C0838E"}) => (
+const Tag = ({children,color="#B97A65"}) => (
   <span style={{display:"inline-block",padding:"3px 10px",borderRadius:3,fontSize:10,fontWeight:600,letterSpacing:"0.1em",textTransform:"uppercase",background:color+"18",color,border:`1px solid ${color}28`}}>{children}</span>
 );
 const Card = ({children,style={}}) => (
-  <div style={{background:"#FFFFFF",border:"1px solid rgba(160,90,102,0.12)",borderRadius:16,boxShadow:"0 2px 16px rgba(21,14,6,0.08)",...style}}>{children}</div>
+  <div style={{background:"#FFFFFF",border:"1px solid rgba(41,37,34,0.12)",borderRadius:16,boxShadow:"0 2px 16px rgba(41,37,34,0.08)",...style}}>{children}</div>
 );
 
 // Wraps any content and animates it in the moment it scrolls into view.
@@ -216,15 +216,15 @@ const Reveal = ({children, delay=0, style={}}) => {
   );
 };
 const Lbl = ({children,req}) => (
-  <div style={{fontSize:11,fontWeight:600,letterSpacing:"0.08em",color:"#96707A",textTransform:"uppercase",marginBottom:7,display:"flex",gap:4}}>{children}{req&&<span style={{color:"#C0838E"}}>*</span>}</div>
+  <div style={{fontSize:11,fontWeight:600,letterSpacing:"0.08em",color:"#6F6863",textTransform:"uppercase",marginBottom:7,display:"flex",gap:4}}>{children}{req&&<span style={{color:"#B97A65"}}>*</span>}</div>
 );
-const Divider = ({my=16}) => <div style={{height:1,background:"rgba(160,90,102,0.12)",margin:`${my}px 0`}}/>;
+const Divider = ({my=16}) => <div style={{height:1,background:"rgba(41,37,34,0.12)",margin:`${my}px 0`}}/>;
 
 const Img = ({src,alt,style={},pos="center"}) => {
   const [ok,sOk]=useState(false);
   return (
     <div style={{position:"relative",overflow:"hidden",...style}}>
-      {!ok&&<div style={{position:"absolute",inset:0,background:"linear-gradient(90deg,#F5EFE4 0%,rgba(255,255,255,.7) 50%,#F5EFE4 100%)",backgroundSize:"200% 100%",animation:"shimmer 1.6s infinite"}}/>}
+      {!ok&&<div style={{position:"absolute",inset:0,background:"linear-gradient(90deg,#F1EBE5 0%,rgba(255,255,255,.7) 50%,#F1EBE5 100%)",backgroundSize:"200% 100%",animation:"shimmer 1.6s infinite"}}/>}
       <img src={src} alt={alt} onLoad={()=>sOk(true)} style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:pos,transition:"opacity .5s",opacity:ok?1:0}}/>
     </div>
   );
@@ -237,7 +237,7 @@ const SpecialsBanner = ({specials}) => {
   return (
     <div style={{background:"#241611",height:36,overflow:"hidden",display:"flex",alignItems:"center",position:"relative"}}>
       <div style={{display:"flex",whiteSpace:"nowrap",animation:"marquee 28s linear infinite"}}>
-        {[full,full].map((t,i)=><span key={i} style={{fontSize:11,color:"#E2AEB6",letterSpacing:"0.12em",fontFamily:"'Jost',sans-serif",fontWeight:500,paddingRight:80,flexShrink:0}}>{t}</span>)}
+        {[full,full].map((t,i)=><span key={i} style={{fontSize:11,color:"#D7A89A",letterSpacing:"0.12em",fontFamily:"'Jost',sans-serif",fontWeight:500,paddingRight:80,flexShrink:0}}>{t}</span>)}
       </div>
     </div>
   );
@@ -247,9 +247,9 @@ const Ticker = () => {
   const items=["Premium Wig Laundry","Nationwide Delivery","Human Hair Specialists","4.9★ Rated","WhatsApp Updates","SA Owned & Operated"];
   const row=items.map(i=>`✦  ${i}`).join("     ")+"     ";
   return (
-    <div style={{background:"#F2DCDF",height:38,display:"flex",alignItems:"center",overflow:"hidden",borderTop:"1px solid rgba(160,90,102,0.12)",borderBottom:"1px solid rgba(160,90,102,0.12)"}}>
+    <div style={{background:"#F8EFEA",height:38,display:"flex",alignItems:"center",overflow:"hidden",borderTop:"1px solid rgba(41,37,34,0.12)",borderBottom:"1px solid rgba(41,37,34,0.12)"}}>
       <div style={{display:"flex",whiteSpace:"nowrap",animation:"marquee 22s linear infinite"}}>
-        {[row,row,row,row].map((r,i)=><span key={i} style={{fontSize:10.5,color:"#A05A66",letterSpacing:"0.14em",fontFamily:"'Jost',sans-serif",fontWeight:600,flexShrink:0,textTransform:"uppercase",paddingRight:60}}>{r}</span>)}
+        {[row,row,row,row].map((r,i)=><span key={i} style={{fontSize:10.5,color:"#A96855",letterSpacing:"0.14em",fontFamily:"'Jost',sans-serif",fontWeight:600,flexShrink:0,textTransform:"uppercase",paddingRight:60}}>{r}</span>)}
       </div>
     </div>
   );
@@ -261,8 +261,8 @@ const Ticker = () => {
 // often used as a placeholder — that would promise a door-to-door pickup
 // service that isn't what the real booking flow provides.
 const AnnouncementBar = () => (
-  <div style={{background:"#F3EDE8",padding:"8px 16px"}}>
-    <div style={{maxWidth:1200,margin:"0 auto",display:"flex",alignItems:"center",justifyContent:"center",gap:10,flexWrap:"wrap",fontSize:10.5,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.04em",color:"#6B5B52"}}>
+  <div style={{background:"#F1EBE5",padding:"8px 16px"}}>
+    <div style={{maxWidth:1200,margin:"0 auto",display:"flex",alignItems:"center",justifyContent:"center",gap:10,flexWrap:"wrap",fontSize:10.5,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.04em",color:"#6F6863"}}>
       <span style={{display:"flex",alignItems:"center",gap:6}}>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7v-6zM6 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
         FREE RETURN COURIER ON EVERY ORDER
@@ -299,7 +299,7 @@ const Nav = ({page,setPage,cart,onLogoClick,specials,contactInfo}) => {
       <div className="dsk"><AnnouncementBar/></div>
       {/* Banner + header stacked together in ONE fixed group — never drifts out of sync */}
       <SpecialsBanner specials={specials}/>
-      <header style={{position:"relative",background:scrolled?"rgba(253,250,246,.97)":"#FDFAF6",backdropFilter:scrolled?"blur(18px)":"none",borderBottom:`1px solid ${scrolled?"rgba(160,90,102,0.12)":"transparent"}`,transition:"background .3s, backdrop-filter .3s, border-color .3s"}}>
+      <header style={{position:"relative",background:scrolled?"rgba(248,245,241,.97)":"#F8F5F1",backdropFilter:scrolled?"blur(18px)":"none",borderBottom:`1px solid ${scrolled?"rgba(41,37,34,0.12)":"transparent"}`,transition:"background .3s, backdrop-filter .3s, border-color .3s"}}>
         <div style={{maxWidth:1280,margin:"0 auto",padding:"0 16px",height:72,display:"flex",alignItems:"center",position:"relative"}}>
 
           {/* LEFT — emblem + wordmark grouped together (tap logo 5x for dashboard) */}
@@ -307,14 +307,14 @@ const Nav = ({page,setPage,cart,onLogoClick,specials,contactInfo}) => {
             <img src="/img/logo.png" alt="Lavish Wig" style={{height:44,width:44,borderRadius:"50%",display:"block",objectFit:"cover"}}/>
             <span style={{textAlign:"left",lineHeight:1}}>
               <span className="serif" style={{display:"block",fontSize:20,color:"#171515",fontWeight:600,letterSpacing:"0.01em",lineHeight:1}}>LAVISH WIG</span>
-              <span style={{display:"block",fontSize:8.5,color:"#C99582",letterSpacing:"0.14em",textTransform:"uppercase",marginTop:4,fontFamily:"'Jost',sans-serif",fontWeight:600}}>Wig Washing &amp; Care</span>
+              <span style={{display:"block",fontSize:8.5,color:"#C68E77",letterSpacing:"0.14em",textTransform:"uppercase",marginTop:4,fontFamily:"'Jost',sans-serif",fontWeight:600}}>Wig Washing &amp; Care</span>
             </span>
           </button>
 
           {/* CENTER — desktop nav, absolutely centered independent of the side widths */}
           <div className="dsk" style={{position:"absolute",left:"50%",transform:"translateX(-50%)",display:"flex",alignItems:"center",gap:2}}>
             {links.map(([p,l])=>(
-              <button key={p+l} onClick={()=>navTo(p)} style={{background:"none",border:"none",cursor:"pointer",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.06em",textTransform:"uppercase",padding:"6px 12px",color:page===p?"#C99582":"#171515",borderBottom:`2px solid ${page===p?"#C99582":"transparent"}`,transition:"all .2s",whiteSpace:"nowrap"}}>{l}</button>
+              <button key={p+l} onClick={()=>navTo(p)} style={{background:"none",border:"none",cursor:"pointer",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.06em",textTransform:"uppercase",padding:"6px 12px",color:page===p?"#C68E77":"#171515",borderBottom:`2px solid ${page===p?"#C68E77":"transparent"}`,transition:"all .2s",whiteSpace:"nowrap"}}>{l}</button>
             ))}
           </div>
 
@@ -323,7 +323,7 @@ const Nav = ({page,setPage,cart,onLogoClick,specials,contactInfo}) => {
             <a href={`https://wa.me/${contactInfo.waNumber||"27600000000"}`} target="_blank" rel="noreferrer" className="dsk" aria-label="WhatsApp us" style={{display:"flex",alignItems:"center",justifyContent:"center",width:36,height:36,borderRadius:"50%",border:"1.5px solid rgba(23,21,21,0.15)",color:"#171515"}}>
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>
             </a>
-            <button className="dsk" onClick={()=>navTo("book")} style={{background:"#C99582",border:"none",borderRadius:8,padding:"11px 22px",cursor:"pointer",color:"#fff",fontSize:11,fontWeight:700,fontFamily:"'Jost',sans-serif",letterSpacing:"0.08em"}}>BOOK A WASH</button>
+            <button className="dsk" onClick={()=>navTo("book")} style={{background:"#C68E77",border:"none",borderRadius:8,padding:"11px 22px",cursor:"pointer",color:"#fff",fontSize:11,fontWeight:700,fontFamily:"'Jost',sans-serif",letterSpacing:"0.08em"}}>BOOK A WASH</button>
 
             {/* Hamburger */}
             <button className="mob" onClick={()=>sMenu(m=>!m)} style={{background:"none",border:"1.5px solid rgba(23,21,21,0.18)",borderRadius:7,padding:"8px 9px",cursor:"pointer",display:"flex",flexDirection:"column",gap:4.5,flexShrink:0}}>
@@ -335,11 +335,11 @@ const Nav = ({page,setPage,cart,onLogoClick,specials,contactInfo}) => {
 
       {/* Mobile dropdown menu — positioned relative to this same fixed group, always lines up */}
       {menu&&(
-        <div className="mob pop" style={{position:"absolute",top:"100%",right:0,zIndex:299,width:250,background:"rgba(253,250,246,.99)",backdropFilter:"blur(22px)",borderLeft:"1px solid rgba(23,21,21,0.1)",borderBottom:"1px solid rgba(23,21,21,0.1)",borderRadius:"0 0 0 18px",overflow:"hidden",boxShadow:"0 12px 40px rgba(21,14,6,0.18)"}}>
+        <div className="mob pop" style={{position:"absolute",top:"100%",right:0,zIndex:299,width:250,background:"rgba(248,245,241,.99)",backdropFilter:"blur(22px)",borderLeft:"1px solid rgba(23,21,21,0.1)",borderBottom:"1px solid rgba(23,21,21,0.1)",borderRadius:"0 0 0 18px",overflow:"hidden",boxShadow:"0 12px 40px rgba(41,37,34,0.18)"}}>
           {links.map(([p,l])=>(
-            <button key={p+l} onClick={()=>navTo(p)} style={{display:"block",width:"100%",textAlign:"left",background:"none",border:"none",cursor:"pointer",color:page===p?"#C99582":"#171515",fontSize:15,fontFamily:"'Jost',sans-serif",fontWeight:500,padding:"15px 26px",borderBottom:"1px solid rgba(23,21,21,0.08)",letterSpacing:"0.04em",transition:"color .2s"}}>{l}</button>
+            <button key={p+l} onClick={()=>navTo(p)} style={{display:"block",width:"100%",textAlign:"left",background:"none",border:"none",cursor:"pointer",color:page===p?"#C68E77":"#171515",fontSize:15,fontFamily:"'Jost',sans-serif",fontWeight:500,padding:"15px 26px",borderBottom:"1px solid rgba(23,21,21,0.08)",letterSpacing:"0.04em",transition:"color .2s"}}>{l}</button>
           ))}
-          <button onClick={()=>{setPage("book");sMenu(false);}} style={{display:"block",width:"100%",textAlign:"left",background:"#C99582",border:"none",cursor:"pointer",color:"#fff",fontSize:13,fontWeight:700,fontFamily:"'Jost',sans-serif",padding:"15px 26px",letterSpacing:"0.06em"}}>BOOK A WASH</button>
+          <button onClick={()=>{setPage("book");sMenu(false);}} style={{display:"block",width:"100%",textAlign:"left",background:"#C68E77",border:"none",cursor:"pointer",color:"#fff",fontSize:13,fontWeight:700,fontFamily:"'Jost',sans-serif",padding:"15px 26px",letterSpacing:"0.06em"}}>BOOK A WASH</button>
         </div>
       )}
     </div>
@@ -372,10 +372,10 @@ const FloatingBook = ({page,setPage}) => {
     }}>
       <button onClick={()=>setPage("book")} style={{
         display:"flex",alignItems:"center",gap:8,
-        background:"linear-gradient(135deg,#E2AEB6,#C0838E,#A05A66)",
+        background:"linear-gradient(135deg,#D7A89A,#B97A65,#A96855)",
         border:"none",borderRadius:50,padding:"12px 20px",cursor:"pointer",
         color:"#fff",fontFamily:"'Jost',sans-serif",fontWeight:700,fontSize:12.5,
-        letterSpacing:"0.03em",boxShadow:"0 8px 26px rgba(192,131,142,0.5)",
+        letterSpacing:"0.03em",boxShadow:"0 8px 26px rgba(185,122,101,0.5)",
         animation:"ctaBob 3.4s ease-in-out infinite 1s",
       }}
       onMouseEnter={e=>e.currentTarget.style.transform="scale(1.05)"}
@@ -414,11 +414,11 @@ const FloatingCTA = ({page,waNumber,callNumber,setPage}) => {
         }}>
           <button onClick={()=>setPage("book")} style={{
             display:"flex",alignItems:"center",gap:9,
-            background:"linear-gradient(135deg,#C0838E,#A05A66)",
+            background:"linear-gradient(135deg,#B97A65,#A96855)",
             border:"none",borderRadius:50,padding:"13px 22px",
             fontFamily:"'Jost',sans-serif",fontWeight:700,fontSize:13,
             letterSpacing:"0.05em",textTransform:"uppercase",color:"#fff",
-            cursor:"pointer",boxShadow:"0 8px 28px rgba(192,131,142,0.5)",
+            cursor:"pointer",boxShadow:"0 8px 28px rgba(185,122,101,0.5)",
             animation:"ctaBob 3s ease-in-out infinite",
           }}
           onMouseEnter={e=>{e.currentTarget.style.transform="scale(1.06)";e.currentTarget.style.animation="none";}}
@@ -432,7 +432,7 @@ const FloatingCTA = ({page,waNumber,callNumber,setPage}) => {
       {/* RIGHT — Call + WhatsApp */}
       <div style={{position:"fixed",bottom:20,right:16,zIndex:500,display:"flex",flexDirection:"column",alignItems:"flex-end",gap:8}}>
         <a href={`tel:${CALL_NUMBER}`}
-          style={{...btnBase,background:"#150E06",color:"#fff",boxShadow:"0 4px 18px rgba(0,0,0,0.35)"}}
+          style={{...btnBase,background:"#292522",color:"#fff",boxShadow:"0 4px 18px rgba(0,0,0,0.35)"}}
           onMouseEnter={e=>e.currentTarget.style.transform="scale(1.06)"}
           onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"}>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -623,8 +623,8 @@ const COL_ITEMS_DATA = [
 const Collections = ({setPage}) => (
   <section style={{padding:"52px 20px",maxWidth:1200,margin:"0 auto"}}>
     <div style={{display:"flex",alignItems:"baseline",justifyContent:"space-between",marginBottom:28,flexWrap:"wrap",gap:12}}>
-      <h2 style={{fontSize:11,fontWeight:700,letterSpacing:"0.2em",color:"#96707A",textTransform:"uppercase"}}>Our Collections</h2>
-      <button onClick={()=>setPage("gallery")} style={{background:"none",border:"none",cursor:"pointer",fontSize:11,color:"#C0838E",fontFamily:"'Jost',sans-serif",letterSpacing:"0.08em",textTransform:"uppercase",fontWeight:600}}>View All →</button>
+      <h2 style={{fontSize:11,fontWeight:700,letterSpacing:"0.2em",color:"#6F6863",textTransform:"uppercase"}}>Our Collections</h2>
+      <button onClick={()=>setPage("gallery")} style={{background:"none",border:"none",cursor:"pointer",fontSize:11,color:"#B97A65",fontFamily:"'Jost',sans-serif",letterSpacing:"0.08em",textTransform:"uppercase",fontWeight:600}}>View All →</button>
     </div>
     <div style={{display:"flex",gap:10,justifyContent:"space-between"}}>
       {COL_ITEMS_DATA.map(c=>(
@@ -642,8 +642,8 @@ const Collections = ({setPage}) => (
           }}>
             <div style={{fontSize:"clamp(22px,6vw,34px)",opacity:0.65}}>✨</div>
           </div>
-          <span style={{fontSize:"clamp(9px,2.4vw,11px)",fontWeight:700,letterSpacing:"0.1em",color:"#150E06",textTransform:"uppercase",textAlign:"center"}}>{c.label}</span>
-          <span style={{fontSize:"clamp(8px,2vw,10px)",color:"#96707A",textAlign:"center",lineHeight:1.3}}>{c.desc}</span>
+          <span style={{fontSize:"clamp(9px,2.4vw,11px)",fontWeight:700,letterSpacing:"0.1em",color:"#292522",textTransform:"uppercase",textAlign:"center"}}>{c.label}</span>
+          <span style={{fontSize:"clamp(8px,2vw,10px)",color:"#6F6863",textAlign:"center",lineHeight:1.3}}>{c.desc}</span>
         </div>
       ))}
     </div>
@@ -721,13 +721,13 @@ const WashProcess = ({services,setPage}) => (
         {services.map((s,i)=>{
           const f=i===2;
           return (
-            <div key={s.id} onClick={()=>setPage("book")} style={{background:f?"#150E06":"#FFFFFF",border:`1px solid ${f?"transparent":"rgba(160,90,102,0.12)"}`,borderRadius:18,padding:"28px 24px",cursor:"pointer",transition:"all .3s",position:"relative",overflow:"hidden"}} onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-6px)";e.currentTarget.style.boxShadow=f?"0 16px 48px rgba(21,14,6,.4)":"0 12px 36px rgba(21,14,6,0.08)";}} onMouseLeave={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";}}>
-              {s.tag&&<div style={{position:"absolute",top:16,right:16,background:f?"#C0838E":"#F2DCDF",color:f?"#fff":"#A05A66",fontSize:9,fontWeight:700,padding:"3px 10px",borderRadius:3,letterSpacing:"0.1em",textTransform:"uppercase"}}>{s.tag}</div>}
+            <div key={s.id} onClick={()=>setPage("book")} style={{background:f?"linear-gradient(135deg,#B97A65,#A96855)":"#FFFFFF",border:`1px solid ${f?"transparent":"rgba(41,37,34,0.12)"}`,borderRadius:18,padding:"28px 24px",cursor:"pointer",transition:"all .3s",position:"relative",overflow:"hidden"}} onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-6px)";e.currentTarget.style.boxShadow=f?"0 16px 48px rgba(41,37,34,.4)":"0 12px 36px rgba(41,37,34,0.08)";}} onMouseLeave={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";}}>
+              {s.tag&&<div style={{position:"absolute",top:16,right:16,background:f?"rgba(255,255,255,0.24)":"#F8EFEA",color:f?"#FFFFFF":"#A96855",fontSize:9,fontWeight:700,padding:"3px 10px",borderRadius:3,letterSpacing:"0.1em",textTransform:"uppercase"}}>{s.tag}</div>}
               <div style={{fontSize:26,marginBottom:14}}>{s.emoji}</div>
-              <div className="serif" style={{fontSize:22,fontWeight:400,marginBottom:8,color:f?"#fff":"#150E06"}}>{s.name}</div>
-              <div style={{fontSize:13,lineHeight:1.75,marginBottom:22,color:f?"rgba(255,255,255,.65)":"#96707A"}}>{s.desc}</div>
-              <div className="serif" style={{fontSize:38,fontWeight:300,color:f?"#E2AEB6":"#150E06",marginBottom:4}}>R{s.price}</div>
-              <div style={{fontSize:11,letterSpacing:"0.06em",color:f?"rgba(255,255,255,.4)":"#C9A3A8"}}>{s.dur} turnaround</div>
+              <div className="serif" style={{fontSize:22,fontWeight:400,marginBottom:8,color:f?"#fff":"#292522"}}>{s.name}</div>
+              <div style={{fontSize:13,lineHeight:1.75,marginBottom:22,color:f?"rgba(255,255,255,.88)":"#6F6863"}}>{s.desc}</div>
+              <div className="serif" style={{fontSize:38,fontWeight:300,color:f?"#FFFFFF":"#292522",marginBottom:4}}>R{s.price}</div>
+              <div style={{fontSize:11,letterSpacing:"0.06em",color:f?"rgba(255,255,255,.78)":"#A69C95"}}>{s.dur} turnaround</div>
             </div>
           );
         })}
@@ -737,13 +737,13 @@ const WashProcess = ({services,setPage}) => (
 );
 
 const Trust = () => (
-  <section style={{background:"#F5EFE4",borderTop:"1px solid rgba(160,90,102,0.12)",borderBottom:"1px solid rgba(160,90,102,0.12)",padding:"52px 28px"}}>
+  <section style={{background:"#F1EBE5",borderTop:"1px solid rgba(41,37,34,0.12)",borderBottom:"1px solid rgba(41,37,34,0.12)",padding:"52px 28px"}}>
     <div style={{maxWidth:1200,margin:"0 auto",display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:28}}>
       {[{e:"🔬",t:"Burn Test Protocol",d:"Every blend wig tested before any heat is applied."},{e:"📦",t:"Nationwide Delivery",d:"Paxi & PostNet — safe tracked delivery across SA."},{e:"🎁",t:"Luxury Packaging",d:"Returns packed in branded tissue & satin bag."},{e:"📱",t:"WhatsApp Updates",d:"Real-time status at every step, straight to your phone."}].map(f=>(
         <div key={f.t} style={{textAlign:"center"}}>
           <div style={{fontSize:28,marginBottom:12}}>{f.e}</div>
-          <div style={{fontSize:13,fontWeight:600,color:"#150E06",marginBottom:6}}>{f.t}</div>
-          <div style={{fontSize:12,color:"#96707A",lineHeight:1.7}}>{f.d}</div>
+          <div style={{fontSize:13,fontWeight:600,color:"#292522",marginBottom:6}}>{f.t}</div>
+          <div style={{fontSize:12,color:"#6F6863",lineHeight:1.7}}>{f.d}</div>
         </div>
       ))}
     </div>
@@ -760,14 +760,14 @@ const BOTTOM_FEATURE_STRIP = [
   {l:"Made With Care",      s:"Every wig matters",        d:"M12 21s-7-4.35-9.5-8.5C.5 8.5 3 4 7 4c2 0 4 1.5 5 3.5C13 5.5 15 4 17 4c4 0 6.5 4.5 4.5 8.5C19 16.65 12 21 12 21z"},
 ];
 const BottomFeatureStrip = () => (
-  <div style={{background:"#F3EDE8",padding:"36px 20px"}}>
+  <div style={{background:"#F1EBE5",padding:"36px 20px"}}>
     <div className="feat-strip" style={{maxWidth:1100,margin:"0 auto",display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:18}}>
       {BOTTOM_FEATURE_STRIP.map(f=>(
         <div key={f.l} style={{display:"flex",alignItems:"center",gap:12}}>
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C99582" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><path d={f.d}/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C68E77" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><path d={f.d}/></svg>
           <span style={{lineHeight:1.4}}>
             <span style={{display:"block",fontSize:13,fontWeight:700,color:"#171515",fontFamily:"'Jost',sans-serif"}}>{f.l}</span>
-            <span style={{display:"block",fontSize:11.5,color:"#7A6B62"}}>{f.s}</span>
+            <span style={{display:"block",fontSize:11.5,color:"#6F6863"}}>{f.s}</span>
           </span>
         </div>
       ))}
@@ -783,23 +783,23 @@ const SERVICE_SHOWCASE = [
   {n:"03",t:"Restoration", img:"/img/svc-restore.webp",   d:"Full revival for matted, dull, or heavily worn units — like new again."},
 ];
 const ServicesShowcase = ({setPage}) => (
-  <section id="services" style={{background:"#FDFAF6",padding:"72px 24px",scrollMarginTop:"calc(var(--nav-h) + 12px)"}}>
+  <section id="services" style={{background:"#F8F5F1",padding:"72px 24px",scrollMarginTop:"calc(var(--nav-h) + 12px)"}}>
     <div style={{maxWidth:1160,margin:"0 auto",display:"grid",gridTemplateColumns:"280px 1fr",gap:48}} className="grid2">
       <div>
-        <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.2em",color:"#C0838E",textTransform:"uppercase",marginBottom:12}}>Our Services</div>
-        <h2 className="serif" style={{fontSize:"clamp(28px,4vw,44px)",fontWeight:300,color:"#150E06",marginBottom:22,lineHeight:1.15}}>Premium<br/><em>Wig Care</em></h2>
-        <button onClick={()=>setPage("book")} style={{display:"inline-flex",alignItems:"center",gap:6,background:"none",border:"1.5px solid rgba(160,90,102,0.3)",borderRadius:10,padding:"11px 20px",cursor:"pointer",fontSize:11,fontWeight:700,letterSpacing:"0.06em",color:"#A05A66",fontFamily:"'Jost',sans-serif"}}>VIEW ALL SERVICES →</button>
+        <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.2em",color:"#B97A65",textTransform:"uppercase",marginBottom:12}}>Our Services</div>
+        <h2 className="serif" style={{fontSize:"clamp(28px,4vw,44px)",fontWeight:300,color:"#292522",marginBottom:22,lineHeight:1.15}}>Premium<br/><em>Wig Care</em></h2>
+        <button onClick={()=>setPage("book")} style={{display:"inline-flex",alignItems:"center",gap:6,background:"none",border:"1.5px solid rgba(41,37,34,0.3)",borderRadius:10,padding:"11px 20px",cursor:"pointer",fontSize:11,fontWeight:700,letterSpacing:"0.06em",color:"#A96855",fontFamily:"'Jost',sans-serif"}}>VIEW ALL SERVICES →</button>
       </div>
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:20}}>
         {SERVICE_SHOWCASE.map(s=>(
-          <div key={s.t} style={{borderRadius:16,overflow:"hidden",boxShadow:"0 8px 32px rgba(21,14,6,0.1)",background:"#fff"}}>
+          <div key={s.t} style={{borderRadius:16,overflow:"hidden",boxShadow:"0 8px 32px rgba(41,37,34,0.1)",background:"#fff"}}>
             <div style={{position:"relative",height:210,overflow:"hidden"}}>
               <img src={s.img} alt={s.t} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
-              <span style={{position:"absolute",bottom:-16,left:16,width:40,height:40,borderRadius:"50%",background:"#150E06",display:"grid",placeItems:"center",fontSize:11,fontWeight:700,color:"#E2AEB6",boxShadow:"0 6px 16px rgba(0,0,0,.3)"}}>{s.n}</span>
+              <span style={{position:"absolute",bottom:-16,left:16,width:40,height:40,borderRadius:"50%",background:"#292522",display:"grid",placeItems:"center",fontSize:11,fontWeight:700,color:"#D7A89A",boxShadow:"0 6px 16px rgba(0,0,0,.3)"}}>{s.n}</span>
             </div>
             <div style={{padding:"26px 18px 20px"}}>
-              <div style={{fontSize:16,fontWeight:700,color:"#150E06",marginBottom:8,fontFamily:"'Jost',sans-serif"}}>{s.t}</div>
-              <div style={{fontSize:12.5,color:"#96707A",lineHeight:1.7}}>{s.d}</div>
+              <div style={{fontSize:16,fontWeight:700,color:"#292522",marginBottom:8,fontFamily:"'Jost',sans-serif"}}>{s.t}</div>
+              <div style={{fontSize:12.5,color:"#6F6863",lineHeight:1.7}}>{s.d}</div>
             </div>
           </div>
         ))}
@@ -813,12 +813,12 @@ const ServicesShowcase = ({setPage}) => (
 const HomeBeforeAfter = ({gallery,setPage}) => {
   const item = gallery.find(g=>!g.hidden && (g.before||g.after)) || gallery[0] || {before:null,after:null};
   return (
-    <section style={{background:"#F5EFE4",padding:"72px 24px",borderTop:"1px solid rgba(160,90,102,0.12)"}}>
+    <section style={{background:"#F1EBE5",padding:"72px 24px",borderTop:"1px solid rgba(41,37,34,0.12)"}}>
       <div style={{maxWidth:640,margin:"0 auto",textAlign:"center"}}>
-        <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.2em",color:"#C0838E",textTransform:"uppercase",marginBottom:12}}>See The Difference</div>
-        <h2 className="serif" style={{fontSize:"clamp(26px,4vw,40px)",fontWeight:300,color:"#150E06",marginBottom:28}}>Real <em>Transformations</em></h2>
+        <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.2em",color:"#B97A65",textTransform:"uppercase",marginBottom:12}}>See The Difference</div>
+        <h2 className="serif" style={{fontSize:"clamp(26px,4vw,40px)",fontWeight:300,color:"#292522",marginBottom:28}}>Real <em>Transformations</em></h2>
         <BASlider item={item}/>
-        <button onClick={()=>setPage("gallery")} style={{marginTop:22,background:"none",border:"none",cursor:"pointer",fontSize:12,fontWeight:700,letterSpacing:"0.06em",color:"#A05A66",fontFamily:"'Jost',sans-serif"}}>View Full Gallery →</button>
+        <button onClick={()=>setPage("gallery")} style={{marginTop:22,background:"none",border:"none",cursor:"pointer",fontSize:12,fontWeight:700,letterSpacing:"0.06em",color:"#A96855",fontFamily:"'Jost',sans-serif"}}>View Full Gallery →</button>
       </div>
     </section>
   );
@@ -844,11 +844,11 @@ const BASlider = ({item}) => {
 
   return (
     <div ref={ref} onMouseDown={()=>{drag.current=true;}} onMouseMove={e=>{if(drag.current)sPos(gP(e));}} onTouchStart={()=>{drag.current=true;}} onTouchMove={e=>{if(drag.current)sPos(gP(e));}}
-      style={{position:"relative",height:340,borderRadius:14,overflow:"hidden",cursor:"col-resize",userSelect:"none",touchAction:"none",boxShadow:"0 6px 28px rgba(21,14,6,0.18)",background:"#1a1208"}}>
+      style={{position:"relative",height:340,borderRadius:14,overflow:"hidden",cursor:"col-resize",userSelect:"none",touchAction:"none",boxShadow:"0 6px 28px rgba(41,37,34,0.18)",background:"#1a1208"}}>
       {/* AFTER — full reveal */}
       <div style={{position:"absolute",inset:0}}>
         {renderMedia(item.after,"After","linear-gradient(160deg,#3a1e08,#8a5020,#c89258)")}
-        <div style={{position:"absolute",bottom:10,right:12,background:"rgba(192,131,142,.9)",color:"#fff",fontSize:9,fontWeight:700,padding:"3px 9px",borderRadius:3,letterSpacing:"0.1em"}}>AFTER ✨</div>
+        <div style={{position:"absolute",bottom:10,right:12,background:"rgba(185,122,101,.9)",color:"#fff",fontSize:9,fontWeight:700,padding:"3px 9px",borderRadius:3,letterSpacing:"0.1em"}}>AFTER ✨</div>
       </div>
       {/* BEFORE — revealed by drag */}
       <div style={{position:"absolute",inset:0,clipPath:`inset(0 ${100-pos}% 0 0)`}}>
@@ -857,7 +857,7 @@ const BASlider = ({item}) => {
       </div>
       {/* Handle */}
       <div style={{position:"absolute",top:0,bottom:0,left:`${pos}%`,transform:"translateX(-50%)",width:2,background:"#fff",pointerEvents:"none",zIndex:5}}>
-        <div style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",width:36,height:36,borderRadius:"50%",background:"#fff",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 4px 16px rgba(0,0,0,.3)",fontSize:13,color:"#150E06",fontWeight:700}}>⟺</div>
+        <div style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",width:36,height:36,borderRadius:"50%",background:"#fff",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 4px 16px rgba(0,0,0,.3)",fontSize:13,color:"#292522",fontWeight:700}}>⟺</div>
       </div>
       <div style={{position:"absolute",top:10,left:"50%",transform:"translateX(-50%)",background:"rgba(0,0,0,.4)",color:"#fff",fontSize:9,fontWeight:600,padding:"3px 11px",borderRadius:20,letterSpacing:"0.06em",whiteSpace:"nowrap",pointerEvents:"none"}}>⟵ drag ⟶</div>
     </div>
@@ -866,23 +866,23 @@ const BASlider = ({item}) => {
 
 // Public Gallery — a playful grid of circular "showcase" thumbnails.
 // Tap any circle and it pops out into a full before/after reveal card.
-const CIRCLE_PALETTE = ["#C0838E","#8A5A78","#4A8A9A","#A05A66","#5A8A6A","#B8824A","#7A6A9A","#A85A5A"];
+const CIRCLE_PALETTE = ["#B97A65","#8A5A78","#4A8A9A","#A96855","#5A8A6A","#B8824A","#7A6A9A","#A85A5A"];
 
 const GalleryPage = ({gallery,setPage}) => {
   const [lb,sLb]=useState(null);
   const shown = gallery.filter(g=>!g.hidden);
 
   return (
-    <div style={{background:"#FDFAF6",paddingTop:"var(--nav-h)",minHeight:"100dvh"}}>
+    <div style={{background:"#F8F5F1",paddingTop:"var(--nav-h)",minHeight:"100dvh"}}>
       <div style={{maxWidth:1000,margin:"0 auto",padding:"44px 24px 60px"}}>
         <div style={{textAlign:"center",marginBottom:40}}>
-          <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.2em",color:"#C0838E",textTransform:"uppercase",marginBottom:10}}>✨ Our Work</div>
-          <h2 className="serif" style={{fontSize:"clamp(28px,5vw,52px)",fontWeight:300,color:"#150E06",marginBottom:12}}>Before & After<br/><em>Transformations</em></h2>
-          <p style={{fontSize:13,color:"#96707A",maxWidth:420,lineHeight:1.8,margin:"0 auto"}}>Every unit that leaves our studio is documented. Tap a circle to see the full reveal ✨</p>
+          <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.2em",color:"#B97A65",textTransform:"uppercase",marginBottom:10}}>✨ Our Work</div>
+          <h2 className="serif" style={{fontSize:"clamp(28px,5vw,52px)",fontWeight:300,color:"#292522",marginBottom:12}}>Before & After<br/><em>Transformations</em></h2>
+          <p style={{fontSize:13,color:"#6F6863",maxWidth:420,lineHeight:1.8,margin:"0 auto"}}>Every unit that leaves our studio is documented. Tap a circle to see the full reveal ✨</p>
         </div>
 
         {shown.length===0 ? (
-          <div style={{textAlign:"center",padding:"60px 20px",color:"#C9A3A8",fontSize:13}}>
+          <div style={{textAlign:"center",padding:"60px 20px",color:"#A69C95",fontSize:13}}>
             Our gallery is being freshened up — check back soon! 💫
           </div>
         ) : (
@@ -903,7 +903,7 @@ const GalleryPage = ({gallery,setPage}) => {
                   <div className="gallery-circle" style={{
                     width:"100%",aspectRatio:"1",maxWidth:150,borderRadius:"50%",overflow:"hidden",
                     position:"relative",background:thumb?"#1a1208":`linear-gradient(160deg,${color},${color}aa)`,
-                    boxShadow:`0 8px 28px ${color}44, 0 2px 8px rgba(21,14,6,0.12)`,
+                    boxShadow:`0 8px 28px ${color}44, 0 2px 8px rgba(41,37,34,0.12)`,
                     border:`3px solid #fff`,
                     transition:"transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease",
                   }}>
@@ -915,10 +915,10 @@ const GalleryPage = ({gallery,setPage}) => {
                       <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:32}}>✨</div>
                     )}
                     <div style={{position:"absolute",inset:0,background:"radial-gradient(circle at 30% 25%, rgba(255,255,255,0.15), transparent 55%)"}}/>
-                    <div style={{position:"absolute",bottom:6,right:6,background:"rgba(255,255,255,0.92)",borderRadius:"50%",width:24,height:24,display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,fontWeight:700,color:"#150E06",boxShadow:"0 2px 8px rgba(0,0,0,0.2)"}}>⟺</div>
+                    <div style={{position:"absolute",bottom:6,right:6,background:"rgba(255,255,255,0.92)",borderRadius:"50%",width:24,height:24,display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,fontWeight:700,color:"#292522",boxShadow:"0 2px 8px rgba(0,0,0,0.2)"}}>⟺</div>
                   </div>
                   {item.label && (
-                    <div style={{fontSize:11.5,fontWeight:600,color:"#150E06",textAlign:"center",lineHeight:1.4}}>{item.label}</div>
+                    <div style={{fontSize:11.5,fontWeight:600,color:"#292522",textAlign:"center",lineHeight:1.4}}>{item.label}</div>
                   )}
                 </div>
               );
@@ -931,9 +931,9 @@ const GalleryPage = ({gallery,setPage}) => {
 
       {/* Popup reveal */}
       {lb&&(
-        <div onClick={()=>sLb(null)} className="pop" style={{position:"fixed",inset:0,background:"rgba(21,14,6,.9)",zIndex:400,backdropFilter:"blur(14px)",display:"flex",alignItems:"center",justifyContent:"center",padding:20}}>
+        <div onClick={()=>sLb(null)} className="pop" style={{position:"fixed",inset:0,background:"rgba(41,37,34,.9)",zIndex:400,backdropFilter:"blur(14px)",display:"flex",alignItems:"center",justifyContent:"center",padding:20}}>
           <div onClick={e=>e.stopPropagation()} className="pop" style={{background:"#FFFFFF",borderRadius:20,padding:26,maxWidth:480,width:"100%",boxShadow:"0 28px 80px rgba(0,0,0,.5)"}}>
-            {lb.label && <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",color:"#96707A",marginBottom:14,textAlign:"center"}}>{lb.label}</div>}
+            {lb.label && <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",color:"#6F6863",marginBottom:14,textAlign:"center"}}>{lb.label}</div>}
             <BASlider item={lb}/>
             <div style={{display:"flex",gap:10,justifyContent:"center",marginTop:18}}>
               <Btn onClick={()=>{sLb(null);setPage("book");}}>Book This Service</Btn>
@@ -957,17 +957,17 @@ const Booking = ({services,addOrder}) => {
   const headings=["Let's start with you 👋","Tell us about your wig 💇‍♀️","How are you sending it? 📦","One last step ✍️","Almost there! 💳"];
   const subs=["Quick and easy — takes less than a minute.","So we treat your unit exactly right.","We collect via Paxi or PostNet nationwide.","5 quick ticks to protect both of us.","Choose how you'd like to pay."];
   if(done) return (
-    <div style={{minHeight:"80dvh",display:"flex",alignItems:"center",justifyContent:"center",padding:28,paddingTop:100,background:"linear-gradient(160deg,#F5EFE4,#FDFAF6)"}}>
+    <div style={{minHeight:"80dvh",display:"flex",alignItems:"center",justifyContent:"center",padding:28,paddingTop:100,background:"linear-gradient(160deg,#F1EBE5,#F8F5F1)"}}>
       <div style={{textAlign:"center",maxWidth:420}} className="pop">
         <div style={{fontSize:56,marginBottom:12}}>🎉</div>
-        <h2 className="serif" style={{fontSize:38,fontWeight:400,color:"#150E06",marginBottom:8}}>You're booked!</h2>
-        <p style={{color:"#96707A",fontSize:15,marginBottom:6}}>Hey <strong style={{color:"#150E06"}}>{f.name.split(" ")[0]}</strong> — we've got your unit!</p>
-        <p style={{color:"#C9A3A8",fontSize:13,marginBottom:30,lineHeight:1.7}}>You'll receive a WhatsApp confirmation within 24 hours with drop-off instructions.</p>
+        <h2 className="serif" style={{fontSize:38,fontWeight:400,color:"#292522",marginBottom:8}}>You're booked!</h2>
+        <p style={{color:"#6F6863",fontSize:15,marginBottom:6}}>Hey <strong style={{color:"#292522"}}>{f.name.split(" ")[0]}</strong> — we've got your unit!</p>
+        <p style={{color:"#A69C95",fontSize:13,marginBottom:30,lineHeight:1.7}}>You'll receive a WhatsApp confirmation within 24 hours with drop-off instructions.</p>
         <Card style={{padding:22,textAlign:"left",marginBottom:24}}>
           {[["Service",`${svc?.emoji} ${f.service}`],["Hair Type",f.type],["Condition",f.condition],["Ship via",`${f.logistic} — ${f.branch}`],["Payment",f.pay],["Total",`R${svc?.price??0}`]].map(([k,v])=>(
-            <div key={k} style={{display:"flex",justifyContent:"space-between",padding:"9px 0",borderBottom:"1px solid rgba(160,90,102,0.12)"}}>
-              <span style={{fontSize:13,color:"#96707A"}}>{k}</span>
-              <span style={{fontSize:13,color:"#150E06",fontWeight:500}}>{v}</span>
+            <div key={k} style={{display:"flex",justifyContent:"space-between",padding:"9px 0",borderBottom:"1px solid rgba(41,37,34,0.12)"}}>
+              <span style={{fontSize:13,color:"#6F6863"}}>{k}</span>
+              <span style={{fontSize:13,color:"#292522",fontWeight:500}}>{v}</span>
             </div>
           ))}
         </Card>
@@ -976,18 +976,18 @@ const Booking = ({services,addOrder}) => {
     </div>
   );
   return (
-    <div style={{background:"linear-gradient(160deg,#F5EFE4 0%,#FDFAF6 100%)",minHeight:"100dvh",paddingTop:"var(--nav-h)",paddingBottom:80}}>
+    <div style={{background:"linear-gradient(160deg,#F1EBE5 0%,#F8F5F1 100%)",minHeight:"100dvh",paddingTop:"var(--nav-h)",paddingBottom:80}}>
       <div style={{maxWidth:560,margin:"0 auto",padding:"32px 22px"}}>
         <div style={{textAlign:"center",marginBottom:28}}>
           <div style={{fontSize:36,marginBottom:6}}>{["👋","💇‍♀️","📦","✍️","💳"][step]}</div>
-          <h2 className="serif" style={{fontSize:"clamp(22px,4vw,34px)",fontWeight:400,color:"#150E06",marginBottom:6}}>{headings[step]}</h2>
-          <p style={{fontSize:13,color:"#96707A",lineHeight:1.7}}>{subs[step]}</p>
+          <h2 className="serif" style={{fontSize:"clamp(22px,4vw,34px)",fontWeight:400,color:"#292522",marginBottom:6}}>{headings[step]}</h2>
+          <p style={{fontSize:13,color:"#6F6863",lineHeight:1.7}}>{subs[step]}</p>
         </div>
-        <div style={{background:"rgba(160,90,102,0.12)",borderRadius:8,height:4,marginBottom:20,overflow:"hidden"}}>
-          <div style={{height:"100%",borderRadius:8,width:`${((step+1)/steps.length)*100}%`,background:"linear-gradient(90deg,#C0838E,#A05A66)",transition:"width .4s cubic-bezier(.4,0,.2,1)"}}/>
+        <div style={{background:"rgba(41,37,34,0.12)",borderRadius:8,height:4,marginBottom:20,overflow:"hidden"}}>
+          <div style={{height:"100%",borderRadius:8,width:`${((step+1)/steps.length)*100}%`,background:"linear-gradient(90deg,#B97A65,#A96855)",transition:"width .4s cubic-bezier(.4,0,.2,1)"}}/>
         </div>
         <div style={{display:"flex",gap:6,marginBottom:24,overflowX:"auto",paddingBottom:4}}>
-          {steps.map((s,i)=><div key={i} onClick={()=>i<step&&sStep(i)} style={{flexShrink:0,padding:"5px 13px",borderRadius:4,fontSize:10,fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",cursor:i<step?"pointer":"default",transition:"all .22s",background:i===step?"#C0838E":i<step?"rgba(192,131,142,.12)":"transparent",color:i===step?"#fff":i<step?"#C0838E":"#C9A3A8",border:`1.5px solid ${i===step?"#C0838E":i<step?"rgba(192,131,142,.28)":"rgba(160,90,102,0.12)"}`}}>{i<step?"✓":s.l}</div>)}
+          {steps.map((s,i)=><div key={i} onClick={()=>i<step&&sStep(i)} style={{flexShrink:0,padding:"5px 13px",borderRadius:4,fontSize:10,fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",cursor:i<step?"pointer":"default",transition:"all .22s",background:i===step?"#B97A65":i<step?"rgba(185,122,101,.12)":"transparent",color:i===step?"#fff":i<step?"#B97A65":"#A69C95",border:`1.5px solid ${i===step?"#B97A65":i<step?"rgba(185,122,101,.28)":"rgba(41,37,34,0.12)"}`}}>{i<step?"✓":s.l}</div>)}
         </div>
         <Card style={{padding:28}}>
           {step===0&&<div style={{display:"flex",flexDirection:"column",gap:18}}>
@@ -997,17 +997,17 @@ const Booking = ({services,addOrder}) => {
           </div>}
           {step===1&&<div style={{display:"flex",flexDirection:"column",gap:20}}>
             <div><Lbl req>Select a service</Lbl>
-              {services.map(s=><div key={s.id} onClick={()=>set("service",s.name)} style={{padding:"15px 18px",borderRadius:12,cursor:"pointer",marginBottom:10,border:`2px solid ${f.service===s.name?"#C0838E":"rgba(160,90,102,0.12)"}`,background:f.service===s.name?"#F2DCDF":"#FDFAF6",display:"flex",justifyContent:"space-between",alignItems:"center",transition:"all .22s"}}>
-                <div><span style={{fontSize:20,marginRight:12}}>{s.emoji}</span><span style={{fontSize:14,fontWeight:500,color:"#150E06"}}>{s.name}</span><div style={{fontSize:11,color:"#96707A",marginTop:3,paddingLeft:33}}>{s.dur}</div></div>
-                <div style={{textAlign:"right"}}><div className="serif" style={{fontSize:22,color:f.service===s.name?"#C0838E":"#150E06"}}>R{s.price}</div>{f.service===s.name&&<div style={{fontSize:9,color:"#C0838E",fontWeight:700,letterSpacing:"0.06em"}}>✓ SELECTED</div>}</div>
+              {services.map(s=><div key={s.id} onClick={()=>set("service",s.name)} style={{padding:"15px 18px",borderRadius:12,cursor:"pointer",marginBottom:10,border:`2px solid ${f.service===s.name?"#B97A65":"rgba(41,37,34,0.12)"}`,background:f.service===s.name?"#F8EFEA":"#F8F5F1",display:"flex",justifyContent:"space-between",alignItems:"center",transition:"all .22s"}}>
+                <div><span style={{fontSize:20,marginRight:12}}>{s.emoji}</span><span style={{fontSize:14,fontWeight:500,color:"#292522"}}>{s.name}</span><div style={{fontSize:11,color:"#6F6863",marginTop:3,paddingLeft:33}}>{s.dur}</div></div>
+                <div style={{textAlign:"right"}}><div className="serif" style={{fontSize:22,color:f.service===s.name?"#B97A65":"#292522"}}>R{s.price}</div>{f.service===s.name&&<div style={{fontSize:9,color:"#B97A65",fontWeight:700,letterSpacing:"0.06em"}}>✓ SELECTED</div>}</div>
               </div>)}
             </div>
-            <div><Lbl req>Hair type</Lbl><div style={{display:"flex",gap:10,flexWrap:"wrap"}}>{["Human Hair","Blend","Synthetic"].map(o=><div key={o} onClick={()=>set("type",o)} style={{padding:"9px 20px",borderRadius:4,cursor:"pointer",border:`2px solid ${f.type===o?"#C0838E":"rgba(160,90,102,0.12)"}`,background:f.type===o?"#F2DCDF":"transparent",fontSize:13,fontWeight:500,color:f.type===o?"#A05A66":"#96707A",transition:"all .2s"}}>{o}</div>)}</div></div>
-            <div><Lbl req>Current condition</Lbl><div style={{display:"flex",gap:8,flexWrap:"wrap"}}>{[["Excellent","😍"],["Good","🙂"],["Fair","😐"],["Poor","😬"]].map(([o,e])=><div key={o} onClick={()=>set("condition",o)} style={{padding:"9px 18px",borderRadius:4,cursor:"pointer",border:`2px solid ${f.condition===o?"#C0838E":"rgba(160,90,102,0.12)"}`,background:f.condition===o?"#F2DCDF":"transparent",fontSize:13,color:f.condition===o?"#A05A66":"#96707A",fontWeight:500,transition:"all .2s"}}>{e} {o}</div>)}</div></div>
+            <div><Lbl req>Hair type</Lbl><div style={{display:"flex",gap:10,flexWrap:"wrap"}}>{["Human Hair","Blend","Synthetic"].map(o=><div key={o} onClick={()=>set("type",o)} style={{padding:"9px 20px",borderRadius:4,cursor:"pointer",border:`2px solid ${f.type===o?"#B97A65":"rgba(41,37,34,0.12)"}`,background:f.type===o?"#F8EFEA":"transparent",fontSize:13,fontWeight:500,color:f.type===o?"#A96855":"#6F6863",transition:"all .2s"}}>{o}</div>)}</div></div>
+            <div><Lbl req>Current condition</Lbl><div style={{display:"flex",gap:8,flexWrap:"wrap"}}>{[["Excellent","😍"],["Good","🙂"],["Fair","😐"],["Poor","😬"]].map(([o,e])=><div key={o} onClick={()=>set("condition",o)} style={{padding:"9px 18px",borderRadius:4,cursor:"pointer",border:`2px solid ${f.condition===o?"#B97A65":"rgba(41,37,34,0.12)"}`,background:f.condition===o?"#F8EFEA":"transparent",fontSize:13,color:f.condition===o?"#A96855":"#6F6863",fontWeight:500,transition:"all .2s"}}>{e} {o}</div>)}</div></div>
             <div><Lbl>Any notes?</Lbl><textarea rows={2} value={f.notes} onChange={e=>set("notes",e.target.value)} placeholder="Anything we should know…" style={{resize:"none"}}/></div>
           </div>}
           {step===2&&<div style={{display:"flex",flexDirection:"column",gap:14}}>
-            <div style={{background:"#F2DCDF",borderRadius:10,padding:"12px 16px",fontSize:13,color:"#A05A66",lineHeight:1.7,fontWeight:500}}>
+            <div style={{background:"#F8EFEA",borderRadius:10,padding:"12px 16px",fontSize:13,color:"#A96855",lineHeight:1.7,fontWeight:500}}>
               📦 We collect & return via <strong>Paxi (PEP)</strong> or <strong>PostNet</strong> branches nationwide.<br/>
               <span style={{fontSize:12,fontWeight:400}}>No home addresses needed. Simply drop at your nearest branch & collect when it's done. Courier costs are for the customer's account.</span>
             </div>
@@ -1015,44 +1015,44 @@ const Booking = ({services,addOrder}) => {
               {id:"Paxi",icon:"📦",title:"Paxi via PEP Store",desc:"Drop at any PEP store. Enter your branch name/code so we can match your parcel.",placeholder:"e.g. PEP Soweto, Code 2091"},
               {id:"PostNet",icon:"📮",title:"PostNet to PostNet",desc:"Drop at your nearest PostNet. Enter your branch name so we can dispatch back to you.",placeholder:"e.g. PostNet Sandton"}
             ].map(opt=>(
-              <div key={opt.id} onClick={()=>set("logistic",opt.id)} style={{padding:"15px 17px",borderRadius:12,cursor:"pointer",border:`2px solid ${f.logistic===opt.id?"#C0838E":"rgba(160,90,102,0.12)"}`,background:f.logistic===opt.id?"#F2DCDF":"#FDFAF6",transition:"all .22s"}}>
-                <div style={{fontWeight:600,fontSize:14,color:"#150E06",marginBottom:4}}>{opt.icon} {opt.title}</div>
-                <div style={{fontSize:12,color:"#96707A",lineHeight:1.5}}>{opt.desc}</div>
-                {f.logistic===opt.id&&<div style={{fontSize:10,color:"#C0838E",marginTop:7,fontWeight:700,letterSpacing:"0.06em"}}>✓ SELECTED</div>}
+              <div key={opt.id} onClick={()=>set("logistic",opt.id)} style={{padding:"15px 17px",borderRadius:12,cursor:"pointer",border:`2px solid ${f.logistic===opt.id?"#B97A65":"rgba(41,37,34,0.12)"}`,background:f.logistic===opt.id?"#F8EFEA":"#F8F5F1",transition:"all .22s"}}>
+                <div style={{fontWeight:600,fontSize:14,color:"#292522",marginBottom:4}}>{opt.icon} {opt.title}</div>
+                <div style={{fontSize:12,color:"#6F6863",lineHeight:1.5}}>{opt.desc}</div>
+                {f.logistic===opt.id&&<div style={{fontSize:10,color:"#B97A65",marginTop:7,fontWeight:700,letterSpacing:"0.06em"}}>✓ SELECTED</div>}
               </div>
             ))}
             {f.logistic&&<div>
               <Lbl req>{f.logistic==="Paxi"?"Your PEP Branch Name / Code":"Your PostNet Branch Name"}</Lbl>
               <input value={f.branch} onChange={e=>set("branch",e.target.value)} placeholder={f.logistic==="Paxi"?"e.g. PEP Soweto, Code 2091":"e.g. PostNet Sandton"}/>
             </div>}
-            <div style={{background:"#fff8ef",border:"1px solid rgba(192,131,142,0.2)",borderRadius:10,padding:"12px 16px",fontSize:12,color:"#A05A66",lineHeight:1.65}}>
+            <div style={{background:"#F8F5F1",border:"1px solid rgba(185,122,101,0.2)",borderRadius:10,padding:"12px 16px",fontSize:12,color:"#A96855",lineHeight:1.65}}>
               ✅ Once received, we'll WhatsApp your tracking number when your wig ships back.<br/>
               💳 Courier fees are paid by the customer at the branch.
             </div>
           </div>}
           {step===3&&<div style={{display:"flex",flexDirection:"column",gap:10}}>
-            <div style={{background:"#F5EFE4",borderRadius:12,padding:"14px 16px",marginBottom:6}}><div style={{fontSize:13,fontWeight:600,color:"#150E06",marginBottom:3}}>Quick waiver — 5 ticks 🎯</div><div style={{fontSize:12,color:"#96707A",lineHeight:1.6}}>We take great care of every unit. This protects both of us.</div></div>
-            {WAIVER.map((item,i)=><div key={i} onClick={()=>set("waiver",{...f.waiver,[i]:!f.waiver[i]})} style={{display:"flex",gap:12,alignItems:"flex-start",padding:"12px 15px",borderRadius:10,cursor:"pointer",border:`2px solid ${f.waiver[i]?"rgba(74,138,90,.66)":"rgba(160,90,102,0.12)"}`,background:f.waiver[i]?"rgba(74,138,90,.06)":"#FDFAF6",transition:"all .22s"}}>
-              <div style={{width:22,height:22,borderRadius:5,flexShrink:0,border:`2px solid ${f.waiver[i]?"#4A8A5A":"rgba(160,90,102,0.22)"}`,background:f.waiver[i]?"#4A8A5A":"transparent",display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,color:"#fff",fontWeight:700,marginTop:1,transition:"all .22s"}}>{f.waiver[i]?"✓":""}</div>
-              <span style={{fontSize:13,color:"#96707A",lineHeight:1.6}}>{item}</span>
+            <div style={{background:"#F1EBE5",borderRadius:12,padding:"14px 16px",marginBottom:6}}><div style={{fontSize:13,fontWeight:600,color:"#292522",marginBottom:3}}>Quick waiver — 5 ticks 🎯</div><div style={{fontSize:12,color:"#6F6863",lineHeight:1.6}}>We take great care of every unit. This protects both of us.</div></div>
+            {WAIVER.map((item,i)=><div key={i} onClick={()=>set("waiver",{...f.waiver,[i]:!f.waiver[i]})} style={{display:"flex",gap:12,alignItems:"flex-start",padding:"12px 15px",borderRadius:10,cursor:"pointer",border:`2px solid ${f.waiver[i]?"rgba(74,138,90,.66)":"rgba(41,37,34,0.12)"}`,background:f.waiver[i]?"rgba(74,138,90,.06)":"#F8F5F1",transition:"all .22s"}}>
+              <div style={{width:22,height:22,borderRadius:5,flexShrink:0,border:`2px solid ${f.waiver[i]?"#4A8A5A":"rgba(41,37,34,0.22)"}`,background:f.waiver[i]?"#4A8A5A":"transparent",display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,color:"#fff",fontWeight:700,marginTop:1,transition:"all .22s"}}>{f.waiver[i]?"✓":""}</div>
+              <span style={{fontSize:13,color:"#6F6863",lineHeight:1.6}}>{item}</span>
             </div>)}
             {wOk&&<div style={{textAlign:"center",fontSize:14,marginTop:6,color:"#4A8A5A",fontWeight:600}}>🎉 All ticked — you're good to go!</div>}
           </div>}
           {step===4&&<div style={{display:"flex",flexDirection:"column",gap:14}}>
-            {[{id:"EFT",l:"Direct EFT 🏦",d:"Pay via internet banking. Details emailed to you."},{id:"SnapScan",l:"SnapScan 📱",d:"Scan & pay instantly from your banking app."},{id:"Payflex",l:"Payflex 💳",d:"4 interest-free payments. SA residents only."}].map(opt=><div key={opt.id} onClick={()=>set("pay",opt.id)} style={{padding:"15px 18px",borderRadius:12,cursor:"pointer",border:`2px solid ${f.pay===opt.id?"#C0838E":"rgba(160,90,102,0.12)"}`,background:f.pay===opt.id?"#F2DCDF":"#FDFAF6",transition:"all .22s"}}>
-              <div style={{fontWeight:600,fontSize:14,color:"#150E06",marginBottom:3}}>{opt.l}</div>
-              <div style={{fontSize:12,color:"#96707A"}}>{opt.d}</div>
-              {f.pay===opt.id&&<div style={{fontSize:10,color:"#C0838E",marginTop:6,fontWeight:700,letterSpacing:"0.06em"}}>✓ SELECTED</div>}
+            {[{id:"EFT",l:"Direct EFT 🏦",d:"Pay via internet banking. Details emailed to you."},{id:"SnapScan",l:"SnapScan 📱",d:"Scan & pay instantly from your banking app."},{id:"Payflex",l:"Payflex 💳",d:"4 interest-free payments. SA residents only."}].map(opt=><div key={opt.id} onClick={()=>set("pay",opt.id)} style={{padding:"15px 18px",borderRadius:12,cursor:"pointer",border:`2px solid ${f.pay===opt.id?"#B97A65":"rgba(41,37,34,0.12)"}`,background:f.pay===opt.id?"#F8EFEA":"#F8F5F1",transition:"all .22s"}}>
+              <div style={{fontWeight:600,fontSize:14,color:"#292522",marginBottom:3}}>{opt.l}</div>
+              <div style={{fontSize:12,color:"#6F6863"}}>{opt.d}</div>
+              {f.pay===opt.id&&<div style={{fontSize:10,color:"#B97A65",marginTop:6,fontWeight:700,letterSpacing:"0.06em"}}>✓ SELECTED</div>}
             </div>)}
-            <div style={{background:"#F5EFE4",borderRadius:14,padding:18,marginTop:4}}>
-              <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",color:"#96707A",marginBottom:14}}>Order Summary</div>
+            <div style={{background:"#F1EBE5",borderRadius:14,padding:18,marginTop:4}}>
+              <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",color:"#6F6863",marginBottom:14}}>Order Summary</div>
               {[["Service",`${svc?.emoji??""} ${f.service}`],["Hair Type",f.type],["Condition",f.condition],["Shipping",`${f.logistic} — ${f.branch}`]].map(([k,v])=>(
-                <div key={k} style={{display:"flex",justifyContent:"space-between",marginBottom:8}}><span style={{fontSize:12,color:"#96707A"}}>{k}</span><span style={{fontSize:12,color:"#150E06",fontWeight:500}}>{v}</span></div>
+                <div key={k} style={{display:"flex",justifyContent:"space-between",marginBottom:8}}><span style={{fontSize:12,color:"#6F6863"}}>{k}</span><span style={{fontSize:12,color:"#292522",fontWeight:500}}>{v}</span></div>
               ))}
-              <div style={{height:1,background:"rgba(160,90,102,0.12)",margin:"12px 0"}}/>
+              <div style={{height:1,background:"rgba(41,37,34,0.12)",margin:"12px 0"}}/>
               <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-                <span style={{fontWeight:600,color:"#150E06",fontSize:14}}>Total</span>
-                <span className="serif" style={{fontSize:30,color:"#C0838E",fontWeight:300}}>R{svc?.price??0}</span>
+                <span style={{fontWeight:600,color:"#292522",fontSize:14}}>Total</span>
+                <span className="serif" style={{fontSize:30,color:"#B97A65",fontWeight:300}}>R{svc?.price??0}</span>
               </div>
             </div>
           </div>}
@@ -1103,32 +1103,32 @@ const TrackOrder = ({orders, setPage}) => {
   const stageIdx = result ? TRACK_STAGES.findIndex(s => s.key === result.status) : -1;
 
   return (
-    <div style={{minHeight:"100dvh",background:"linear-gradient(160deg,#FDFAF6,#F5EFE4)",paddingTop:"calc(var(--nav-h) + 16px)"}}>
+    <div style={{minHeight:"100dvh",background:"linear-gradient(160deg,#F8F5F1,#F1EBE5)",paddingTop:"calc(var(--nav-h) + 16px)"}}>
       <div style={{maxWidth:560,margin:"0 auto",padding:"32px 20px"}}>
 
         {/* Header */}
         <div style={{textAlign:"center",marginBottom:36}}>
-          <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.28em",color:"#C0838E",textTransform:"uppercase",marginBottom:8}}>📦 Live Status</div>
-          <h1 className="serif" style={{fontSize:"clamp(28px,6vw,44px)",fontWeight:300,color:"#150E06",marginBottom:10,lineHeight:1.1}}>
+          <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.28em",color:"#B97A65",textTransform:"uppercase",marginBottom:8}}>📦 Live Status</div>
+          <h1 className="serif" style={{fontSize:"clamp(28px,6vw,44px)",fontWeight:300,color:"#292522",marginBottom:10,lineHeight:1.1}}>
             Track My <em>Wig</em>
           </h1>
-          <p style={{fontSize:13,color:"#96707A",lineHeight:1.7,maxWidth:340,margin:"0 auto"}}>
+          <p style={{fontSize:13,color:"#6F6863",lineHeight:1.7,maxWidth:340,margin:"0 auto"}}>
             Enter your order ID (starts with WL-) or the phone number you booked with.
           </p>
         </div>
 
         {/* Search box */}
-        <div style={{background:"#fff",borderRadius:20,padding:"24px",boxShadow:"0 8px 40px rgba(21,14,6,0.08)",marginBottom:24,border:"1px solid rgba(160,90,102,0.1)"}}>
-          <div style={{fontSize:11,fontWeight:700,color:"#96707A",letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:10}}>Your Order ID or Phone Number</div>
+        <div style={{background:"#fff",borderRadius:20,padding:"24px",boxShadow:"0 8px 40px rgba(41,37,34,0.08)",marginBottom:24,border:"1px solid rgba(41,37,34,0.1)"}}>
+          <div style={{fontSize:11,fontWeight:700,color:"#6F6863",letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:10}}>Your Order ID or Phone Number</div>
           <div style={{display:"flex",gap:10}}>
             <input
               value={input}
               onChange={e=>{sInput(e.target.value);sSearched(false);sResult(null);sNotFound(false);}}
               onKeyDown={e=>e.key==="Enter"&&search()}
               placeholder="e.g. WL-1001 or 0821234567"
-              style={{flex:1,padding:"13px 16px",borderRadius:12,border:"1.5px solid rgba(160,90,102,0.2)",fontSize:15,fontFamily:"'Jost',sans-serif",outline:"none",background:"#FDFAF6",letterSpacing:"0.04em"}}
+              style={{flex:1,padding:"13px 16px",borderRadius:12,border:"1.5px solid rgba(41,37,34,0.2)",fontSize:15,fontFamily:"'Jost',sans-serif",outline:"none",background:"#F8F5F1",letterSpacing:"0.04em"}}
             />
-            <button onClick={search} style={{background:"linear-gradient(135deg,#C0838E,#A05A66)",border:"none",borderRadius:12,padding:"13px 22px",cursor:"pointer",color:"#fff",fontSize:13,fontWeight:700,fontFamily:"'Jost',sans-serif",letterSpacing:"0.06em",whiteSpace:"nowrap",flexShrink:0}}>
+            <button onClick={search} style={{background:"linear-gradient(135deg,#B97A65,#A96855)",border:"none",borderRadius:12,padding:"13px 22px",cursor:"pointer",color:"#fff",fontSize:13,fontWeight:700,fontFamily:"'Jost',sans-serif",letterSpacing:"0.06em",whiteSpace:"nowrap",flexShrink:0}}>
               Track →
             </button>
           </div>
@@ -1136,10 +1136,10 @@ const TrackOrder = ({orders, setPage}) => {
 
         {/* Not found */}
         {notFound&&(
-          <div style={{background:"#fff8f0",border:"1px solid rgba(192,131,142,0.25)",borderRadius:16,padding:"20px 24px",textAlign:"center",marginBottom:24}}>
+          <div style={{background:"#F8F5F1",border:"1px solid rgba(185,122,101,0.25)",borderRadius:16,padding:"20px 24px",textAlign:"center",marginBottom:24}}>
             <div style={{fontSize:32,marginBottom:8}}>🤔</div>
-            <div style={{fontSize:14,fontWeight:600,color:"#150E06",marginBottom:6}}>Order not found</div>
-            <div style={{fontSize:12,color:"#96707A",lineHeight:1.7}}>
+            <div style={{fontSize:14,fontWeight:600,color:"#292522",marginBottom:6}}>Order not found</div>
+            <div style={{fontSize:12,color:"#6F6863",lineHeight:1.7}}>
               Double-check your order ID (format: WL-1001) or try the phone number you used when booking. Need help? WhatsApp us!
             </div>
           </div>
@@ -1150,18 +1150,18 @@ const TrackOrder = ({orders, setPage}) => {
           <div style={{animation:"fadeUp .4s ease both"}}>
 
             {/* Order card */}
-            <div style={{background:"#fff",borderRadius:20,padding:"22px 24px",boxShadow:"0 8px 40px rgba(21,14,6,0.1)",marginBottom:20,border:"1px solid rgba(160,90,102,0.1)"}}>
+            <div style={{background:"#fff",borderRadius:20,padding:"22px 24px",boxShadow:"0 8px 40px rgba(41,37,34,0.1)",marginBottom:20,border:"1px solid rgba(41,37,34,0.1)"}}>
               <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:16,flexWrap:"wrap",gap:8}}>
                 <div>
-                  <div style={{fontSize:12,color:"#96707A",fontWeight:600,letterSpacing:"0.06em",textTransform:"uppercase",marginBottom:2}}>Order</div>
-                  <div style={{fontSize:22,fontWeight:700,color:"#150E06",letterSpacing:"0.04em"}}>{result.id}</div>
+                  <div style={{fontSize:12,color:"#6F6863",fontWeight:600,letterSpacing:"0.06em",textTransform:"uppercase",marginBottom:2}}>Order</div>
+                  <div style={{fontSize:22,fontWeight:700,color:"#292522",letterSpacing:"0.04em"}}>{result.id}</div>
                 </div>
                 <div style={{
-                  background:`${Object.values({Booked:"#4A6A9A","Received & Inspected":"#C0838E","Washing/Detoxing":"#5a8aa0","Styling/Drying":"#8A5A78","Dispatched/Shipped":"#4A8A5A"})[Object.keys({Booked:1,"Received & Inspected":1,"Washing/Detoxing":1,"Styling/Drying":1,"Dispatched/Shipped":1}).indexOf(result.status)]}22`,
-                  border:`1.5px solid ${Object.values({Booked:"#4A6A9A","Received & Inspected":"#C0838E","Washing/Detoxing":"#5a8aa0","Styling/Drying":"#8A5A78","Dispatched/Shipped":"#4A8A5A"})[Object.keys({Booked:1,"Received & Inspected":1,"Washing/Detoxing":1,"Styling/Drying":1,"Dispatched/Shipped":1}).indexOf(result.status)]}55`,
+                  background:`${Object.values({Booked:"#4A6A9A","Received & Inspected":"#B97A65","Washing/Detoxing":"#5a8aa0","Styling/Drying":"#8A5A78","Dispatched/Shipped":"#4A8A5A"})[Object.keys({Booked:1,"Received & Inspected":1,"Washing/Detoxing":1,"Styling/Drying":1,"Dispatched/Shipped":1}).indexOf(result.status)]}22`,
+                  border:`1.5px solid ${Object.values({Booked:"#4A6A9A","Received & Inspected":"#B97A65","Washing/Detoxing":"#5a8aa0","Styling/Drying":"#8A5A78","Dispatched/Shipped":"#4A8A5A"})[Object.keys({Booked:1,"Received & Inspected":1,"Washing/Detoxing":1,"Styling/Drying":1,"Dispatched/Shipped":1}).indexOf(result.status)]}55`,
                   borderRadius:20,padding:"5px 14px",
                 }}>
-                  <span style={{fontSize:11,fontWeight:700,color:"#150E06",letterSpacing:"0.06em"}}>{result.status}</span>
+                  <span style={{fontSize:11,fontWeight:700,color:"#292522",letterSpacing:"0.06em"}}>{result.status}</span>
                 </div>
               </div>
               <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
@@ -1172,25 +1172,25 @@ const TrackOrder = ({orders, setPage}) => {
                   {l:"Branch",v:result.branch},
                   ...(result.paxi?[{l:"Tracking #",v:result.paxi}]:[]),
                 ].map(r=>(
-                  <div key={r.l} style={{background:"#FDFAF6",borderRadius:10,padding:"10px 12px"}}>
-                    <div style={{fontSize:9.5,fontWeight:700,color:"#C0838E",letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:2}}>{r.l}</div>
-                    <div style={{fontSize:13,fontWeight:600,color:"#150E06"}}>{r.v||"—"}</div>
+                  <div key={r.l} style={{background:"#F8F5F1",borderRadius:10,padding:"10px 12px"}}>
+                    <div style={{fontSize:9.5,fontWeight:700,color:"#B97A65",letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:2}}>{r.l}</div>
+                    <div style={{fontSize:13,fontWeight:600,color:"#292522"}}>{r.v||"—"}</div>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Beautiful progress timeline */}
-            <div style={{background:"#fff",borderRadius:20,padding:"24px",boxShadow:"0 8px 40px rgba(21,14,6,0.08)",border:"1px solid rgba(160,90,102,0.1)"}}>
-              <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.12em",color:"#96707A",textTransform:"uppercase",marginBottom:20}}>Your Wig's Journey</div>
+            <div style={{background:"#fff",borderRadius:20,padding:"24px",boxShadow:"0 8px 40px rgba(41,37,34,0.08)",border:"1px solid rgba(41,37,34,0.1)"}}>
+              <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.12em",color:"#6F6863",textTransform:"uppercase",marginBottom:20}}>Your Wig's Journey</div>
               <div style={{position:"relative"}}>
                 {/* Vertical line */}
-                <div style={{position:"absolute",left:19,top:20,bottom:20,width:2,background:"rgba(160,90,102,0.1)",zIndex:0}}/>
+                <div style={{position:"absolute",left:19,top:20,bottom:20,width:2,background:"rgba(41,37,34,0.1)",zIndex:0}}/>
                 {/* Progress fill */}
                 <div style={{
                   position:"absolute",left:19,top:20,width:2,
                   height:`${Math.max(0,(stageIdx/(TRACK_STAGES.length-1))*100)}%`,
-                  background:"linear-gradient(to bottom,#C0838E,#A05A66)",
+                  background:"linear-gradient(to bottom,#B97A65,#A96855)",
                   zIndex:1,transition:"height .8s ease",
                 }}/>
 
@@ -1204,9 +1204,9 @@ const TrackOrder = ({orders, setPage}) => {
                         width:40,height:40,borderRadius:"50%",flexShrink:0,
                         display:"flex",alignItems:"center",justifyContent:"center",
                         fontSize:18,
-                        background:done?"linear-gradient(135deg,#C0838E,#A05A66)":active?"#fff":"#F5EFE4",
-                        border:`2px solid ${done?"transparent":active?"#C0838E":"rgba(160,90,102,0.15)"}`,
-                        boxShadow:active?"0 4px 18px rgba(192,131,142,0.45)":"none",
+                        background:done?"linear-gradient(135deg,#B97A65,#A96855)":active?"#fff":"#F1EBE5",
+                        border:`2px solid ${done?"transparent":active?"#B97A65":"rgba(41,37,34,0.15)"}`,
+                        boxShadow:active?"0 4px 18px rgba(185,122,101,0.45)":"none",
                         transition:"all .4s",
                       }}>
                         {done ? <span style={{filter:active?"none":"brightness(10)"}}>{stage.icon}</span> : <span style={{opacity:0.3}}>{stage.icon}</span>}
@@ -1215,11 +1215,11 @@ const TrackOrder = ({orders, setPage}) => {
                       <div style={{flex:1,paddingTop:4}}>
                         <div style={{
                           fontSize:14,fontWeight:700,
-                          color:active?"#C0838E":done?"#150E06":"rgba(21,14,6,0.3)",
+                          color:active?"#B97A65":done?"#292522":"rgba(41,37,34,0.3)",
                           marginBottom:3,
                           letterSpacing:"0.01em",
                         }}>{stage.label} {active&&"← YOU ARE HERE"}</div>
-                        <div style={{fontSize:11.5,color:done?"#96707A":"rgba(160,90,102,0.35)",lineHeight:1.6}}>
+                        <div style={{fontSize:11.5,color:done?"#6F6863":"rgba(41,37,34,0.35)",lineHeight:1.6}}>
                           {done||active ? stage.desc : "Waiting..."}
                         </div>
                       </div>
@@ -1230,10 +1230,10 @@ const TrackOrder = ({orders, setPage}) => {
 
               {/* Completion message */}
               {stageIdx===TRACK_STAGES.length-1&&(
-                <div style={{marginTop:20,background:"linear-gradient(135deg,#F5EFE4,#F0E8D8)",borderRadius:14,padding:"16px 20px",textAlign:"center",border:"1px solid rgba(192,131,142,0.2)"}}>
+                <div style={{marginTop:20,background:"linear-gradient(135deg,#F1EBE5,#E6DDD7)",borderRadius:14,padding:"16px 20px",textAlign:"center",border:"1px solid rgba(185,122,101,0.2)"}}>
                   <div style={{fontSize:28,marginBottom:6}}>✨🎉</div>
-                  <div style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:4}}>It's on its way!</div>
-                  <div style={{fontSize:12,color:"#96707A",lineHeight:1.7}}>
+                  <div style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:4}}>It's on its way!</div>
+                  <div style={{fontSize:12,color:"#6F6863",lineHeight:1.7}}>
                     Your wig has been lovingly restored and dispatched. Expected via <strong>{result.logistic}</strong> at your chosen branch. Track with: <strong>{result.paxi||"tracking # coming"}</strong>
                   </div>
                 </div>
@@ -1242,7 +1242,7 @@ const TrackOrder = ({orders, setPage}) => {
 
             {/* WhatsApp CTA */}
             <div style={{textAlign:"center",marginTop:20}}>
-              <div style={{fontSize:12,color:"#96707A",marginBottom:10}}>Questions about your order?</div>
+              <div style={{fontSize:12,color:"#6F6863",marginBottom:10}}>Questions about your order?</div>
               <a href={`https://wa.me/27600000000?text=${encodeURIComponent(`Hi Lavish Wig! I'm checking on order ${result.id} 💛`)}`} target="_blank" rel="noreferrer"
                 style={{display:"inline-flex",alignItems:"center",gap:8,background:"#25D366",color:"#fff",borderRadius:24,padding:"11px 24px",fontSize:12,fontWeight:700,fontFamily:"'Jost',sans-serif",textDecoration:"none",letterSpacing:"0.06em"}}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1274,14 +1274,14 @@ const SecurityCard = ({changePassword}) => {
     else sMsg({ok:false,text:"Current password is incorrect."});
   };
   return (
-    <div style={{background:"#fff",borderRadius:14,padding:"18px",border:"1px solid rgba(160,90,102,0.1)",marginTop:20}}>
-      <div style={{fontSize:10,fontWeight:700,color:"#96707A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>🔐 Dashboard Password</div>
-      <div style={{fontSize:10,color:"#C9A3A8",marginBottom:12,lineHeight:1.6}}>This is the password you enter after tapping the logo 5 times. It saves to your account, so it works on all your devices.</div>
+    <div style={{background:"#fff",borderRadius:14,padding:"18px",border:"1px solid rgba(41,37,34,0.1)",marginTop:20}}>
+      <div style={{fontSize:10,fontWeight:700,color:"#6F6863",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>🔐 Dashboard Password</div>
+      <div style={{fontSize:10,color:"#A69C95",marginBottom:12,lineHeight:1.6}}>This is the password you enter after tapping the logo 5 times. It saves to your account, so it works on all your devices.</div>
       <input type="password" value={cur} onChange={e=>sCur(e.target.value)} placeholder="Current password" style={inp} autoComplete="current-password"/>
       <input type="password" value={nw} onChange={e=>sNw(e.target.value)} placeholder="New password (min 6 characters)" style={inp} autoComplete="new-password"/>
       <input type="password" value={cf} onChange={e=>sCf(e.target.value)} placeholder="Repeat new password" style={inp} autoComplete="new-password" onKeyDown={e=>e.key==="Enter"&&submit()}/>
       {msg&&<div style={{fontSize:11,fontWeight:600,color:msg.ok?"#4A8A5A":"#A84040",marginBottom:10,lineHeight:1.5}}>{msg.ok?"✓":"✕"} {msg.text}</div>}
-      <button onClick={submit} disabled={busy} style={{background:"linear-gradient(135deg,#C0838E,#A05A66)",border:"none",borderRadius:10,padding:"11px 22px",cursor:busy?"wait":"pointer",color:"#fff",fontSize:12,fontWeight:700,fontFamily:"'Jost',sans-serif",opacity:busy?.6:1}}>{busy?"Saving…":"Change Password"}</button>
+      <button onClick={submit} disabled={busy} style={{background:"linear-gradient(135deg,#B97A65,#A96855)",border:"none",borderRadius:10,padding:"11px 22px",cursor:busy?"wait":"pointer",color:"#fff",fontSize:12,fontWeight:700,fontFamily:"'Jost',sans-serif",opacity:busy?.6:1}}>{busy?"Saving…":"Change Password"}</button>
     </div>
   );
 };
@@ -1429,30 +1429,30 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
   ];
 
   // ── Shared input style
-  const inp={width:"100%",padding:"10px 14px",borderRadius:8,border:"1.5px solid rgba(160,90,102,0.22)",fontSize:13,fontFamily:"'Jost',sans-serif",outline:"none",background:"#FDFAF6",boxSizing:"border-box"};
-  const uploadBtn={display:"flex",alignItems:"center",justifyContent:"center",gap:8,padding:"10px 18px",borderRadius:10,border:"2px dashed rgba(160,90,102,0.3)",background:"#FDFAF6",cursor:"pointer",fontSize:12,color:"#C0838E",fontWeight:700,fontFamily:"'Jost',sans-serif",transition:"all .2s"};
+  const inp={width:"100%",padding:"10px 14px",borderRadius:8,border:"1.5px solid rgba(41,37,34,0.22)",fontSize:13,fontFamily:"'Jost',sans-serif",outline:"none",background:"#F8F5F1",boxSizing:"border-box"};
+  const uploadBtn={display:"flex",alignItems:"center",justifyContent:"center",gap:8,padding:"10px 18px",borderRadius:10,border:"2px dashed rgba(41,37,34,0.3)",background:"#F8F5F1",cursor:"pointer",fontSize:12,color:"#B97A65",fontWeight:700,fontFamily:"'Jost',sans-serif",transition:"all .2s"};
 
   return (
-    <div style={{minHeight:"100dvh",background:"#F5EFE4"}}>
+    <div style={{minHeight:"100dvh",background:"#F1EBE5"}}>
 
       {/* ── TOP BAR ── */}
       <div className="dash-topbar" style={{background:"rgba(36,22,17,0.86)",backdropFilter:"blur(14px)",position:"sticky",top:0,zIndex:200,boxShadow:"0 2px 20px rgba(0,0,0,.4)"}}>
         <div style={{maxWidth:1100,margin:"0 auto",padding:"0 20px",height:52,display:"flex",alignItems:"center",justifyContent:"space-between",gap:12}}>
           <div style={{display:"flex",alignItems:"center",gap:12,minWidth:0}}>
-            <button onClick={()=>setPage("home")} className="dash-back-btn" style={{background:"rgba(192,131,142,0.15)",border:"1px solid rgba(192,131,142,0.4)",borderRadius:8,padding:"6px 14px",cursor:"pointer",color:"#E2AEB6",fontSize:12,fontFamily:"'Jost',sans-serif",fontWeight:700,letterSpacing:"0.04em",flexShrink:0}}>← Back</button>
+            <button onClick={()=>setPage("home")} className="dash-back-btn" style={{background:"rgba(185,122,101,0.15)",border:"1px solid rgba(185,122,101,0.4)",borderRadius:8,padding:"6px 14px",cursor:"pointer",color:"#D7A89A",fontSize:12,fontFamily:"'Jost',sans-serif",fontWeight:700,letterSpacing:"0.04em",flexShrink:0}}>← Back</button>
             <div style={{height:14,width:1,background:"rgba(255,255,255,.08)",flexShrink:0}}/>
-            <span className="serif" style={{fontSize:17,color:"#E2AEB6",fontStyle:"italic",whiteSpace:"nowrap"}}>Lavish Wig</span>
-            <span className="dash-admin-label" style={{fontSize:8,color:"rgba(192,131,142,.3)",letterSpacing:"0.2em",textTransform:"uppercase",whiteSpace:"nowrap"}}>ADMIN</span>
+            <span className="serif" style={{fontSize:17,color:"#D7A89A",fontStyle:"italic",whiteSpace:"nowrap"}}>Lavish Wig</span>
+            <span className="dash-admin-label" style={{fontSize:8,color:"rgba(215,168,154,.78)",letterSpacing:"0.2em",textTransform:"uppercase",whiteSpace:"nowrap"}}>ADMIN</span>
           </div>
           <div style={{display:"flex",alignItems:"center",gap:5,flexShrink:0}}>
             <div style={{width:6,height:6,borderRadius:"50%",background:"#4A8A5A",boxShadow:"0 0 6px rgba(74,138,90,.6)"}}/>
-            <span style={{fontSize:10,color:"rgba(253,250,246,.4)",whiteSpace:"nowrap"}}>Synced</span>
+            <span style={{fontSize:10,color:"rgba(248,245,241,.4)",whiteSpace:"nowrap"}}>Synced</span>
           </div>
         </div>
         <div className="hs" style={{display:"flex",overflowX:"auto",maxWidth:1100,margin:"0 auto",padding:"0 20px",borderTop:"1px solid rgba(255,255,255,.05)"}}>
           {TABS.map(t=>(
-            <button key={t.id} onClick={()=>sTab(t.id)} style={{flexShrink:0,padding:"8px 16px",background:"none",border:"none",cursor:"pointer",fontSize:10,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",color:tab===t.id?"#E2AEB6":"rgba(253,250,246,.28)",borderBottom:`2px solid ${tab===t.id?"#E2AEB6":"transparent"}`,transition:"all .2s",whiteSpace:"nowrap"}}>
-              {t.e} {t.l} {t.id==="orders"&&orders.length>0&&<span style={{background:"#C0838E",borderRadius:20,padding:"1px 6px",marginLeft:4,fontSize:9,color:"#fff"}}>{orders.length}</span>}
+            <button key={t.id} onClick={()=>sTab(t.id)} style={{flexShrink:0,padding:"8px 16px",background:"none",border:"none",cursor:"pointer",fontSize:10,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",color:tab===t.id?"#D7A89A":"rgba(248,245,241,.28)",borderBottom:`2px solid ${tab===t.id?"#D7A89A":"transparent"}`,transition:"all .2s",whiteSpace:"nowrap"}}>
+              {t.e} {t.l} {t.id==="orders"&&orders.length>0&&<span style={{background:"#B97A65",borderRadius:20,padding:"1px 6px",marginLeft:4,fontSize:9,color:"#fff"}}>{orders.length}</span>}
               {t.id==="orders"&&trash.length>0&&<span style={{background:"#A84040",borderRadius:20,padding:"1px 6px",marginLeft:3,fontSize:9,color:"#fff"}}>🗑{trash.length}</span>}
             </button>
           ))}
@@ -1466,50 +1466,50 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
         ════════════════════════════ */}
         {tab==="orders"&&<div>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:18,flexWrap:"wrap",gap:10}}>
-            <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#150E06"}}>Client Orders</h3>
+            <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#292522"}}>Client Orders</h3>
             <div style={{display:"flex",gap:8}}>
               <span style={{background:"#4A8A5A22",color:"#4A8A5A",border:"1px solid #4A8A5A44",borderRadius:20,padding:"3px 12px",fontSize:11,fontWeight:700}}>{orders.length} active</span>
               {trash.length>0&&<span style={{background:"#A8404022",color:"#A84040",border:"1px solid #A8404044",borderRadius:20,padding:"3px 12px",fontSize:11,fontWeight:700}}>🗑 {trash.length} in bin</span>}
             </div>
           </div>
 
-          {orders.length===0&&<Card style={{padding:24,textAlign:"center"}}><div style={{color:"#C9A3A8",fontSize:13}}>No active orders. New bookings from the website appear here automatically.</div></Card>}
+          {orders.length===0&&<Card style={{padding:24,textAlign:"center"}}><div style={{color:"#A69C95",fontSize:13}}>No active orders. New bookings from the website appear here automatically.</div></Card>}
 
           <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:trash.length>0?24:0}}>
             {orders.map(o=>(
               <Card key={o.id} style={{padding:0,overflow:"hidden"}}>
                 <div onClick={()=>sExp(exp===o.id?null:o.id)} style={{padding:"13px 18px",cursor:"pointer",display:"flex",alignItems:"center",gap:10,flexWrap:"wrap"}}>
-                  <span style={{fontSize:9,color:"#C9A3A8",fontFamily:"monospace",flexShrink:0}}>{o.id}</span>
-                  <span style={{fontWeight:700,fontSize:14,color:"#150E06"}}>{o.name}</span>
-                  <span style={{fontSize:11,color:"#96707A"}}>📱 {o.phone}</span>
+                  <span style={{fontSize:9,color:"#A69C95",fontFamily:"monospace",flexShrink:0}}>{o.id}</span>
+                  <span style={{fontWeight:700,fontSize:14,color:"#292522"}}>{o.name}</span>
+                  <span style={{fontSize:11,color:"#6F6863"}}>📱 {o.phone}</span>
                   <span style={{background:SCOLOR[o.status]+"22",color:SCOLOR[o.status],border:`1px solid ${SCOLOR[o.status]}44`,borderRadius:20,padding:"2px 10px",fontSize:10,fontWeight:700,flexShrink:0}}>{o.status}</span>
                   {o.type==="Blend"&&<span style={{background:"#A8404022",color:"#A84040",border:"1px solid #A8404044",borderRadius:20,padding:"2px 8px",fontSize:9,fontWeight:700}}>BLEND ⚠️</span>}
-                  <span className="serif" style={{marginLeft:"auto",color:"#150E06",fontWeight:500,fontSize:17,flexShrink:0}}>R{o.amount}</span>
-                  <span style={{color:"#C9A3A8",fontSize:11,transform:exp===o.id?"rotate(180deg)":"none",display:"inline-block",transition:"transform .2s"}}>▾</span>
+                  <span className="serif" style={{marginLeft:"auto",color:"#292522",fontWeight:500,fontSize:17,flexShrink:0}}>R{o.amount}</span>
+                  <span style={{color:"#A69C95",fontSize:11,transform:exp===o.id?"rotate(180deg)":"none",display:"inline-block",transition:"transform .2s"}}>▾</span>
                 </div>
                 {exp===o.id&&(
-                  <div style={{borderTop:"1px solid rgba(160,90,102,0.1)",padding:"16px 18px",background:"#FDFAF6"}}>
+                  <div style={{borderTop:"1px solid rgba(41,37,34,0.1)",padding:"16px 18px",background:"#F8F5F1"}}>
                     {/* Order details */}
                     <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(120px,1fr))",gap:10,marginBottom:14}}>
                       {[["Service",o.service],["Hair Type",o.type],["Condition",o.condition],["Delivery",`${o.logistic} · ${o.branch}`],["ETA",o.eta],["Tracking #",o.paxi||"—"]].map(([k,v])=>(
-                        <div key={k} style={{background:"#F5EFE4",borderRadius:8,padding:"8px 10px"}}>
-                          <div style={{fontSize:8.5,color:"#C0838E",fontWeight:700,letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:2}}>{k}</div>
-                          <div style={{fontSize:12,color:"#150E06",fontWeight:500}}>{v}</div>
+                        <div key={k} style={{background:"#F1EBE5",borderRadius:8,padding:"8px 10px"}}>
+                          <div style={{fontSize:8.5,color:"#B97A65",fontWeight:700,letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:2}}>{k}</div>
+                          <div style={{fontSize:12,color:"#292522",fontWeight:500}}>{v}</div>
                         </div>
                       ))}
                     </div>
-                    {o.notes&&<div style={{background:"#FFF8EF",border:"1px solid rgba(192,131,142,0.2)",borderRadius:8,padding:"8px 12px",fontSize:12,color:"#96707A",marginBottom:14}}>📝 {o.notes}</div>}
+                    {o.notes&&<div style={{background:"#F8F5F1",border:"1px solid rgba(185,122,101,0.2)",borderRadius:8,padding:"8px 12px",fontSize:12,color:"#6F6863",marginBottom:14}}>📝 {o.notes}</div>}
 
                     {/* Editable fields */}
                     <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:14}}>
                       <div>
-                        <div style={{fontSize:10,fontWeight:700,color:"#96707A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Update Status</div>
+                        <div style={{fontSize:10,fontWeight:700,color:"#6F6863",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Update Status</div>
                         <select value={o.status} onChange={e=>updateOrder(o.id,{status:e.target.value})} style={{...inp,fontSize:12}}>
                           {STATUSES.map(s=><option key={s}>{s}</option>)}
                         </select>
                       </div>
                       <div>
-                        <div style={{fontSize:10,fontWeight:700,color:"#96707A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Tracking Number</div>
+                        <div style={{fontSize:10,fontWeight:700,color:"#6F6863",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Tracking Number</div>
                         <input value={o.paxi} onChange={e=>updateOrder(o.id,{paxi:e.target.value})} placeholder="e.g. PX8821443" style={{...inp,fontSize:12}}/>
                       </div>
                     </div>
@@ -1538,13 +1538,13 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
           {trash.length>0&&(
             <div>
               <div style={{fontSize:11,fontWeight:700,color:"#A84040",letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:10,display:"flex",alignItems:"center",gap:8}}>
-                🗑 Bin ({trash.length}) — <span style={{color:"#96707A",fontWeight:400,fontSize:10}}>Restore or permanently delete</span>
+                🗑 Bin ({trash.length}) — <span style={{color:"#6F6863",fontWeight:400,fontSize:10}}>Restore or permanently delete</span>
               </div>
               {trash.map(o=>(
                 <div key={o.id} style={{display:"flex",alignItems:"center",gap:10,padding:"12px 16px",background:"#fff",borderRadius:10,border:"1px solid rgba(168,64,64,0.15)",marginBottom:8,flexWrap:"wrap"}}>
-                  <span style={{fontSize:9,color:"#C9A3A8",fontFamily:"monospace"}}>{o.id}</span>
-                  <span style={{fontSize:13,fontWeight:600,color:"#96707A"}}>{o.name}</span>
-                  <span style={{fontSize:11,color:"#C9A3A8"}}>{o.service}</span>
+                  <span style={{fontSize:9,color:"#A69C95",fontFamily:"monospace"}}>{o.id}</span>
+                  <span style={{fontSize:13,fontWeight:600,color:"#6F6863"}}>{o.name}</span>
+                  <span style={{fontSize:11,color:"#A69C95"}}>{o.service}</span>
                   <div style={{marginLeft:"auto",display:"flex",gap:6}}>
                     <button onClick={()=>restoreOrder(o.id)} style={{background:"#4A8A5A22",border:"1px solid #4A8A5A44",borderRadius:8,padding:"5px 12px",cursor:"pointer",fontSize:10,color:"#4A8A5A",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>↩ Restore</button>
                     <button onClick={()=>sTrash(t=>t.filter(x=>x.id!==o.id))} style={{background:"#A8404011",border:"1px solid #A8404033",borderRadius:8,padding:"5px 12px",cursor:"pointer",fontSize:10,color:"#A84040",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>Delete Forever</button>
@@ -1559,8 +1559,8 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
             ⚡ PIPELINE (visual kanban)
         ════════════════════════════ */}
         {tab==="pipeline"&&<div>
-          <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#150E06",marginBottom:6}}>Order Pipeline</h3>
-          <p style={{fontSize:12,color:"#96707A",marginBottom:20,lineHeight:1.6}}>Move orders across stages as you process them. Tap "→ Next Stage" to advance.</p>
+          <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#292522",marginBottom:6}}>Order Pipeline</h3>
+          <p style={{fontSize:12,color:"#6F6863",marginBottom:20,lineHeight:1.6}}>Move orders across stages as you process them. Tap "→ Next Stage" to advance.</p>
           <div className="hs" style={{display:"flex",gap:12,overflowX:"auto",paddingBottom:16}}>
             {STATUSES.map(status=>{
               const col=SCOLOR[status];
@@ -1574,15 +1574,15 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
                   </div>
                   <div style={{border:`1px solid ${col}20`,borderRadius:"0 0 8px 8px",background:"#fff",minHeight:60}}>
                     {items.length===0
-                      ?<div style={{padding:"14px 12px",color:"#C9A3A8",fontSize:10,textAlign:"center"}}>Empty</div>
+                      ?<div style={{padding:"14px 12px",color:"#A69C95",fontSize:10,textAlign:"center"}}>Empty</div>
                       :items.map(o=>(
-                        <div key={o.id} style={{padding:"10px 12px",borderBottom:"1px solid rgba(160,90,102,0.1)"}}>
-                          <div style={{fontSize:8.5,color:"#C9A3A8",fontFamily:"monospace"}}>{o.id}</div>
-                          <div style={{fontSize:12,fontWeight:700,color:"#150E06",marginTop:2}}>{o.name}</div>
-                          <div style={{fontSize:10,color:"#96707A"}}>{o.service}</div>
-                          <div style={{fontSize:11,color:"#C0838E",fontWeight:700,marginTop:4}}>R{o.amount}</div>
+                        <div key={o.id} style={{padding:"10px 12px",borderBottom:"1px solid rgba(41,37,34,0.1)"}}>
+                          <div style={{fontSize:8.5,color:"#A69C95",fontFamily:"monospace"}}>{o.id}</div>
+                          <div style={{fontSize:12,fontWeight:700,color:"#292522",marginTop:2}}>{o.name}</div>
+                          <div style={{fontSize:10,color:"#6F6863"}}>{o.service}</div>
+                          <div style={{fontSize:11,color:"#B97A65",fontWeight:700,marginTop:4}}>R{o.amount}</div>
                           {STATUSES.indexOf(status)<STATUSES.length-1&&(
-                            <button onClick={()=>updateOrder(o.id,{status:STATUSES[STATUSES.indexOf(status)+1]})} style={{marginTop:7,width:"100%",background:"#C0838E11",border:"1px solid #C0838E33",borderRadius:6,padding:"5px",cursor:"pointer",fontSize:9,color:"#C0838E",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>→ Next Stage</button>
+                            <button onClick={()=>updateOrder(o.id,{status:STATUSES[STATUSES.indexOf(status)+1]})} style={{marginTop:7,width:"100%",background:"#B97A6511",border:"1px solid #B97A6533",borderRadius:6,padding:"5px",cursor:"pointer",fontSize:9,color:"#B97A65",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>→ Next Stage</button>
                           )}
                         </div>
                       ))
@@ -1598,36 +1598,36 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
             ✦ SERVICES
         ════════════════════════════ */}
         {tab==="services"&&<div style={{maxWidth:580}}>
-          <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#150E06",marginBottom:20}}>Services & Prices</h3>
-          <p style={{fontSize:12,color:"#96707A",marginBottom:18,lineHeight:1.6}}>Tap ✏️ Edit to change any service name, price, description, or turnaround time. Changes show on the website instantly.</p>
+          <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#292522",marginBottom:20}}>Services & Prices</h3>
+          <p style={{fontSize:12,color:"#6F6863",marginBottom:18,lineHeight:1.6}}>Tap ✏️ Edit to change any service name, price, description, or turnaround time. Changes show on the website instantly.</p>
           <div style={{display:"flex",flexDirection:"column",gap:12}}>
             {services.map(s=>(
               <Card key={s.id} style={{padding:18}}>
                 {editSvc===s.id?(
                   <div style={{display:"flex",flexDirection:"column",gap:10}}>
-                    <div><div style={{fontSize:10,fontWeight:700,color:"#96707A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Service Name</div><input value={s.name} onChange={e=>setServices(sv=>sv.map(x=>x.id===s.id?{...x,name:e.target.value}:x))} style={inp}/></div>
+                    <div><div style={{fontSize:10,fontWeight:700,color:"#6F6863",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Service Name</div><input value={s.name} onChange={e=>setServices(sv=>sv.map(x=>x.id===s.id?{...x,name:e.target.value}:x))} style={inp}/></div>
                     <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
-                      <div><div style={{fontSize:10,fontWeight:700,color:"#96707A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Price (R)</div><input type="number" value={s.price} onChange={e=>setServices(sv=>sv.map(x=>x.id===s.id?{...x,price:Number(e.target.value)}:x))} style={inp}/></div>
-                      <div><div style={{fontSize:10,fontWeight:700,color:"#96707A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Turnaround</div><input value={s.dur} onChange={e=>setServices(sv=>sv.map(x=>x.id===s.id?{...x,dur:e.target.value}:x))} style={inp}/></div>
+                      <div><div style={{fontSize:10,fontWeight:700,color:"#6F6863",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Price (R)</div><input type="number" value={s.price} onChange={e=>setServices(sv=>sv.map(x=>x.id===s.id?{...x,price:Number(e.target.value)}:x))} style={inp}/></div>
+                      <div><div style={{fontSize:10,fontWeight:700,color:"#6F6863",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Turnaround</div><input value={s.dur} onChange={e=>setServices(sv=>sv.map(x=>x.id===s.id?{...x,dur:e.target.value}:x))} style={inp}/></div>
                     </div>
-                    <div><div style={{fontSize:10,fontWeight:700,color:"#96707A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Description</div><textarea rows={2} value={s.desc} onChange={e=>setServices(sv=>sv.map(x=>x.id===s.id?{...x,desc:e.target.value}:x))} style={{...inp,resize:"none"}}/></div>
+                    <div><div style={{fontSize:10,fontWeight:700,color:"#6F6863",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Description</div><textarea rows={2} value={s.desc} onChange={e=>setServices(sv=>sv.map(x=>x.id===s.id?{...x,desc:e.target.value}:x))} style={{...inp,resize:"none"}}/></div>
                     <div style={{display:"flex",gap:8}}>
-                      <button onClick={()=>sEditSvc(null)} style={{flex:1,background:"#C0838E",border:"none",borderRadius:8,padding:"10px",cursor:"pointer",fontSize:12,color:"#fff",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>✓ Save Changes</button>
-                      <button onClick={()=>sEditSvc(null)} style={{background:"none",border:"1px solid rgba(160,90,102,0.22)",borderRadius:8,padding:"10px 16px",cursor:"pointer",fontSize:12,color:"#96707A",fontFamily:"'Jost',sans-serif"}}>Cancel</button>
+                      <button onClick={()=>sEditSvc(null)} style={{flex:1,background:"#B97A65",border:"none",borderRadius:8,padding:"10px",cursor:"pointer",fontSize:12,color:"#fff",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>✓ Save Changes</button>
+                      <button onClick={()=>sEditSvc(null)} style={{background:"none",border:"1px solid rgba(41,37,34,0.22)",borderRadius:8,padding:"10px 16px",cursor:"pointer",fontSize:12,color:"#6F6863",fontFamily:"'Jost',sans-serif"}}>Cancel</button>
                     </div>
                   </div>
                 ):(
                   <div style={{display:"flex",alignItems:"center",gap:14}}>
                     <div style={{fontSize:26}}>{s.emoji}</div>
                     <div style={{flex:1}}>
-                      <div style={{fontWeight:700,fontSize:13,color:"#150E06"}}>{s.name}</div>
-                      <div style={{fontSize:11,color:"#96707A",marginTop:2,lineHeight:1.5}}>{s.desc}</div>
+                      <div style={{fontWeight:700,fontSize:13,color:"#292522"}}>{s.name}</div>
+                      <div style={{fontSize:11,color:"#6F6863",marginTop:2,lineHeight:1.5}}>{s.desc}</div>
                       <div style={{marginTop:6,display:"flex",gap:8}}>
                         <span style={{background:"#4A8A5A22",color:"#4A8A5A",border:"1px solid #4A8A5A44",borderRadius:12,padding:"2px 10px",fontSize:11,fontWeight:700}}>R{s.price}</span>
-                        <span style={{background:"#96707A22",color:"#96707A",border:"1px solid #96707A44",borderRadius:12,padding:"2px 10px",fontSize:11}}>{s.dur}</span>
+                        <span style={{background:"#6F686322",color:"#6F6863",border:"1px solid #6F686344",borderRadius:12,padding:"2px 10px",fontSize:11}}>{s.dur}</span>
                       </div>
                     </div>
-                    <button onClick={()=>sEditSvc(s.id)} style={{background:"#FDFAF6",border:"1px solid rgba(160,90,102,0.2)",borderRadius:8,padding:"7px 14px",cursor:"pointer",fontSize:11,color:"#C0838E",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>✏️ Edit</button>
+                    <button onClick={()=>sEditSvc(s.id)} style={{background:"#F8F5F1",border:"1px solid rgba(41,37,34,0.2)",borderRadius:8,padding:"7px 14px",cursor:"pointer",fontSize:11,color:"#B97A65",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>✏️ Edit</button>
                   </div>
                 )}
               </Card>
@@ -1640,71 +1640,71 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
         ════════════════════════════ */}
         {tab==="gallery"&&<div>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6,flexWrap:"wrap",gap:10}}>
-            <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#150E06"}}>Gallery Showcase</h3>
-            <button onClick={()=>sAddingGal(true)} style={{background:"#C0838E",border:"none",borderRadius:10,padding:"9px 18px",cursor:"pointer",fontSize:12,color:"#fff",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>+ Add Transformation</button>
+            <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#292522"}}>Gallery Showcase</h3>
+            <button onClick={()=>sAddingGal(true)} style={{background:"#B97A65",border:"none",borderRadius:10,padding:"9px 18px",cursor:"pointer",fontSize:12,color:"#fff",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>+ Add Transformation</button>
           </div>
-          <p style={{fontSize:12,color:"#96707A",marginBottom:18,lineHeight:1.6}}>
+          <p style={{fontSize:12,color:"#6F6863",marginBottom:18,lineHeight:1.6}}>
             Upload a before and after photo (or video) for each wig you've transformed. They show as a circle grid on your public Gallery page — tap any circle to reveal the before/after slider. Naming is optional. Mute any card to hide it from customers without deleting it.
           </p>
 
           {/* Add new gallery item */}
           {addingGal&&(
             <Card style={{padding:20,marginBottom:18}}>
-              <div style={{fontWeight:700,fontSize:14,color:"#150E06",marginBottom:14}}>New Transformation</div>
+              <div style={{fontWeight:700,fontSize:14,color:"#292522",marginBottom:14}}>New Transformation</div>
               <div style={{display:"flex",flexDirection:"column",gap:14}}>
                 <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
                   {["before","after"].map(slot=>(
                     <div key={slot}>
-                      <div style={{fontSize:10,fontWeight:700,color:"#96707A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>{slot==="before"?"Before":"After ✨"}</div>
+                      <div style={{fontSize:10,fontWeight:700,color:"#6F6863",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>{slot==="before"?"Before":"After ✨"}</div>
                       <label style={{...uploadBtn,display:"flex",flexDirection:"column",height:100,borderRadius:12,overflow:"hidden",padding:0,opacity:galBusy===`new-${slot}`?0.6:1}}>
                         {galBusy===`new-${slot}` ? (
-                          <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:4,padding:8}}><span style={{fontSize:18}}>⏳</span><span style={{fontSize:9,color:"#C0838E",fontWeight:700}}>Processing...</span></div>
+                          <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:4,padding:8}}><span style={{fontSize:18}}>⏳</span><span style={{fontSize:9,color:"#B97A65",fontWeight:700}}>Processing...</span></div>
                         ) : newGal[slot] ? (
                           newGal[slot].type==="video"
                             ? <video src={newGal[slot].url} muted style={{width:"100%",height:"100%",objectFit:"cover"}}/>
                             : <img src={newGal[slot].url} alt={slot} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
                         ) : (
-                          <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:4,padding:8}}><span style={{fontSize:18}}>📸</span><span style={{fontSize:9,color:"#C0838E",fontWeight:700,textAlign:"center"}}>Tap to upload</span></div>
+                          <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:4,padding:8}}><span style={{fontSize:18}}>📸</span><span style={{fontSize:9,color:"#B97A65",fontWeight:700,textAlign:"center"}}>Tap to upload</span></div>
                         )}
                         <input type="file" accept="image/*,video/*" style={{display:"none"}} onChange={e=>handleGalMedia(e,slot,"new")} disabled={!!galBusy}/>
                       </label>
                     </div>
                   ))}
                 </div>
-                <div><div style={{fontSize:10,fontWeight:700,color:"#96707A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Name / Caption (optional)</div><input value={newGal.label} onChange={e=>sNewGal(n=>({...n,label:e.target.value}))} placeholder="e.g. Brazilian Body Wave — leave blank if you like" style={inp}/></div>
+                <div><div style={{fontSize:10,fontWeight:700,color:"#6F6863",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Name / Caption (optional)</div><input value={newGal.label} onChange={e=>sNewGal(n=>({...n,label:e.target.value}))} placeholder="e.g. Brazilian Body Wave — leave blank if you like" style={inp}/></div>
                 <div style={{display:"flex",gap:8}}>
-                  <button onClick={()=>{setGallery(g=>[...g,{id:Date.now(),label:newGal.label,before:newGal.before,after:newGal.after,hidden:false}]);sNewGal({label:"",before:null,after:null});sAddingGal(false);}} style={{flex:1,background:"#C0838E",border:"none",borderRadius:8,padding:"10px",cursor:"pointer",fontSize:12,color:"#fff",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>Save to Gallery</button>
-                  <button onClick={()=>{sAddingGal(false);sNewGal({label:"",before:null,after:null});}} style={{background:"none",border:"1px solid rgba(160,90,102,0.22)",borderRadius:8,padding:"10px 16px",cursor:"pointer",fontSize:12,color:"#96707A",fontFamily:"'Jost',sans-serif"}}>Cancel</button>
+                  <button onClick={()=>{setGallery(g=>[...g,{id:Date.now(),label:newGal.label,before:newGal.before,after:newGal.after,hidden:false}]);sNewGal({label:"",before:null,after:null});sAddingGal(false);}} style={{flex:1,background:"#B97A65",border:"none",borderRadius:8,padding:"10px",cursor:"pointer",fontSize:12,color:"#fff",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>Save to Gallery</button>
+                  <button onClick={()=>{sAddingGal(false);sNewGal({label:"",before:null,after:null});}} style={{background:"none",border:"1px solid rgba(41,37,34,0.22)",borderRadius:8,padding:"10px 16px",cursor:"pointer",fontSize:12,color:"#6F6863",fontFamily:"'Jost',sans-serif"}}>Cancel</button>
                 </div>
               </div>
             </Card>
           )}
 
           {gallery.length===0 && !addingGal && (
-            <Card style={{padding:24,textAlign:"center"}}><div style={{color:"#C9A3A8",fontSize:13}}>No transformations yet. Tap "+ Add Transformation" to showcase your first wig!</div></Card>
+            <Card style={{padding:24,textAlign:"center"}}><div style={{color:"#A69C95",fontSize:13}}>No transformations yet. Tap "+ Add Transformation" to showcase your first wig!</div></Card>
           )}
 
           <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(220px,1fr))",gap:14}}>
             {gallery.map(item=>(
-              <Card key={item.id} style={{padding:0,overflow:"hidden",opacity:item.hidden?0.5:1,border:item.hidden?"1.5px dashed rgba(160,90,102,0.3)":undefined}}>
+              <Card key={item.id} style={{padding:0,overflow:"hidden",opacity:item.hidden?0.5:1,border:item.hidden?"1.5px dashed rgba(41,37,34,0.3)":undefined}}>
                 {/* Before/after thumbnail pair */}
                 <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",height:110}}>
                   {["before","after"].map(slot=>(
-                    <div key={slot} style={{position:"relative",background:item[slot]?"#1a1208":"#FDFAF6",overflow:"hidden"}}>
+                    <div key={slot} style={{position:"relative",background:item[slot]?"#1a1208":"#F8F5F1",overflow:"hidden"}}>
                       {item[slot] ? (
                         item[slot].type==="video"
                           ? <video src={item[slot].url} muted style={{width:"100%",height:"100%",objectFit:"cover"}}/>
                           : <img src={item[slot].url} alt={slot} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
                       ) : (
-                        <label className="gal-upload-label" style={{position:"absolute",inset:0,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:5,cursor:"pointer",border:"1.5px dashed rgba(160,90,102,0.3)",transition:"background .2s,border-color .2s"}}>
+                        <label className="gal-upload-label" style={{position:"absolute",inset:0,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:5,cursor:"pointer",border:"1.5px dashed rgba(41,37,34,0.3)",transition:"background .2s,border-color .2s"}}>
                           <span style={{fontSize:18}}>📸</span>
-                          <span style={{fontSize:9,color:"#C0838E",fontWeight:700,textAlign:"center",letterSpacing:"0.02em"}}>Tap to add<br/>{slot} photo</span>
+                          <span style={{fontSize:9,color:"#B97A65",fontWeight:700,textAlign:"center",letterSpacing:"0.02em"}}>Tap to add<br/>{slot} photo</span>
                           <input type="file" accept="image/*,video/*" style={{display:"none"}} onChange={e=>handleGalMedia(e,slot,item.id)}/>
                         </label>
                       )}
-                      <div style={{position:"absolute",top:4,left:4,background:item[slot]?"rgba(0,0,0,0.55)":"rgba(192,131,142,0.16)",color:item[slot]?"#fff":"#A05A66",fontSize:7.5,fontWeight:700,padding:"2px 6px",borderRadius:10,letterSpacing:"0.06em",textTransform:"uppercase"}}>{slot}</div>
+                      <div style={{position:"absolute",top:4,left:4,background:item[slot]?"rgba(0,0,0,0.55)":"rgba(185,122,101,0.16)",color:item[slot]?"#fff":"#A96855",fontSize:7.5,fontWeight:700,padding:"2px 6px",borderRadius:10,letterSpacing:"0.06em",textTransform:"uppercase"}}>{slot}</div>
                       {item[slot]&&(
-                        <label style={{position:"absolute",bottom:4,right:4,background:"rgba(192,131,142,0.92)",borderRadius:6,padding:"3px 7px",cursor:"pointer",fontSize:8,color:"#fff",fontWeight:700}}>
+                        <label style={{position:"absolute",bottom:4,right:4,background:"rgba(185,122,101,0.92)",borderRadius:6,padding:"3px 7px",cursor:"pointer",fontSize:8,color:"#fff",fontWeight:700}}>
                           📸
                           <input type="file" accept="image/*,video/*" style={{display:"none"}} onChange={e=>handleGalMedia(e,slot,item.id)}/>
                         </label>
@@ -1715,14 +1715,14 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
                 {editGal===item.id?(
                   <div style={{padding:12,display:"flex",flexDirection:"column",gap:8}}>
                     <input value={item.label} onChange={e=>setGallery(g=>g.map(x=>x.id===item.id?{...x,label:e.target.value}:x))} style={{...inp,fontSize:11}} placeholder="Name / caption (optional)"/>
-                    <button onClick={()=>sEditGal(null)} style={{background:"#C0838E",border:"none",borderRadius:7,padding:"7px",cursor:"pointer",fontSize:11,color:"#fff",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>✓ Save</button>
+                    <button onClick={()=>sEditGal(null)} style={{background:"#B97A65",border:"none",borderRadius:7,padding:"7px",cursor:"pointer",fontSize:11,color:"#fff",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>✓ Save</button>
                   </div>
                 ):(
                   <div style={{padding:"10px 12px"}}>
-                    <div style={{fontWeight:600,fontSize:11,color:"#150E06",marginBottom:8,minHeight:14}}>{item.label||<span style={{color:"#C9A3A8",fontStyle:"italic"}}>Untitled</span>}</div>
+                    <div style={{fontWeight:600,fontSize:11,color:"#292522",marginBottom:8,minHeight:14}}>{item.label||<span style={{color:"#A69C95",fontStyle:"italic"}}>Untitled</span>}</div>
                     <div style={{display:"flex",gap:6,alignItems:"center"}}>
-                      <button onClick={()=>sEditGal(item.id)} style={{flex:1,background:"#F5EFE4",border:"1px solid rgba(160,90,102,0.15)",borderRadius:6,padding:"6px",cursor:"pointer",fontSize:10,color:"#C0838E",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>✏️ Rename</button>
-                      <button onClick={()=>setGallery(g=>g.map(x=>x.id===item.id?{...x,hidden:!x.hidden}:x))} style={{background:item.hidden?"#4A8A5A11":"#96707A11",border:`1px solid ${item.hidden?"#4A8A5A44":"rgba(160,90,102,0.25)"}`,borderRadius:6,padding:"6px 9px",cursor:"pointer",fontSize:10,color:item.hidden?"#4A8A5A":"#96707A",fontWeight:700,fontFamily:"'Jost',sans-serif",whiteSpace:"nowrap"}}>{item.hidden?"👁 Show":"🙈 Mute"}</button>
+                      <button onClick={()=>sEditGal(item.id)} style={{flex:1,background:"#F1EBE5",border:"1px solid rgba(41,37,34,0.15)",borderRadius:6,padding:"6px",cursor:"pointer",fontSize:10,color:"#B97A65",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>✏️ Rename</button>
+                      <button onClick={()=>setGallery(g=>g.map(x=>x.id===item.id?{...x,hidden:!x.hidden}:x))} style={{background:item.hidden?"#4A8A5A11":"#6F686311",border:`1px solid ${item.hidden?"#4A8A5A44":"rgba(41,37,34,0.25)"}`,borderRadius:6,padding:"6px 9px",cursor:"pointer",fontSize:10,color:item.hidden?"#4A8A5A":"#6F6863",fontWeight:700,fontFamily:"'Jost',sans-serif",whiteSpace:"nowrap"}}>{item.hidden?"👁 Show":"🙈 Mute"}</button>
                       <button onClick={()=>setGallery(g=>g.filter(x=>x.id!==item.id))} style={{background:"#A8404011",border:"1px solid #A8404033",borderRadius:6,padding:"6px 8px",cursor:"pointer",fontSize:10,color:"#A84040",fontFamily:"'Jost',sans-serif"}}>🗑</button>
                     </div>
                   </div>
@@ -1737,27 +1737,27 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
         ════════════════════════════ */}
         {tab==="wigofday"&&<div style={{maxWidth:520}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6,flexWrap:"wrap",gap:10}}>
-            <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#150E06"}}>✨ Wig of the Week</h3>
+            <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#292522"}}>✨ Wig of the Week</h3>
             {/* Toggle to show/hide on site */}
             <div style={{display:"flex",alignItems:"center",gap:10}}>
-              <span style={{fontSize:11,color:"#96707A"}}>{sectionsOn.wigOfDay!==false?"Visible on site":"Hidden from site"}</span>
-              <button onClick={()=>toggleSection("wigOfDay")} style={{width:44,height:25,borderRadius:20,border:"none",cursor:"pointer",background:sectionsOn.wigOfDay!==false?"#C0838E":"#E5DDD0",position:"relative",transition:"background .2s",flexShrink:0}}>
+              <span style={{fontSize:11,color:"#6F6863"}}>{sectionsOn.wigOfDay!==false?"Visible on site":"Hidden from site"}</span>
+              <button onClick={()=>toggleSection("wigOfDay")} style={{width:44,height:25,borderRadius:20,border:"none",cursor:"pointer",background:sectionsOn.wigOfDay!==false?"#B97A65":"#E6DDD7",position:"relative",transition:"background .2s",flexShrink:0}}>
                 <div style={{position:"absolute",top:2.5,left:sectionsOn.wigOfDay!==false?21:2.5,width:20,height:20,borderRadius:"50%",background:"#fff",transition:"left .2s",boxShadow:"0 1px 4px rgba(0,0,0,0.25)"}}/>
               </button>
             </div>
           </div>
-          <p style={{fontSize:12,color:"#96707A",marginBottom:20,lineHeight:1.6}}>
+          <p style={{fontSize:12,color:"#6F6863",marginBottom:20,lineHeight:1.6}}>
             Upload a photo or short video of a freshly restored wig. Customers see a compact card that expands when tapped, and can tap the media to view it full-screen. Photos are automatically compressed so the site stays fast.
           </p>
 
           <Card style={{padding:20,marginBottom:16}}>
-            <div style={{fontWeight:700,fontSize:13,color:"#150E06",marginBottom:14}}>Photo or Video</div>
+            <div style={{fontWeight:700,fontSize:13,color:"#292522",marginBottom:14}}>Photo or Video</div>
 
             <label style={{...uploadBtn,display:"flex",marginBottom:10,borderRadius:14,height:wigOfWeek.media?200:100,overflow:"hidden",padding:0,opacity:uploadBusy?0.6:1,pointerEvents:uploadBusy?"none":"auto"}}>
               {uploadBusy ? (
                 <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:8,padding:24}}>
                   <span style={{fontSize:24}}>⏳</span>
-                  <span style={{fontSize:12,color:"#C0838E",fontWeight:700}}>Processing & compressing...</span>
+                  <span style={{fontSize:12,color:"#B97A65",fontWeight:700}}>Processing & compressing...</span>
                 </div>
               ) : wigOfWeek.media ? (
                 wigOfWeek.media.type==="video"
@@ -1766,8 +1766,8 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
               ) : (
                 <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:6,padding:24}}>
                   <span style={{fontSize:28}}>📸</span>
-                  <span style={{fontSize:12,color:"#C0838E",fontWeight:700}}>Tap to upload photo or video</span>
-                  <span style={{fontSize:10,color:"#96707A"}}>Photos auto-compress · Videos: keep under ~15s for fast loading</span>
+                  <span style={{fontSize:12,color:"#B97A65",fontWeight:700}}>Tap to upload photo or video</span>
+                  <span style={{fontSize:10,color:"#6F6863"}}>Photos auto-compress · Videos: keep under ~15s for fast loading</span>
                 </div>
               )}
               <input type="file" accept="image/*,video/*" style={{display:"none"}} onChange={handleWigWeekMedia} disabled={uploadBusy}/>
@@ -1777,16 +1777,16 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
             )}
 
             <div style={{marginBottom:12}}>
-              <div style={{fontSize:10,fontWeight:700,color:"#96707A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Caption (shown on site)</div>
+              <div style={{fontSize:10,fontWeight:700,color:"#6F6863",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Caption (shown on site)</div>
               <textarea value={wigOfWeek.caption} onChange={e=>setWigOfWeek(w=>({...w,caption:e.target.value}))} rows={2} style={{...inp,resize:"none"}} placeholder="e.g. Check out this incredible transformation!"/>
             </div>
 
             <div style={{marginBottom:14}}>
-              <div style={{fontSize:10,fontWeight:700,color:"#96707A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Turnaround Time (shown on site)</div>
+              <div style={{fontSize:10,fontWeight:700,color:"#6F6863",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Turnaround Time (shown on site)</div>
               <input value={wigOfWeek.turnaround} onChange={e=>setWigOfWeek(w=>({...w,turnaround:e.target.value}))} style={inp} placeholder="e.g. 3–5 day turnaround"/>
             </div>
 
-            <div style={{background:"#F2DCDF",borderRadius:8,padding:"10px 12px",fontSize:11,color:"#A05A66",lineHeight:1.6}}>
+            <div style={{background:"#F8EFEA",borderRadius:8,padding:"10px 12px",fontSize:11,color:"#A96855",lineHeight:1.6}}>
               💡 Every change here updates the live site instantly — customers see your latest upload right away.
             </div>
           </Card>
@@ -1797,39 +1797,39 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
         ════════════════════════════ */}
         {tab==="specials"&&<div style={{maxWidth:560}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:18,flexWrap:"wrap",gap:10}}>
-            <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#150E06"}}>Specials & Promos</h3>
-            <button onClick={()=>sAddingSpec(true)} style={{background:"#C0838E",border:"none",borderRadius:10,padding:"9px 18px",cursor:"pointer",fontSize:12,color:"#fff",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>+ New Special</button>
+            <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#292522"}}>Specials & Promos</h3>
+            <button onClick={()=>sAddingSpec(true)} style={{background:"#B97A65",border:"none",borderRadius:10,padding:"9px 18px",cursor:"pointer",fontSize:12,color:"#fff",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>+ New Special</button>
           </div>
 
-          <div style={{background:"#F2DCDF",borderRadius:10,padding:"10px 14px",fontSize:11.5,color:"#A05A66",lineHeight:1.6,marginBottom:16}}>
+          <div style={{background:"#F8EFEA",borderRadius:10,padding:"10px 14px",fontSize:11.5,color:"#A96855",lineHeight:1.6,marginBottom:16}}>
             💡 Active specials scroll across the top of your website in a gold banner — all visitors see them live.
           </div>
 
           {addingSpec&&(
             <Card style={{padding:20,marginBottom:16}}>
-              <div style={{fontWeight:700,fontSize:13,color:"#150E06",marginBottom:14}}>New Promotion</div>
+              <div style={{fontWeight:700,fontSize:13,color:"#292522",marginBottom:14}}>New Promotion</div>
               <div style={{display:"flex",flexDirection:"column",gap:10}}>
-                <div><div style={{fontSize:10,fontWeight:700,color:"#96707A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Headline *</div><input value={newSpec.title} onChange={e=>sNewSpec(n=>({...n,title:e.target.value}))} placeholder="e.g. Winter Special — 20% off!" style={inp}/></div>
-                <div><div style={{fontSize:10,fontWeight:700,color:"#96707A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Details (optional)</div><input value={newSpec.desc} onChange={e=>sNewSpec(n=>({...n,desc:e.target.value}))} placeholder="e.g. Valid until 31 July" style={inp}/></div>
-                <div><div style={{fontSize:10,fontWeight:700,color:"#96707A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Promo Code (optional)</div><input value={newSpec.code} onChange={e=>sNewSpec(n=>({...n,code:e.target.value.toUpperCase()}))} placeholder="e.g. WINTER20" style={inp}/></div>
+                <div><div style={{fontSize:10,fontWeight:700,color:"#6F6863",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Headline *</div><input value={newSpec.title} onChange={e=>sNewSpec(n=>({...n,title:e.target.value}))} placeholder="e.g. Winter Special — 20% off!" style={inp}/></div>
+                <div><div style={{fontSize:10,fontWeight:700,color:"#6F6863",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Details (optional)</div><input value={newSpec.desc} onChange={e=>sNewSpec(n=>({...n,desc:e.target.value}))} placeholder="e.g. Valid until 31 July" style={inp}/></div>
+                <div><div style={{fontSize:10,fontWeight:700,color:"#6F6863",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>Promo Code (optional)</div><input value={newSpec.code} onChange={e=>sNewSpec(n=>({...n,code:e.target.value.toUpperCase()}))} placeholder="e.g. WINTER20" style={inp}/></div>
                 <div style={{display:"flex",gap:8}}>
-                  <button onClick={()=>{if(newSpec.title){setSpecials(s=>[...s,{...newSpec,id:Date.now()}]);sNewSpec({title:"",desc:"",code:""});sAddingSpec(false);}}} style={{flex:1,background:"#C0838E",border:"none",borderRadius:8,padding:"10px",cursor:"pointer",fontSize:12,color:"#fff",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>Publish Now</button>
-                  <button onClick={()=>sAddingSpec(false)} style={{background:"none",border:"1px solid rgba(160,90,102,0.22)",borderRadius:8,padding:"10px 16px",cursor:"pointer",fontSize:12,color:"#96707A",fontFamily:"'Jost',sans-serif"}}>Cancel</button>
+                  <button onClick={()=>{if(newSpec.title){setSpecials(s=>[...s,{...newSpec,id:Date.now()}]);sNewSpec({title:"",desc:"",code:""});sAddingSpec(false);}}} style={{flex:1,background:"#B97A65",border:"none",borderRadius:8,padding:"10px",cursor:"pointer",fontSize:12,color:"#fff",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>Publish Now</button>
+                  <button onClick={()=>sAddingSpec(false)} style={{background:"none",border:"1px solid rgba(41,37,34,0.22)",borderRadius:8,padding:"10px 16px",cursor:"pointer",fontSize:12,color:"#6F6863",fontFamily:"'Jost',sans-serif"}}>Cancel</button>
                 </div>
               </div>
             </Card>
           )}
 
-          {specials.length===0&&!addingSpec&&<Card style={{padding:22,textAlign:"center"}}><div style={{color:"#C9A3A8",fontSize:13}}>No active specials. Add one above!</div></Card>}
+          {specials.length===0&&!addingSpec&&<Card style={{padding:22,textAlign:"center"}}><div style={{color:"#A69C95",fontSize:13}}>No active specials. Add one above!</div></Card>}
 
           <div style={{display:"flex",flexDirection:"column",gap:10}}>
             {specials.map(s=>(
-              <Card key={s.id} style={{padding:16,borderLeft:"3px solid #C0838E"}}>
+              <Card key={s.id} style={{padding:16,borderLeft:"3px solid #B97A65"}}>
                 <div style={{display:"flex",alignItems:"flex-start",gap:12}}>
                   <div style={{flex:1}}>
-                    <div style={{fontWeight:700,fontSize:13,color:"#150E06",marginBottom:3}}>🎉 {s.title}</div>
-                    {s.desc&&<div style={{fontSize:12,color:"#96707A",marginBottom:6}}>{s.desc}</div>}
-                    {s.code&&<span style={{background:"#C0838E22",color:"#C0838E",border:"1px solid #C0838E44",borderRadius:12,padding:"2px 10px",fontSize:11,fontWeight:700}}>Code: {s.code}</span>}
+                    <div style={{fontWeight:700,fontSize:13,color:"#292522",marginBottom:3}}>🎉 {s.title}</div>
+                    {s.desc&&<div style={{fontSize:12,color:"#6F6863",marginBottom:6}}>{s.desc}</div>}
+                    {s.code&&<span style={{background:"#B97A6522",color:"#B97A65",border:"1px solid #B97A6544",borderRadius:12,padding:"2px 10px",fontSize:11,fontWeight:700}}>Code: {s.code}</span>}
                   </div>
                   <button onClick={()=>setSpecials(sp=>sp.filter(x=>x.id!==s.id))} style={{background:"#A8404011",border:"1px solid #A8404033",borderRadius:8,padding:"6px 10px",cursor:"pointer",fontSize:11,color:"#A84040",fontFamily:"'Jost',sans-serif",flexShrink:0}}>🗑 Remove</button>
                 </div>
@@ -1842,17 +1842,17 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
             💰 FINANCE
         ════════════════════════════ */}
         {tab==="finance"&&<div style={{maxWidth:680}}>
-          <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#150E06",marginBottom:20}}>Financial Pulse</h3>
+          <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#292522",marginBottom:20}}>Financial Pulse</h3>
           <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(160px,1fr))",gap:12,marginBottom:20}}>
             {[
               {l:"Revenue (Bookings)",v:`R${rev.toLocaleString()}`,sub:`${orders.length} orders`,c:"#4A8A5A"},
               {l:"Monthly Expenses",v:`R${expenses.toLocaleString()}`,sub:"Edit below",c:"#A84040"},
-              {l:"Net Profit",v:`R${(rev-expenses).toLocaleString()}`,sub:rev>0?`${Math.round(((rev-expenses)/rev)*100)}% margin`:"—",c:"#C0838E"},
+              {l:"Net Profit",v:`R${(rev-expenses).toLocaleString()}`,sub:rev>0?`${Math.round(((rev-expenses)/rev)*100)}% margin`:"—",c:"#B97A65"},
             ].map(m=>(
-              <div key={m.l} style={{background:"#fff",borderRadius:14,padding:"16px 18px",border:"1px solid rgba(160,90,102,0.1)"}}>
-                <div style={{fontSize:10,color:"#96707A",fontWeight:700,letterSpacing:"0.06em",textTransform:"uppercase",marginBottom:6}}>{m.l}</div>
+              <div key={m.l} style={{background:"#fff",borderRadius:14,padding:"16px 18px",border:"1px solid rgba(41,37,34,0.1)"}}>
+                <div style={{fontSize:10,color:"#6F6863",fontWeight:700,letterSpacing:"0.06em",textTransform:"uppercase",marginBottom:6}}>{m.l}</div>
                 <div className="serif" style={{fontSize:28,color:m.c,fontWeight:400}}>{m.v}</div>
-                <div style={{fontSize:10,color:"#C9A3A8",marginTop:3}}>{m.sub}</div>
+                <div style={{fontSize:10,color:"#A69C95",marginTop:3}}>{m.sub}</div>
               </div>
             ))}
           </div>
@@ -1860,30 +1860,30 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
           {/* Editable expenses */}
           <Card style={{padding:18,marginBottom:16}}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
-              <div style={{fontWeight:700,fontSize:13,color:"#150E06"}}>Monthly Expenses</div>
-              <button onClick={()=>sEditingExp(!editingExp)} style={{background:"#F5EFE4",border:"1px solid rgba(160,90,102,0.2)",borderRadius:8,padding:"5px 12px",cursor:"pointer",fontSize:11,color:"#C0838E",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>{editingExp?"✓ Done":"✏️ Edit"}</button>
+              <div style={{fontWeight:700,fontSize:13,color:"#292522"}}>Monthly Expenses</div>
+              <button onClick={()=>sEditingExp(!editingExp)} style={{background:"#F1EBE5",border:"1px solid rgba(41,37,34,0.2)",borderRadius:8,padding:"5px 12px",cursor:"pointer",fontSize:11,color:"#B97A65",fontWeight:700,fontFamily:"'Jost',sans-serif"}}>{editingExp?"✓ Done":"✏️ Edit"}</button>
             </div>
             {editingExp
               ?<input type="number" value={expenses} onChange={e=>sExpenses(Number(e.target.value))} style={inp} placeholder="Total monthly expenses in Rands"/>
               :<div className="serif" style={{fontSize:26,color:"#A84040"}}>R{expenses.toLocaleString()}</div>
             }
-            <div style={{fontSize:11,color:"#96707A",marginTop:6}}>Rent, supplies, packaging, courier costs, etc.</div>
+            <div style={{fontSize:11,color:"#6F6863",marginTop:6}}>Rent, supplies, packaging, courier costs, etc.</div>
           </Card>
 
           {/* Revenue breakdown */}
           <Card style={{padding:18}}>
-            <div style={{fontWeight:700,fontSize:13,color:"#150E06",marginBottom:14}}>Revenue Breakdown</div>
+            <div style={{fontWeight:700,fontSize:13,color:"#292522",marginBottom:14}}>Revenue Breakdown</div>
             {services.map(s=>{
               const total=orders.filter(o=>o.service===s.name).reduce((sum,o)=>sum+o.amount,0);
               const count=orders.filter(o=>o.service===s.name).length;
               return(
                 <div key={s.id} style={{marginBottom:12}}>
                   <div style={{display:"flex",justifyContent:"space-between",marginBottom:5}}>
-                    <span style={{fontSize:12,color:"#150E06",fontWeight:600}}>{s.emoji} {s.name}</span>
-                    <span style={{fontSize:12,color:"#4A8A5A",fontWeight:700}}>R{total.toLocaleString()} <span style={{color:"#96707A",fontWeight:400}}>({count})</span></span>
+                    <span style={{fontSize:12,color:"#292522",fontWeight:600}}>{s.emoji} {s.name}</span>
+                    <span style={{fontSize:12,color:"#4A8A5A",fontWeight:700}}>R{total.toLocaleString()} <span style={{color:"#6F6863",fontWeight:400}}>({count})</span></span>
                   </div>
-                  <div style={{height:6,background:"#F5EFE4",borderRadius:6,overflow:"hidden"}}>
-                    <div style={{height:"100%",width:rev>0?`${(total/rev)*100}%`:"0%",background:"linear-gradient(90deg,#C0838E,#A05A66)",borderRadius:6,transition:"width .6s ease"}}/>
+                  <div style={{height:6,background:"#F1EBE5",borderRadius:6,overflow:"hidden"}}>
+                    <div style={{height:"100%",width:rev>0?`${(total/rev)*100}%`:"0%",background:"linear-gradient(90deg,#B97A65,#A96855)",borderRadius:6,transition:"width .6s ease"}}/>
                   </div>
                 </div>
               );
@@ -1895,17 +1895,17 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
             📞 CONTACT
         ════════════════════════════ */}
         {tab==="contact"&&<div style={{maxWidth:480}}>
-          <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#150E06",marginBottom:8}}>Contact Details</h3>
-          <p style={{fontSize:12,color:"#96707A",marginBottom:20,lineHeight:1.6}}>Update your numbers and email here. Changes take effect immediately on the floating buttons visible to customers.</p>
+          <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#292522",marginBottom:8}}>Contact Details</h3>
+          <p style={{fontSize:12,color:"#6F6863",marginBottom:20,lineHeight:1.6}}>Update your numbers and email here. Changes take effect immediately on the floating buttons visible to customers.</p>
 
           {[
             {key:"waNumber",icon:"📱",label:"WhatsApp Number",hint:"No + or spaces (e.g. 27821234567)",placeholder:"27821234567",preview:`wa.me/${contactInfo.waNumber}`,type:"tel"},
             {key:"callNumber",icon:"📞",label:"Call Number",hint:"Include + and country code",placeholder:"+27821234567",preview:`tel:${contactInfo.callNumber}`,type:"tel"},
             {key:"email",icon:"📧",label:"Business Email",hint:"Your business email address",placeholder:"hello@lavishwig.co.za",preview:`mailto:${contactInfo.email||""}`,type:"email"},
           ].map(f=>(
-            <div key={f.key} style={{background:"#fff",borderRadius:14,padding:"18px",border:"1px solid rgba(160,90,102,0.1)",marginBottom:12}}>
-              <div style={{fontSize:10,fontWeight:700,color:"#96707A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>{f.icon} {f.label}</div>
-              <div style={{fontSize:10,color:"#C9A3A8",marginBottom:7}}>{f.hint}</div>
+            <div key={f.key} style={{background:"#fff",borderRadius:14,padding:"18px",border:"1px solid rgba(41,37,34,0.1)",marginBottom:12}}>
+              <div style={{fontSize:10,fontWeight:700,color:"#6F6863",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:5}}>{f.icon} {f.label}</div>
+              <div style={{fontSize:10,color:"#A69C95",marginBottom:7}}>{f.hint}</div>
               <input
                 value={contactInfo[f.key]||""}
                 onChange={e=>setContactInfo(p=>({...p,[f.key]:e.target.value}))}
@@ -1917,7 +1917,7 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
             </div>
           ))}
 
-          <div style={{background:"#F2DCDF",borderRadius:10,padding:"12px 14px",fontSize:11,color:"#A05A66",lineHeight:1.7}}>
+          <div style={{background:"#F8EFEA",borderRadius:10,padding:"12px 14px",fontSize:11,color:"#A96855",lineHeight:1.7}}>
             💡 To find your WhatsApp number: Open WhatsApp → tap 3 dots → Settings → your number shows at top. Remove the + and spaces: +27 82 123 4567 → <strong>27821234567</strong>
           </div>
 
@@ -1928,8 +1928,8 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
             ⚙️ SITE SECTIONS
         ════════════════════════════ */}
         {tab==="site"&&<div style={{maxWidth:600}}>
-          <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#150E06",marginBottom:8}}>Site Sections</h3>
-          <p style={{fontSize:12,color:"#96707A",marginBottom:20,lineHeight:1.6}}>
+          <h3 className="serif" style={{fontSize:22,fontWeight:400,color:"#292522",marginBottom:8}}>Site Sections</h3>
+          <p style={{fontSize:12,color:"#6F6863",marginBottom:20,lineHeight:1.6}}>
             Turn any section of your website on or off. Sections toggled OFF are hidden from customers but nothing is deleted — flip them back on any time when you're ready.
           </p>
           {[
@@ -1939,20 +1939,20 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
             {key:"trust",      l:"🔬 Trust Strip",        d:"Burn test / nationwide delivery / packaging / WhatsApp badges"},
             {key:"testimonials",l:"💬 Customer Reviews",  d:"⚠️ Currently placeholder text, not real reviews — only switch this on once you've replaced them with genuine customer quotes"},
           ].map(s=>(
-            <div key={s.key} style={{display:"flex",alignItems:"center",gap:14,padding:"14px 16px",background:"#fff",borderRadius:12,border:`1.5px solid ${sectionsOn[s.key]!==false?"rgba(192,131,142,0.25)":"rgba(160,90,102,0.08)"}`,marginBottom:10,transition:"border .2s"}}>
+            <div key={s.key} style={{display:"flex",alignItems:"center",gap:14,padding:"14px 16px",background:"#fff",borderRadius:12,border:`1.5px solid ${sectionsOn[s.key]!==false?"rgba(185,122,101,0.25)":"rgba(41,37,34,0.08)"}`,marginBottom:10,transition:"border .2s"}}>
               <div style={{flex:1}}>
-                <div style={{fontSize:13,fontWeight:700,color:sectionsOn[s.key]!==false?"#150E06":"#96707A"}}>{s.l}</div>
-                <div style={{fontSize:11,color:"#96707A",marginTop:2,lineHeight:1.5}}>{s.d}</div>
+                <div style={{fontSize:13,fontWeight:700,color:sectionsOn[s.key]!==false?"#292522":"#6F6863"}}>{s.l}</div>
+                <div style={{fontSize:11,color:"#6F6863",marginTop:2,lineHeight:1.5}}>{s.d}</div>
               </div>
               <div style={{display:"flex",alignItems:"center",gap:8,flexShrink:0}}>
-                <span style={{fontSize:10,fontWeight:700,color:sectionsOn[s.key]!==false?"#4A8A5A":"#C9A3A8"}}>{sectionsOn[s.key]!==false?"ON":"OFF"}</span>
-                <button onClick={()=>toggleSection(s.key)} style={{width:46,height:26,borderRadius:20,border:"none",cursor:"pointer",background:sectionsOn[s.key]!==false?"#C0838E":"#D5CCB8",position:"relative",transition:"background .2s",flexShrink:0}}>
+                <span style={{fontSize:10,fontWeight:700,color:sectionsOn[s.key]!==false?"#4A8A5A":"#A69C95"}}>{sectionsOn[s.key]!==false?"ON":"OFF"}</span>
+                <button onClick={()=>toggleSection(s.key)} style={{width:46,height:26,borderRadius:20,border:"none",cursor:"pointer",background:sectionsOn[s.key]!==false?"#B97A65":"#E6DDD7",position:"relative",transition:"background .2s",flexShrink:0}}>
                   <div style={{position:"absolute",top:3,left:sectionsOn[s.key]!==false?23:3,width:20,height:20,borderRadius:"50%",background:"#fff",transition:"left .2s",boxShadow:"0 1px 4px rgba(0,0,0,0.2)"}}/>
                 </button>
               </div>
             </div>
           ))}
-          <div style={{marginTop:8,padding:"12px 14px",background:"#F2DCDF",borderRadius:10,fontSize:11,color:"#A05A66",lineHeight:1.6}}>
+          <div style={{marginTop:8,padding:"12px 14px",background:"#F8EFEA",borderRadius:10,fontSize:11,color:"#A96855",lineHeight:1.6}}>
             💡 Hero section, About, Booking form, and Track My Wig are always visible — they're essential for customers to use the site.
           </div>
         </div>}
@@ -1966,18 +1966,18 @@ const Dashboard = ({orders,setOrders,updateOrder,services,setServices,gallery,se
 const AboutUs = () => (
   <section id="about" style={{padding:"56px 28px",maxWidth:760,margin:"0 auto"}}>
     <div>
-        <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.2em",color:"#C0838E",textTransform:"uppercase",marginBottom:12}}>About Us</div>
-        <h2 className="serif" style={{fontSize:"clamp(26px,4vw,42px)",fontWeight:300,color:"#150E06",marginBottom:14,lineHeight:1.15}}>
+        <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.2em",color:"#B97A65",textTransform:"uppercase",marginBottom:12}}>About Us</div>
+        <h2 className="serif" style={{fontSize:"clamp(26px,4vw,42px)",fontWeight:300,color:"#292522",marginBottom:14,lineHeight:1.15}}>
           Your wig is an investment.<br/><em>We treat it like one.</em>
         </h2>
-        <p style={{fontSize:14,color:"#96707A",lineHeight:1.8,marginBottom:24,maxWidth:560}}>
+        <p style={{fontSize:14,color:"#6F6863",lineHeight:1.8,marginBottom:24,maxWidth:560}}>
           Cape Town's home for professional wig laundry & restoration — human hair, blends, frontals, the lot. Ship it anywhere in SA via Paxi or PostNet, no address needed.
         </p>
         <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:12}} className="about-stats">
           {[{n:"120+",l:"Restored"},{n:"3+",l:"Years"},{n:"100%",l:"SA Owned"},{n:"24hr",l:"Reply Time"}].map(s=>(
-            <div key={s.l} style={{background:"#F5EFE4",borderRadius:12,padding:"12px 10px",textAlign:"center"}}>
-              <div className="serif" style={{fontSize:20,color:"#C0838E",fontWeight:400}}>{s.n}</div>
-              <div style={{fontSize:9.5,color:"#96707A",marginTop:2,fontWeight:600,letterSpacing:"0.04em"}}>{s.l}</div>
+            <div key={s.l} style={{background:"#F1EBE5",borderRadius:12,padding:"12px 10px",textAlign:"center"}}>
+              <div className="serif" style={{fontSize:20,color:"#B97A65",fontWeight:400}}>{s.n}</div>
+              <div style={{fontSize:9.5,color:"#6F6863",marginTop:2,fontWeight:600,letterSpacing:"0.04em"}}>{s.l}</div>
             </div>
           ))}
         </div>
@@ -2011,7 +2011,7 @@ const WigOfDay = ({data}) => {
   const turnaround = data.turnaround || "3–5 day turnaround";
 
   return (
-    <section ref={sectionRef} style={{padding:"36px 20px",background:"#FDFAF6",scrollMarginTop:"calc(var(--nav-h) + 16px)"}}>
+    <section ref={sectionRef} style={{padding:"36px 20px",background:"#F8F5F1",scrollMarginTop:"calc(var(--nav-h) + 16px)"}}>
       <div style={{maxWidth:540,margin:"0 auto"}}>
 
         {/* Compact collapsed card — click to expand, with hover lift + glow */}
@@ -2021,13 +2021,13 @@ const WigOfDay = ({data}) => {
           onMouseLeave={()=>sHover(false)}
           style={{
             display:"flex",alignItems:"center",gap:14,cursor:"pointer",
-            background:"linear-gradient(135deg,#FFF8EF,#F5EFE4)",
-            border:"1px solid rgba(192,131,142,0.25)",borderRadius:16,
+            background:"linear-gradient(135deg,#F8F5F1,#F1EBE5)",
+            border:"1px solid rgba(185,122,101,0.25)",borderRadius:16,
             padding:"14px 18px",
             transition:"transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease, border-color .3s ease",
             transform:hover?"translateY(-3px) scale(1.008)":"translateY(0) scale(1)",
-            boxShadow:hover?"0 12px 32px rgba(192,131,142,0.28)":"0 2px 8px rgba(192,131,142,0.08)",
-            borderColor:hover?"rgba(192,131,142,0.5)":"rgba(192,131,142,0.25)",
+            boxShadow:hover?"0 12px 32px rgba(185,122,101,0.28)":"0 2px 8px rgba(185,122,101,0.08)",
+            borderColor:hover?"rgba(185,122,101,0.5)":"rgba(185,122,101,0.25)",
           }}>
           <div style={{
             width:44,height:44,borderRadius:12,flexShrink:0,overflow:"hidden",position:"relative",
@@ -2042,12 +2042,12 @@ const WigOfDay = ({data}) => {
               : <span style={{animation:"pulseDot 2.2s ease-in-out infinite"}}>✨</span>}
           </div>
           <div style={{flex:1,minWidth:0}}>
-            <div style={{fontSize:9.5,fontWeight:700,letterSpacing:"0.16em",color:"#C0838E",textTransform:"uppercase",display:"flex",alignItems:"center",gap:5}}>
+            <div style={{fontSize:9.5,fontWeight:700,letterSpacing:"0.16em",color:"#B97A65",textTransform:"uppercase",display:"flex",alignItems:"center",gap:5}}>
               <span style={{display:"inline-block",animation:"pulseDot 2.2s ease-in-out infinite"}}>✨</span> Wig of the Week
             </div>
-            <div className="serif" style={{fontSize:16,color:"#150E06",fontStyle:"italic",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{caption}</div>
+            <div className="serif" style={{fontSize:16,color:"#292522",fontStyle:"italic",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{caption}</div>
           </div>
-          <span style={{color:"#C0838E",fontSize:16,transition:"transform .35s cubic-bezier(.34,1.56,.64,1)",transform:open?"rotate(180deg) scale(1.15)":"none",flexShrink:0,display:"inline-block"}}>▾</span>
+          <span style={{color:"#B97A65",fontSize:16,transition:"transform .35s cubic-bezier(.34,1.56,.64,1)",transform:open?"rotate(180deg) scale(1.15)":"none",flexShrink:0,display:"inline-block"}}>▾</span>
         </div>
 
         {/* Expanded content — smooth height animation, media pops in with a bounce */}
@@ -2064,11 +2064,11 @@ const WigOfDay = ({data}) => {
                   className={open?"pop":""}
                   style={{
                     position:"relative",borderRadius:18,overflow:"hidden",cursor:"zoom-in",
-                    boxShadow:"0 10px 40px rgba(21,14,6,0.16)",background:"#1a1208",
+                    boxShadow:"0 10px 40px rgba(41,37,34,0.16)",background:"#1a1208",
                     transition:"transform .3s ease, box-shadow .3s ease",
                   }}
-                  onMouseEnter={e=>{e.currentTarget.style.transform="scale(1.015)";e.currentTarget.style.boxShadow="0 16px 52px rgba(21,14,6,0.26)";}}
-                  onMouseLeave={e=>{e.currentTarget.style.transform="scale(1)";e.currentTarget.style.boxShadow="0 10px 40px rgba(21,14,6,0.16)";}}
+                  onMouseEnter={e=>{e.currentTarget.style.transform="scale(1.015)";e.currentTarget.style.boxShadow="0 16px 52px rgba(41,37,34,0.26)";}}
+                  onMouseLeave={e=>{e.currentTarget.style.transform="scale(1)";e.currentTarget.style.boxShadow="0 10px 40px rgba(41,37,34,0.16)";}}
                 >
                   {media.type==="video"
                     ? <video src={media.url} muted loop autoPlay playsInline style={{width:"100%",maxHeight:380,objectFit:"cover",display:"block"}}/>
@@ -2076,27 +2076,27 @@ const WigOfDay = ({data}) => {
                   }
                   <div style={{position:"absolute",inset:0,background:"linear-gradient(to top,rgba(0,0,0,.5) 0%,transparent 40%)"}}/>
                   {/* Sparkle badge, top corner, gently bobbing */}
-                  <div style={{position:"absolute",top:12,left:14,background:"rgba(192,131,142,0.92)",color:"#fff",fontSize:9,fontWeight:700,padding:"4px 10px",borderRadius:20,letterSpacing:"0.08em",animation:"floatB 3.2s ease-in-out infinite"}}>✨ FRESH TRANSFORMATION</div>
+                  <div style={{position:"absolute",top:12,left:14,background:"rgba(185,122,101,0.92)",color:"#fff",fontSize:9,fontWeight:700,padding:"4px 10px",borderRadius:20,letterSpacing:"0.08em",animation:"floatB 3.2s ease-in-out infinite"}}>✨ FRESH TRANSFORMATION</div>
                   <div style={{position:"absolute",bottom:12,left:14,right:14,display:"flex",justifyContent:"space-between",alignItems:"flex-end",gap:10}}>
                     <div>
                       <div style={{fontSize:13,fontWeight:700,color:"#fff"}}>{caption}</div>
                       <div style={{fontSize:10.5,color:"rgba(255,255,255,0.75)",marginTop:2}}>⏱ {turnaround}</div>
                     </div>
-                    <div style={{background:"rgba(255,255,255,0.92)",borderRadius:20,padding:"5px 12px",fontSize:9.5,fontWeight:700,color:"#150E06",whiteSpace:"nowrap",animation:"ctaBob 2.6s ease-in-out infinite"}}>🔍 Tap to expand</div>
+                    <div style={{background:"rgba(255,255,255,0.92)",borderRadius:20,padding:"5px 12px",fontSize:9.5,fontWeight:700,color:"#292522",whiteSpace:"nowrap",animation:"ctaBob 2.6s ease-in-out infinite"}}>🔍 Tap to expand</div>
                   </div>
                 </div>
               ) : (
                 <div className={open?"pop":""} style={{
                   borderRadius:18,padding:"40px 24px",textAlign:"center",
                   background:"linear-gradient(160deg,#3a1e08,#8a5020,#c89258)",
-                  boxShadow:"0 10px 40px rgba(21,14,6,0.16)",position:"relative",overflow:"hidden",
+                  boxShadow:"0 10px 40px rgba(41,37,34,0.16)",position:"relative",overflow:"hidden",
                 }}>
                   <div style={{fontSize:44,marginBottom:10,animation:"floatA 3s ease-in-out infinite"}}>✨</div>
                   <div style={{fontSize:13,fontWeight:700,color:"#fff",marginBottom:4}}>{caption}</div>
                   <div style={{fontSize:11,color:"rgba(255,255,255,0.7)"}}>⏱ {turnaround}</div>
                 </div>
               )}
-              <p style={{fontSize:11.5,color:"#96707A",textAlign:"center",marginTop:14,lineHeight:1.6}}>
+              <p style={{fontSize:11.5,color:"#6F6863",textAlign:"center",marginTop:14,lineHeight:1.6}}>
                 💬 <em>"My wig looks brand new — I'm obsessed!"</em> — Thandi, Cape Town
               </p>
             </div>
@@ -2107,7 +2107,7 @@ const WigOfDay = ({data}) => {
       {/* Lightbox — full screen expand on tap */}
       {lightbox&&media&&(
         <div onClick={()=>sLightbox(false)} className="pop" style={{
-          position:"fixed",inset:0,zIndex:9998,background:"rgba(10,6,2,0.94)",
+          position:"fixed",inset:0,zIndex:9998,background:"rgba(41,37,34,0.94)",
           display:"flex",alignItems:"center",justifyContent:"center",padding:20,
           cursor:"zoom-out",backdropFilter:"blur(4px)",
         }}>
@@ -2136,15 +2136,15 @@ const FashionFeed = () => {
   const [active,sActive]=useState(0);
 
   return (
-    <section style={{padding:"52px 0",background:"#241611",overflow:"hidden"}}>
+    <section style={{padding:"52px 0",background:"#F1EBE5",overflow:"hidden"}}>
       <div style={{maxWidth:1200,margin:"0 auto",padding:"0 20px"}}>
         {/* Header */}
         <div style={{textAlign:"center",marginBottom:28}}>
-          <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.28em",color:"rgba(192,131,142,0.7)",textTransform:"uppercase",marginBottom:6}}>💅 Inspo Drop</div>
-          <h2 className="serif" style={{fontSize:"clamp(24px,5vw,40px)",fontWeight:300,color:"#E2AEB6",margin:0,lineHeight:1.1}}>
+          <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.28em",color:"#9B7468",textTransform:"uppercase",marginBottom:6}}>💅 Inspo Drop</div>
+          <h2 className="serif" style={{fontSize:"clamp(24px,5vw,40px)",fontWeight:300,color:"#292522",margin:0,lineHeight:1.1}}>
             Wigs in <em>Fashion</em>
           </h2>
-          <p style={{fontSize:12,color:"rgba(192,131,142,0.45)",marginTop:8}}>What's hot, what's giving, what to book next 🔥</p>
+          <p style={{fontSize:12,color:"#6F6863",marginTop:8}}>What's hot, what's giving, what to book next 🔥</p>
         </div>
 
         {/* Card strip — horizontal scroll on mobile */}
@@ -2155,20 +2155,20 @@ const FashionFeed = () => {
               style={{
                 flex:"0 0 clamp(220px,68vw,280px)",scrollSnapAlign:"start",
                 borderRadius:20,overflow:"hidden",cursor:"pointer",
-                border:`1.5px solid ${i===active?"rgba(192,131,142,0.6)":"rgba(192,131,142,0.1)"}`,
+                border:`1.5px solid ${i===active?"#D7A89A":"#E6DDD7"}`,
                 transition:"all .28s",
                 transform:i===active?"translateY(-6px) scale(1.02)":"translateY(0) scale(1)",
-                boxShadow:i===active?"0 16px 48px rgba(0,0,0,0.55)":"0 4px 16px rgba(0,0,0,0.25)",
+                boxShadow:i===active?"0 16px 40px rgba(41,37,34,0.16)":"0 4px 14px rgba(41,37,34,0.07)",
               }}>
               {/* Visual */}
               <div style={{height:200,background:item.bg,display:"flex",alignItems:"center",justifyContent:"center",position:"relative"}}>
                 <div style={{fontSize:64}}>{item.emoji}</div>
-                <div style={{position:"absolute",top:12,left:12,background:"rgba(0,0,0,0.45)",borderRadius:20,padding:"3px 10px",fontSize:9,fontWeight:700,color:"#E2AEB6",letterSpacing:"0.06em"}}>{item.tag}</div>
+                <div style={{position:"absolute",top:12,left:12,background:"rgba(41,37,34,0.55)",borderRadius:20,padding:"3px 10px",fontSize:9,fontWeight:700,color:"#FFFFFF",letterSpacing:"0.06em"}}>{item.tag}</div>
               </div>
               {/* Info */}
-              <div style={{background:"#1E1610",padding:"14px 16px"}}>
-                <div style={{fontSize:14,fontWeight:700,color:"#FFFBF4",marginBottom:4,fontFamily:"'Cormorant Garamond',Georgia,serif",fontStyle:"italic"}}>{item.style}</div>
-                <div style={{fontSize:11,color:"rgba(192,131,142,0.6)",lineHeight:1.6}}>{item.desc}</div>
+              <div style={{background:"#FFFFFF",padding:"14px 16px"}}>
+                <div style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:4,fontFamily:"'Cormorant Garamond',Georgia,serif",fontStyle:"italic"}}>{item.style}</div>
+                <div style={{fontSize:11,color:"#6F6863",lineHeight:1.6}}>{item.desc}</div>
               </div>
             </div>
           ))}
@@ -2178,7 +2178,7 @@ const FashionFeed = () => {
         <div style={{textAlign:"center",marginTop:6}}>
           <div style={{display:"flex",gap:6,justifyContent:"center"}}>
             {FASHION_ITEMS.map((_,i)=>(
-              <div key={i} onClick={()=>sActive(i)} style={{width:i===active?22:6,height:6,borderRadius:10,background:i===active?"#C0838E":"rgba(192,131,142,0.25)",transition:"all .3s",cursor:"pointer"}}/>
+              <div key={i} onClick={()=>sActive(i)} style={{width:i===active?22:6,height:6,borderRadius:10,background:i===active?"#B97A65":"#DED4CC",transition:"all .3s",cursor:"pointer"}}/>
             ))}
           </div>
         </div>
@@ -2224,32 +2224,32 @@ const WigQuiz = ({setPage}) => {
   const result = resultKey ? QUIZ_RESULTS[resultKey] : null;
 
   return (
-    <section style={{padding:"56px 20px",background:"linear-gradient(160deg,#FDF4E8,#F5EFE4)",borderRadius:0}}>
+    <section style={{padding:"56px 20px",background:"linear-gradient(160deg,#F8F5F1,#F1EBE5)",borderRadius:0}}>
       <div style={{maxWidth:520,margin:"0 auto",textAlign:"center"}}>
 
         {step===-1 && <>
-          <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.2em",color:"#C0838E",textTransform:"uppercase",marginBottom:10}}>Just for fun ✨</div>
-          <h2 className="serif" style={{fontSize:"clamp(26px,4vw,38px)",fontWeight:300,color:"#150E06",marginBottom:12}}>Find your <em>signature wig style</em></h2>
-          <p style={{fontSize:13.5,color:"#96707A",marginBottom:24,lineHeight:1.7}}>3 quick questions. Zero commitment. 100% vibes. 💅</p>
+          <div style={{fontSize:11,fontWeight:700,letterSpacing:"0.2em",color:"#B97A65",textTransform:"uppercase",marginBottom:10}}>Just for fun ✨</div>
+          <h2 className="serif" style={{fontSize:"clamp(26px,4vw,38px)",fontWeight:300,color:"#292522",marginBottom:12}}>Find your <em>signature wig style</em></h2>
+          <p style={{fontSize:13.5,color:"#6F6863",marginBottom:24,lineHeight:1.7}}>3 quick questions. Zero commitment. 100% vibes. 💅</p>
           <Btn variant="gold" onClick={()=>sStep(0)} style={{fontSize:13,padding:"13px 32px"}}>Take the Quiz</Btn>
         </>}
 
         {step>=0 && step<QUIZ_QUESTIONS.length && <>
           <div style={{display:"flex",justifyContent:"center",gap:6,marginBottom:20}}>
             {QUIZ_QUESTIONS.map((_,i)=>(
-              <div key={i} style={{width:i===step?22:7,height:7,borderRadius:10,background:i<=step?"#C0838E":"rgba(160,90,102,0.18)",transition:"all .3s"}}/>
+              <div key={i} style={{width:i===step?22:7,height:7,borderRadius:10,background:i<=step?"#B97A65":"rgba(41,37,34,0.18)",transition:"all .3s"}}/>
             ))}
           </div>
-          <h3 className="serif" style={{fontSize:"clamp(20px,3vw,28px)",fontWeight:400,color:"#150E06",marginBottom:22}}>{QUIZ_QUESTIONS[step].q}</h3>
+          <h3 className="serif" style={{fontSize:"clamp(20px,3vw,28px)",fontWeight:400,color:"#292522",marginBottom:22}}>{QUIZ_QUESTIONS[step].q}</h3>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
             {QUIZ_QUESTIONS[step].opts.map(o=>(
               <button key={o.l} onClick={()=>pick(o.v)} style={{
-                background:"#fff",border:"1.5px solid rgba(160,90,102,0.18)",borderRadius:12,
-                padding:"16px 12px",fontSize:13,fontWeight:600,color:"#150E06",cursor:"pointer",
+                background:"#fff",border:"1.5px solid rgba(41,37,34,0.18)",borderRadius:12,
+                padding:"16px 12px",fontSize:13,fontWeight:600,color:"#292522",cursor:"pointer",
                 fontFamily:"'Jost',sans-serif",transition:"all .2s",
               }}
-              onMouseEnter={e=>{e.currentTarget.style.borderColor="#C0838E";e.currentTarget.style.background="#FDF4E8";}}
-              onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(160,90,102,0.18)";e.currentTarget.style.background="#fff";}}>
+              onMouseEnter={e=>{e.currentTarget.style.borderColor="#B97A65";e.currentTarget.style.background="#F8F5F1";}}
+              onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(41,37,34,0.18)";e.currentTarget.style.background="#fff";}}>
                 {o.l}
               </button>
             ))}
@@ -2258,9 +2258,9 @@ const WigQuiz = ({setPage}) => {
 
         {step===QUIZ_QUESTIONS.length && result && <>
           <div style={{fontSize:52,marginBottom:8}}>{result.emoji}</div>
-          <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.2em",color:"#C0838E",textTransform:"uppercase",marginBottom:8}}>You're a...</div>
-          <h3 className="serif" style={{fontSize:"clamp(24px,4vw,34px)",fontWeight:400,color:"#150E06",marginBottom:12}}>{result.title}</h3>
-          <p style={{fontSize:14,color:"#96707A",lineHeight:1.8,marginBottom:26,maxWidth:400,marginLeft:"auto",marginRight:"auto"}}>{result.desc}</p>
+          <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.2em",color:"#B97A65",textTransform:"uppercase",marginBottom:8}}>You're a...</div>
+          <h3 className="serif" style={{fontSize:"clamp(24px,4vw,34px)",fontWeight:400,color:"#292522",marginBottom:12}}>{result.title}</h3>
+          <p style={{fontSize:14,color:"#6F6863",lineHeight:1.8,marginBottom:26,maxWidth:400,marginLeft:"auto",marginRight:"auto"}}>{result.desc}</p>
           <div style={{display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap"}}>
             <Btn variant="gold" onClick={()=>setPage("book")} style={{fontSize:12,padding:"12px 26px"}}>Book My Wash</Btn>
             <Btn variant="ghost" onClick={restart} style={{fontSize:12,padding:"12px 26px"}}>Try Again</Btn>
@@ -2276,7 +2276,7 @@ const WigQuiz = ({setPage}) => {
 // 🌟 HOME SHOWCASE — rounded-square grid of transformations,
 // front and center on the homepage. This is the hook.
 // ══════════════════════════════════════════════════════════════
-const SHOWCASE_PALETTE = ["#C0838E","#8A5A78","#4A8A9A","#A05A66","#5A8A6A","#B8824A"];
+const SHOWCASE_PALETTE = ["#B97A65","#8A5A78","#4A8A9A","#A96855","#5A8A6A","#B8824A"];
 
 const ShowcaseCard = ({item, color, index, onClick}) => {
   const [tilt,sTilt]=useState({x:0,y:0});
@@ -2301,7 +2301,7 @@ const ShowcaseCard = ({item, color, index, onClick}) => {
         style={{
           position:"relative",aspectRatio:"1",borderRadius:24,overflow:"hidden",cursor:"pointer",
           background:thumb?"#1a1208":`linear-gradient(150deg,${color},${color}99)`,
-          boxShadow:`0 10px 34px ${color}3a, 0 2px 10px rgba(21,14,6,0.14)`,
+          boxShadow:`0 10px 34px ${color}3a, 0 2px 10px rgba(41,37,34,0.14)`,
           transform:`perspective(700px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${tilt.x||tilt.y?1.035:1})`,
           transition:"transform .25s cubic-bezier(.22,1,.36,1), box-shadow .3s ease",
         }}>
@@ -2323,7 +2323,7 @@ const ShowcaseCard = ({item, color, index, onClick}) => {
         <div style={{position:"absolute",inset:0,background:"linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 45%)"}}/>
         <div style={{position:"absolute",bottom:10,left:12,right:12,display:"flex",justifyContent:"space-between",alignItems:"flex-end"}}>
           {item.label && <div style={{fontSize:11,fontWeight:700,color:"#fff",lineHeight:1.3,maxWidth:"75%"}}>{item.label}</div>}
-          <div style={{background:"rgba(255,255,255,0.92)",borderRadius:"50%",width:24,height:24,display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,fontWeight:700,color:"#150E06",flexShrink:0,marginLeft:"auto"}}>⟺</div>
+          <div style={{background:"rgba(255,255,255,0.92)",borderRadius:"50%",width:24,height:24,display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,fontWeight:700,color:"#292522",flexShrink:0,marginLeft:"auto"}}>⟺</div>
         </div>
       </div>
     </Reveal>
@@ -2336,12 +2336,12 @@ const HomeShowcase = ({gallery, setPage}) => {
   if(shown.length===0) return null;
 
   return (
-    <section style={{padding:"56px 20px 20px",background:"#FDFAF6"}}>
+    <section style={{padding:"56px 20px 20px",background:"#F8F5F1"}}>
       <div style={{maxWidth:900,margin:"0 auto"}}>
         <Reveal>
           <div style={{textAlign:"center",marginBottom:28}}>
-            <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.24em",color:"#C0838E",textTransform:"uppercase",marginBottom:8}}>✨ Real Transformations</div>
-            <h2 className="serif" style={{fontSize:"clamp(24px,5vw,40px)",fontWeight:300,color:"#150E06",margin:0}}>Every wig tells a <em>story</em></h2>
+            <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.24em",color:"#B97A65",textTransform:"uppercase",marginBottom:8}}>✨ Real Transformations</div>
+            <h2 className="serif" style={{fontSize:"clamp(24px,5vw,40px)",fontWeight:300,color:"#292522",margin:0}}>Every wig tells a <em>story</em></h2>
           </div>
         </Reveal>
 
@@ -2357,16 +2357,16 @@ const HomeShowcase = ({gallery, setPage}) => {
 
         <Reveal delay={300}>
           <div style={{textAlign:"center",marginTop:28}}>
-            <button onClick={()=>setPage("gallery")} style={{background:"none",border:"none",cursor:"pointer",fontSize:11,color:"#C0838E",fontFamily:"'Jost',sans-serif",letterSpacing:"0.1em",textTransform:"uppercase",fontWeight:700}}>See Full Gallery →</button>
+            <button onClick={()=>setPage("gallery")} style={{background:"none",border:"none",cursor:"pointer",fontSize:11,color:"#B97A65",fontFamily:"'Jost',sans-serif",letterSpacing:"0.1em",textTransform:"uppercase",fontWeight:700}}>See Full Gallery →</button>
           </div>
         </Reveal>
       </div>
 
       {/* Popup reveal — same pattern as the full Gallery page */}
       {lb&&(
-        <div onClick={()=>sLb(null)} className="pop" style={{position:"fixed",inset:0,background:"rgba(21,14,6,.9)",zIndex:400,backdropFilter:"blur(14px)",display:"flex",alignItems:"center",justifyContent:"center",padding:20}}>
+        <div onClick={()=>sLb(null)} className="pop" style={{position:"fixed",inset:0,background:"rgba(41,37,34,.9)",zIndex:400,backdropFilter:"blur(14px)",display:"flex",alignItems:"center",justifyContent:"center",padding:20}}>
           <div onClick={e=>e.stopPropagation()} className="pop" style={{background:"#FFFFFF",borderRadius:20,padding:26,maxWidth:480,width:"100%",boxShadow:"0 28px 80px rgba(0,0,0,.5)"}}>
-            {lb.label && <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",color:"#96707A",marginBottom:14,textAlign:"center"}}>{lb.label}</div>}
+            {lb.label && <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",color:"#6F6863",marginBottom:14,textAlign:"center"}}>{lb.label}</div>}
             <BASlider item={lb}/>
             <div style={{display:"flex",gap:10,justifyContent:"center",marginTop:18}}>
               <Btn onClick={()=>{sLb(null);setPage("book");}}>Book This Service</Btn>
@@ -2399,21 +2399,21 @@ const Testimonials = () => {
   return (
     <section style={{padding:"60px 20px",background:"linear-gradient(160deg,#241611,#1E1610)"}}>
       <div style={{maxWidth:560,margin:"0 auto",textAlign:"center"}}>
-        <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.24em",color:"rgba(192,131,142,0.6)",textTransform:"uppercase",marginBottom:10}}>What Our Clients Say</div>
-        <h2 className="serif" style={{fontSize:"clamp(22px,4vw,36px)",fontWeight:300,color:"#E2AEB6",marginBottom:28,lineHeight:1.2}}>
+        <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.24em",color:"rgba(185,122,101,0.6)",textTransform:"uppercase",marginBottom:10}}>What Our Clients Say</div>
+        <h2 className="serif" style={{fontSize:"clamp(22px,4vw,36px)",fontWeight:300,color:"#D7A89A",marginBottom:28,lineHeight:1.2}}>
           Women trust us with their <em>investment.</em>
         </h2>
         <div key={active} className="pop" style={{
-          background:"rgba(255,255,255,0.04)",border:"1px solid rgba(192,131,142,0.18)",
+          background:"rgba(255,255,255,0.04)",border:"1px solid rgba(185,122,101,0.18)",
           borderRadius:20,padding:"28px 24px",marginBottom:24,
         }}>
-          <div style={{fontSize:22,color:"#C0838E",marginBottom:12,letterSpacing:2}}>{"★".repeat(r.stars)}</div>
+          <div style={{fontSize:22,color:"#B97A65",marginBottom:12,letterSpacing:2}}>{"★".repeat(r.stars)}</div>
           <p style={{fontSize:14,color:"rgba(255,255,255,0.85)",lineHeight:1.85,marginBottom:16,fontStyle:"italic"}}>"{r.text}"</p>
-          <div style={{fontSize:11,color:"rgba(192,131,142,0.6)",fontWeight:600,letterSpacing:"0.08em"}}>— {r.name}, {r.loc}</div>
-          <div style={{marginTop:6,display:"inline-block",background:"rgba(192,131,142,0.12)",border:"1px solid rgba(192,131,142,0.2)",borderRadius:20,padding:"3px 12px",fontSize:9.5,color:"#C0838E",fontWeight:700,letterSpacing:"0.06em"}}>{r.service}</div>
+          <div style={{fontSize:11,color:"rgba(185,122,101,0.6)",fontWeight:600,letterSpacing:"0.08em"}}>— {r.name}, {r.loc}</div>
+          <div style={{marginTop:6,display:"inline-block",background:"rgba(185,122,101,0.12)",border:"1px solid rgba(185,122,101,0.2)",borderRadius:20,padding:"3px 12px",fontSize:9.5,color:"#B97A65",fontWeight:700,letterSpacing:"0.06em"}}>{r.service}</div>
         </div>
         <div style={{display:"flex",gap:7,justifyContent:"center"}}>
-          {REVIEWS.map((_,i)=><div key={i} onClick={()=>sActive(i)} style={{width:i===active?22:7,height:7,borderRadius:10,background:i===active?"#C0838E":"rgba(192,131,142,0.25)",transition:"all .35s",cursor:"pointer"}}/>)}
+          {REVIEWS.map((_,i)=><div key={i} onClick={()=>sActive(i)} style={{width:i===active?22:7,height:7,borderRadius:10,background:i===active?"#B97A65":"rgba(185,122,101,0.25)",transition:"all .35s",cursor:"pointer"}}/>)}
         </div>
       </div>
     </section>
@@ -2436,32 +2436,32 @@ const TIPS = [
 const WigCareTips = () => {
   const [open,sOpen]=useState(null);
   return (
-    <section style={{padding:"56px 20px",background:"#FDFAF6"}}>
+    <section style={{padding:"56px 20px",background:"#F8F5F1"}}>
       <div style={{maxWidth:720,margin:"0 auto"}}>
         <div style={{textAlign:"center",marginBottom:32}}>
-          <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.24em",color:"#C0838E",textTransform:"uppercase",marginBottom:8}}>💅 Wig Owner's Bible</div>
-          <h2 className="serif" style={{fontSize:"clamp(22px,4vw,36px)",fontWeight:300,color:"#150E06",margin:0}}>Care tips that <em>actually work</em></h2>
+          <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.24em",color:"#B97A65",textTransform:"uppercase",marginBottom:8}}>💅 Wig Owner's Bible</div>
+          <h2 className="serif" style={{fontSize:"clamp(22px,4vw,36px)",fontWeight:300,color:"#292522",margin:0}}>Care tips that <em>actually work</em></h2>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:10}}>
           {TIPS.map((t,i)=>(
             <div key={i} onClick={()=>sOpen(open===i?null:i)} style={{
-              background:"#fff",border:"1px solid rgba(160,90,102,0.12)",
+              background:"#fff",border:"1px solid rgba(41,37,34,0.12)",
               borderRadius:14,padding:"16px 18px",cursor:"pointer",
               transition:"all .28s cubic-bezier(.22,1,.36,1)",
-              boxShadow:open===i?"0 8px 28px rgba(192,131,142,0.18)":"0 2px 8px rgba(21,14,6,0.06)",
+              boxShadow:open===i?"0 8px 28px rgba(185,122,101,0.18)":"0 2px 8px rgba(41,37,34,0.06)",
               transform:open===i?"translateY(-2px)":"none",
             }}>
               <div style={{display:"flex",alignItems:"center",gap:12}}>
                 <span style={{fontSize:22,flexShrink:0}}>{t.emoji}</span>
-                <div style={{flex:1,fontWeight:700,fontSize:13,color:"#150E06"}}>{t.title}</div>
-                <span style={{color:"#C0838E",fontSize:14,transition:"transform .28s",transform:open===i?"rotate(180deg)":"none",flexShrink:0}}>▾</span>
+                <div style={{flex:1,fontWeight:700,fontSize:13,color:"#292522"}}>{t.title}</div>
+                <span style={{color:"#B97A65",fontSize:14,transition:"transform .28s",transform:open===i?"rotate(180deg)":"none",flexShrink:0}}>▾</span>
               </div>
               <div style={{
                 display:"grid",gridTemplateRows:open===i?"1fr":"0fr",
                 transition:"grid-template-rows .35s cubic-bezier(.22,1,.36,1)",
               }}>
                 <div style={{overflow:"hidden"}}>
-                  <div style={{paddingTop:10,fontSize:12.5,color:"#96707A",lineHeight:1.75}}>{t.tip}</div>
+                  <div style={{paddingTop:10,fontSize:12.5,color:"#6F6863",lineHeight:1.75}}>{t.tip}</div>
                 </div>
               </div>
             </div>
@@ -2476,32 +2476,32 @@ const WigCareTips = () => {
 // 💰 PRICING SNAPSHOT — anchors value before they get to booking
 // ══════════════════════════════════════════════════════════════
 const PricingSnapshot = ({setPage,services}) => (
-  <section id="prices" style={{padding:"56px 20px",background:"linear-gradient(160deg,#F5EFE4,#FDF4E8)",scrollMarginTop:"calc(var(--nav-h) + 12px)"}}>
+  <section id="prices" style={{padding:"56px 20px",background:"linear-gradient(160deg,#F1EBE5,#F8F5F1)",scrollMarginTop:"calc(var(--nav-h) + 12px)"}}>
     <div style={{maxWidth:680,margin:"0 auto"}}>
       <div style={{textAlign:"center",marginBottom:28}}>
-        <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.24em",color:"#C0838E",textTransform:"uppercase",marginBottom:8}}>Simple Pricing</div>
-        <h2 className="serif" style={{fontSize:"clamp(22px,4vw,36px)",fontWeight:300,color:"#150E06",marginBottom:6,margin:0}}>No surprises. <em>Just results.</em></h2>
-        <p style={{fontSize:12.5,color:"#96707A",marginTop:8}}>All services include return courier to your Paxi or PostNet branch.</p>
+        <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.24em",color:"#B97A65",textTransform:"uppercase",marginBottom:8}}>Simple Pricing</div>
+        <h2 className="serif" style={{fontSize:"clamp(22px,4vw,36px)",fontWeight:300,color:"#292522",marginBottom:6,margin:0}}>No surprises. <em>Just results.</em></h2>
+        <p style={{fontSize:12.5,color:"#6F6863",marginTop:8}}>All services include return courier to your Paxi or PostNet branch.</p>
       </div>
       <div style={{display:"flex",flexDirection:"column",gap:10}}>
         {services.map((s,i)=>(
           <div key={s.id} onClick={()=>setPage("book")} style={{
             display:"flex",alignItems:"center",gap:14,padding:"16px 20px",
-            background:i===services.length-1?"linear-gradient(135deg,#241611,#2a1a08)":"#fff",
+            background:i===services.length-1?"linear-gradient(135deg,#B97A65,#A96855)":"#fff",
             borderRadius:14,cursor:"pointer",
-            border:i===services.length-1?"none":"1px solid rgba(160,90,102,0.12)",
-            boxShadow:i===services.length-1?"0 8px 32px rgba(21,14,6,0.22)":"0 2px 8px rgba(21,14,6,0.06)",
+            border:i===services.length-1?"none":"1px solid rgba(41,37,34,0.12)",
+            boxShadow:i===services.length-1?"0 8px 32px rgba(41,37,34,0.22)":"0 2px 8px rgba(41,37,34,0.06)",
             transition:"transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s",
           }}
-          onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-3px)";e.currentTarget.style.boxShadow=i===services.length-1?"0 14px 44px rgba(21,14,6,0.32)":"0 8px 24px rgba(192,131,142,0.2)";}}
-          onMouseLeave={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow=i===services.length-1?"0 8px 32px rgba(21,14,6,0.22)":"0 2px 8px rgba(21,14,6,0.06)";}}>
+          onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-3px)";e.currentTarget.style.boxShadow=i===services.length-1?"0 14px 44px rgba(41,37,34,0.32)":"0 8px 24px rgba(185,122,101,0.2)";}}
+          onMouseLeave={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow=i===services.length-1?"0 8px 32px rgba(41,37,34,0.22)":"0 2px 8px rgba(41,37,34,0.06)";}}>
             <span style={{fontSize:24,flexShrink:0}}>{s.emoji}</span>
             <div style={{flex:1}}>
-              <div style={{fontWeight:700,fontSize:14,color:i===services.length-1?"#E2AEB6":"#150E06"}}>{s.name}</div>
-              <div style={{fontSize:11,color:i===services.length-1?"rgba(192,131,142,0.55)":"#96707A",marginTop:2}}>{s.dur}</div>
+              <div style={{fontWeight:700,fontSize:14,color:i===services.length-1?"#FFFFFF":"#292522"}}>{s.name}</div>
+              <div style={{fontSize:11,color:i===services.length-1?"rgba(255,255,255,0.82)":"#6F6863",marginTop:2}}>{s.dur}</div>
             </div>
-            {i===services.length-1&&<div style={{background:"rgba(192,131,142,0.15)",borderRadius:6,padding:"2px 10px",fontSize:10,fontWeight:700,color:"#C0838E",letterSpacing:"0.06em"}}>BEST VALUE</div>}
-            <div className="serif" style={{fontSize:22,fontWeight:400,color:i===services.length-1?"#E2AEB6":"#C0838E",flexShrink:0}}>R{s.price}</div>
+            {i===services.length-1&&<div style={{background:"rgba(255,255,255,0.24)",borderRadius:6,padding:"2px 10px",fontSize:10,fontWeight:700,color:"#FFFFFF",letterSpacing:"0.06em"}}>BEST VALUE</div>}
+            <div className="serif" style={{fontSize:22,fontWeight:400,color:i===services.length-1?"#FFFFFF":"#B97A65",flexShrink:0}}>R{s.price}</div>
           </div>
         ))}
       </div>
@@ -2527,28 +2527,28 @@ const FAQS = [
 const FAQ = () => {
   const [open,sOpen]=useState(null);
   return (
-    <section style={{padding:"56px 20px",background:"#FDFAF6"}}>
+    <section style={{padding:"56px 20px",background:"#F8F5F1"}}>
       <div style={{maxWidth:640,margin:"0 auto"}}>
         <div style={{textAlign:"center",marginBottom:28}}>
-          <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.24em",color:"#C0838E",textTransform:"uppercase",marginBottom:8}}>Got Questions?</div>
-          <h2 className="serif" style={{fontSize:"clamp(22px,4vw,36px)",fontWeight:300,color:"#150E06",margin:0}}>We've got <em>answers.</em></h2>
+          <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.24em",color:"#B97A65",textTransform:"uppercase",marginBottom:8}}>Got Questions?</div>
+          <h2 className="serif" style={{fontSize:"clamp(22px,4vw,36px)",fontWeight:300,color:"#292522",margin:0}}>We've got <em>answers.</em></h2>
         </div>
         <div style={{display:"flex",flexDirection:"column",gap:8}}>
           {FAQS.map((faq,i)=>(
             <div key={i} onClick={()=>sOpen(open===i?null:i)} style={{
-              background:"#fff",border:"1px solid rgba(160,90,102,0.12)",
+              background:"#fff",border:"1px solid rgba(41,37,34,0.12)",
               borderRadius:14,overflow:"hidden",cursor:"pointer",
-              boxShadow:open===i?"0 6px 22px rgba(192,131,142,0.14)":"0 1px 4px rgba(21,14,6,0.06)",
+              boxShadow:open===i?"0 6px 22px rgba(185,122,101,0.14)":"0 1px 4px rgba(41,37,34,0.06)",
               transition:"box-shadow .28s",
             }}>
               <div style={{padding:"16px 18px",display:"flex",alignItems:"center",gap:12}}>
-                <span style={{fontSize:16,color:"#C0838E",fontWeight:700,flexShrink:0}}>Q</span>
-                <div style={{flex:1,fontWeight:600,fontSize:13,color:"#150E06",lineHeight:1.4}}>{faq.q}</div>
-                <span style={{color:"#C0838E",fontSize:14,transition:"transform .3s",transform:open===i?"rotate(180deg)":"none",flexShrink:0}}>▾</span>
+                <span style={{fontSize:16,color:"#B97A65",fontWeight:700,flexShrink:0}}>Q</span>
+                <div style={{flex:1,fontWeight:600,fontSize:13,color:"#292522",lineHeight:1.4}}>{faq.q}</div>
+                <span style={{color:"#B97A65",fontSize:14,transition:"transform .3s",transform:open===i?"rotate(180deg)":"none",flexShrink:0}}>▾</span>
               </div>
               <div style={{display:"grid",gridTemplateRows:open===i?"1fr":"0fr",transition:"grid-template-rows .38s cubic-bezier(.22,1,.36,1)"}}>
                 <div style={{overflow:"hidden"}}>
-                  <div style={{padding:"0 18px 16px 46px",fontSize:13,color:"#96707A",lineHeight:1.8}}>{faq.a}</div>
+                  <div style={{padding:"0 18px 16px 46px",fontSize:13,color:"#6F6863",lineHeight:1.8}}>{faq.a}</div>
                 </div>
               </div>
             </div>
@@ -2576,30 +2576,30 @@ const Home = ({setPage,services,specials,addCart,sectionsOn,wigOfWeek,gallery,wa
     <Reveal><FAQ/></Reveal>
     <Reveal><AboutUs/></Reveal>
     {sectionsOn.trust!==false && <Reveal><Trust/></Reveal>}
-    <section style={{background:"#F5EFE4",padding:"88px 28px",textAlign:"center",borderTop:"1px solid rgba(160,90,102,0.12)"}}>
+    <section style={{background:"#F1EBE5",padding:"88px 28px",textAlign:"center",borderTop:"1px solid rgba(41,37,34,0.12)"}}>
       <div style={{maxWidth:540,margin:"0 auto"}}>
-        <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.2em",color:"#C0838E",textTransform:"uppercase",marginBottom:14}}>Ready?</div>
-        <h2 className="serif" style={{fontSize:"clamp(30px,5vw,54px)",fontWeight:300,color:"#150E06",marginBottom:16}}>Your wig deserves<br/><em style={{color:"#C0838E"}}>the very best.</em></h2>
-        <p style={{fontSize:14,color:"#96707A",lineHeight:1.85,marginBottom:32}}>Book online in under 3 minutes. Ship it to us. Get it back fresh, soft, and looking brand new.</p>
+        <div style={{fontSize:10,fontWeight:700,letterSpacing:"0.2em",color:"#B97A65",textTransform:"uppercase",marginBottom:14}}>Ready?</div>
+        <h2 className="serif" style={{fontSize:"clamp(30px,5vw,54px)",fontWeight:300,color:"#292522",marginBottom:16}}>Your wig deserves<br/><em style={{color:"#B97A65"}}>the very best.</em></h2>
+        <p style={{fontSize:14,color:"#6F6863",lineHeight:1.85,marginBottom:32}}>Book online in under 3 minutes. Ship it to us. Get it back fresh, soft, and looking brand new.</p>
         <Btn variant="gold" onClick={()=>setPage("book")} style={{fontSize:13,padding:"14px 40px"}}>Book Now — From R250</Btn>
       </div>
     </section>
     <footer style={{background:"#241611",padding:"44px 28px"}}>
       <div style={{maxWidth:1200,margin:"0 auto",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:24}}>
         <div>
-          <div className="serif" style={{fontSize:22,color:"#E2AEB6",fontStyle:"italic",marginBottom:4}}>Lavish Wig</div>
-          <div style={{fontSize:8.5,color:"rgba(192,131,142,.3)",letterSpacing:"0.2em",textTransform:"uppercase"}}>Premium Wig Care · Cape Town · © 2025</div>
-            <button onClick={()=>setPage("policy")} style={{background:"none",border:"none",cursor:"pointer",fontSize:9,color:"rgba(192,131,142,.45)",fontFamily:"'Jost',sans-serif",letterSpacing:"0.1em",marginTop:4,textDecoration:"underline"}}>Privacy Policy · Terms · Cancellation Policy</button>
+          <div className="serif" style={{fontSize:22,color:"#D7A89A",fontStyle:"italic",marginBottom:4}}>Lavish Wig</div>
+          <div style={{fontSize:8.5,color:"rgba(215,168,154,.78)",letterSpacing:"0.2em",textTransform:"uppercase"}}>Premium Wig Care · Cape Town · © 2025</div>
+            <button onClick={()=>setPage("policy")} style={{background:"none",border:"none",cursor:"pointer",fontSize:9,color:"rgba(215,168,154,.85)",fontFamily:"'Jost',sans-serif",letterSpacing:"0.1em",marginTop:4,textDecoration:"underline"}}>Privacy Policy · Terms · Cancellation Policy</button>
         </div>
-        <div style={{fontSize:11,color:"rgba(192,131,142,.22)",lineHeight:1.8,textAlign:"right"}}>
+        <div style={{fontSize:11,color:"rgba(215,168,154,.75)",lineHeight:1.8,textAlign:"right"}}>
           <div>Premium Wig Laundry · Cape Town</div>
           <div>Human Hair Specialists · SA Owned</div>
         </div>
       </div>
-      <div style={{maxWidth:1200,margin:"28px auto 0",paddingTop:24,borderTop:"1px solid rgba(192,131,142,.12)",display:"flex",justifyContent:"center",gap:10,flexWrap:"wrap"}}>
-        <button onClick={()=>setPage("home")} style={{background:"rgba(192,131,142,.12)",border:"1px solid rgba(192,131,142,.25)",borderRadius:8,color:"#E2AEB6",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",padding:"9px 20px",cursor:"pointer"}}>🏠 Home</button>
-        <button onClick={()=>setPage("gallery")} style={{background:"rgba(192,131,142,.12)",border:"1px solid rgba(192,131,142,.25)",borderRadius:8,color:"#E2AEB6",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",padding:"9px 20px",cursor:"pointer"}}>Gallery</button>
-        <button onClick={()=>setPage("book")} style={{background:"rgba(192,131,142,.12)",border:"1px solid rgba(192,131,142,.25)",borderRadius:8,color:"#E2AEB6",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",padding:"9px 20px",cursor:"pointer"}}>Book Now</button>
+      <div style={{maxWidth:1200,margin:"28px auto 0",paddingTop:24,borderTop:"1px solid rgba(185,122,101,.12)",display:"flex",justifyContent:"center",gap:10,flexWrap:"wrap"}}>
+        <button onClick={()=>setPage("home")} style={{background:"rgba(185,122,101,.12)",border:"1px solid rgba(185,122,101,.25)",borderRadius:8,color:"#D7A89A",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",padding:"9px 20px",cursor:"pointer"}}>🏠 Home</button>
+        <button onClick={()=>setPage("gallery")} style={{background:"rgba(185,122,101,.12)",border:"1px solid rgba(185,122,101,.25)",borderRadius:8,color:"#D7A89A",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",padding:"9px 20px",cursor:"pointer"}}>Gallery</button>
+        <button onClick={()=>setPage("book")} style={{background:"rgba(185,122,101,.12)",border:"1px solid rgba(185,122,101,.25)",borderRadius:8,color:"#D7A89A",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",padding:"9px 20px",cursor:"pointer"}}>Book Now</button>
       </div>
     </footer>
   </>
@@ -2613,21 +2613,21 @@ const PolicyPage = ({setPage}) => {
     {id:"cancellation",l:"Cancellation & Refunds"},
   ];
   return (
-    <div style={{background:"#FDFAF6",paddingTop:"var(--nav-h)",minHeight:"100dvh"}}>
+    <div style={{background:"#F8F5F1",paddingTop:"var(--nav-h)",minHeight:"100dvh"}}>
       <div style={{maxWidth:720,margin:"0 auto",padding:"40px 24px 80px"}}>
-        <button onClick={()=>setPage("home")} style={{background:"none",border:"none",cursor:"pointer",fontSize:12,color:"#C0838E",fontFamily:"'Jost',sans-serif",fontWeight:600,marginBottom:24,padding:0}}>← Back to Home</button>
+        <button onClick={()=>setPage("home")} style={{background:"none",border:"none",cursor:"pointer",fontSize:12,color:"#B97A65",fontFamily:"'Jost',sans-serif",fontWeight:600,marginBottom:24,padding:0}}>← Back to Home</button>
         <div style={{textAlign:"center",marginBottom:32}}>
-          <div style={{fontSize:9.5,fontWeight:700,letterSpacing:"0.2em",color:"#C0838E",textTransform:"uppercase",marginBottom:8}}>Legal</div>
-          <h1 className="serif" style={{fontSize:"clamp(26px,5vw,40px)",fontWeight:300,color:"#150E06",margin:0}}>Our Policies</h1>
+          <div style={{fontSize:9.5,fontWeight:700,letterSpacing:"0.2em",color:"#B97A65",textTransform:"uppercase",marginBottom:8}}>Legal</div>
+          <h1 className="serif" style={{fontSize:"clamp(26px,5vw,40px)",fontWeight:300,color:"#292522",margin:0}}>Our Policies</h1>
         </div>
         
         {/* Tab switcher */}
         <div style={{display:"flex",gap:6,marginBottom:28,flexWrap:"wrap"}}>
           {TABS.map(t=>(
             <button key={t.id} onClick={()=>sTab(t.id)} style={{
-              background:tab===t.id?"#150E06":"transparent",
-              color:tab===t.id?"#fff":"#96707A",
-              border:"1.5px solid",borderColor:tab===t.id?"#150E06":"rgba(160,90,102,0.22)",
+              background:tab===t.id?"#292522":"transparent",
+              color:tab===t.id?"#fff":"#6F6863",
+              border:"1.5px solid",borderColor:tab===t.id?"#292522":"rgba(41,37,34,0.22)",
               borderRadius:8,padding:"8px 16px",fontSize:11,fontWeight:600,
               fontFamily:"'Jost',sans-serif",cursor:"pointer",letterSpacing:"0.04em",
               transition:"all .2s",
@@ -2635,74 +2635,74 @@ const PolicyPage = ({setPage}) => {
           ))}
         </div>
 
-        <div style={{background:"#fff",borderRadius:16,padding:"28px 24px",border:"1px solid rgba(160,90,102,0.1)",lineHeight:1.85,fontSize:13.5,color:"#4A3A2A"}}>
+        <div style={{background:"#fff",borderRadius:16,padding:"28px 24px",border:"1px solid rgba(41,37,34,0.1)",lineHeight:1.85,fontSize:13.5,color:"#6F6863"}}>
         
           {tab==="privacy"&&<div>
-            <h2 style={{fontSize:18,color:"#150E06",marginBottom:16,fontFamily:"'Cormorant Garamond',serif",fontWeight:400}}>Privacy Policy</h2>
-            <p style={{color:"#96707A",fontSize:11.5,marginBottom:20}}>Last updated: August 2026</p>
+            <h2 style={{fontSize:18,color:"#292522",marginBottom:16,fontFamily:"'Cormorant Garamond',serif",fontWeight:400}}>Privacy Policy</h2>
+            <p style={{color:"#6F6863",fontSize:11.5,marginBottom:20}}>Last updated: August 2026</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>1. Information We Collect</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>1. Information We Collect</h3>
             <p style={{marginBottom:12}}>When you place a booking through our website, we collect your name, phone number, email address, and details about your wig (type, condition, service requested). We also collect your chosen Paxi or PostNet branch for shipping purposes.</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>2. How We Use Your Information</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>2. How We Use Your Information</h3>
             <p style={{marginBottom:12}}>Your information is used solely to process your wig care order, communicate order updates via WhatsApp, and return your wig to your chosen branch. We do not sell, share, or rent your personal information to any third parties.</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>3. Data Storage</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>3. Data Storage</h3>
             <p style={{marginBottom:12}}>Order information is stored securely and retained for a period of 12 months for service record purposes. You may request deletion of your personal data at any time by contacting us on WhatsApp.</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>4. Photos & Gallery</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>4. Photos & Gallery</h3>
             <p style={{marginBottom:12}}>Before and after transformation photos may be used on our website and social media platforms for marketing purposes. If you do not wish your wig's transformation to be shared, please inform us when you submit your booking.</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>5. Cookies</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>5. Cookies</h3>
             <p style={{marginBottom:12}}>Our website uses browser local storage to save your session preferences. We do not use tracking cookies or third-party analytics that collect personal data.</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>6. Contact</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>6. Contact</h3>
             <p>For privacy-related queries, contact us via WhatsApp. We are based in Cape Town, South Africa and operate under the Protection of Personal Information Act (POPIA).</p>
           </div>}
 
           {tab==="terms"&&<div>
-            <h2 style={{fontSize:18,color:"#150E06",marginBottom:16,fontFamily:"'Cormorant Garamond',serif",fontWeight:400}}>Terms of Service</h2>
-            <p style={{color:"#96707A",fontSize:11.5,marginBottom:20}}>Last updated: August 2026</p>
+            <h2 style={{fontSize:18,color:"#292522",marginBottom:16,fontFamily:"'Cormorant Garamond',serif",fontWeight:400}}>Terms of Service</h2>
+            <p style={{color:"#6F6863",fontSize:11.5,marginBottom:20}}>Last updated: August 2026</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>1. Service Agreement</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>1. Service Agreement</h3>
             <p style={{marginBottom:12}}>By booking a service with Lavish Wig, you agree to these terms. Lavish Wig is a professional wig care service based in Cape Town, South Africa, offering wig washing, restoration, and lace detox services nationwide.</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>2. Wig Submission</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>2. Wig Submission</h3>
             <p style={{marginBottom:12}}>You are responsible for packaging your wig securely before dropping it at your chosen Paxi (PEP Store) or PostNet branch. Lavish Wig is not liable for damage that occurs during courier transit to us.</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>3. Pre-Service Inspection</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>3. Pre-Service Inspection</h3>
             <p style={{marginBottom:12}}>Every wig is inspected upon arrival. If we identify pre-existing damage, severe shedding, or issues that could worsen during treatment, we will contact you via WhatsApp before proceeding. We will not begin any service without your confirmation.</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>4. Turnaround Times</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>4. Turnaround Times</h3>
             <p style={{marginBottom:12}}>Turnaround times listed (2–7 business days depending on service) are estimates and may vary during peak periods. We will communicate any delays promptly via WhatsApp.</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>5. Payment</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>5. Payment</h3>
             <p style={{marginBottom:12}}>Payment is due before your wig is dispatched back to you. We accept EFT and cash. Your wig will not be released until payment is confirmed. Banking details will be sent via WhatsApp upon completion.</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>6. Limitation of Liability</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>6. Limitation of Liability</h3>
             <p>While we exercise the highest level of care, Lavish Wig's liability is limited to the cost of the service rendered. We are not liable for pre-existing damage, normal wear, or issues arising from the wig's age or prior care history.</p>
           </div>}
 
           {tab==="cancellation"&&<div>
-            <h2 style={{fontSize:18,color:"#150E06",marginBottom:16,fontFamily:"'Cormorant Garamond',serif",fontWeight:400}}>Cancellation & Refund Policy</h2>
-            <p style={{color:"#96707A",fontSize:11.5,marginBottom:20}}>Last updated: August 2026</p>
+            <h2 style={{fontSize:18,color:"#292522",marginBottom:16,fontFamily:"'Cormorant Garamond',serif",fontWeight:400}}>Cancellation & Refund Policy</h2>
+            <p style={{color:"#6F6863",fontSize:11.5,marginBottom:20}}>Last updated: August 2026</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>Cancellations Before Drop-Off</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>Cancellations Before Drop-Off</h3>
             <p style={{marginBottom:12}}>If you cancel your booking before dropping your wig at the courier branch, no charge applies. Simply notify us via WhatsApp and your booking will be cancelled with no penalty.</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>Cancellations After Drop-Off</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>Cancellations After Drop-Off</h3>
             <p style={{marginBottom:12}}>Once your wig has been received and the service has begun, a handling fee of R100 applies. If the full service has been completed, the full service price is due before the wig is returned.</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>Refunds</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>Refunds</h3>
             <p style={{marginBottom:12}}>We take great pride in our work. If you are genuinely dissatisfied with your service result, please contact us within 48 hours of receiving your wig. We will assess the concern and, where appropriate, offer a complimentary re-treatment or partial refund at our discretion.</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>Uncollected Wigs</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>Uncollected Wigs</h3>
             <p style={{marginBottom:12}}>Wigs not collected from the Paxi or PostNet branch within 7 days of dispatch will be returned to us. A re-delivery fee applies for a second dispatch.</p>
             
-            <h3 style={{fontSize:14,fontWeight:700,color:"#150E06",marginBottom:8,marginTop:20}}>How to Request a Cancellation or Refund</h3>
+            <h3 style={{fontSize:14,fontWeight:700,color:"#292522",marginBottom:8,marginTop:20}}>How to Request a Cancellation or Refund</h3>
             <p>All cancellation and refund requests must be made via WhatsApp. We aim to respond within 24 hours on business days.</p>
             
-            <div style={{marginTop:24,background:"#F5EFE4",borderRadius:10,padding:"14px 16px",fontSize:12,color:"#A05A66",lineHeight:1.7}}>
+            <div style={{marginTop:24,background:"#F1EBE5",borderRadius:10,padding:"14px 16px",fontSize:12,color:"#A96855",lineHeight:1.7}}>
               💛 We are a small, proudly South African business and we genuinely care about every client and every wig. If something isn't right, please talk to us first — we will always try to make it right.
             </div>
           </div>}
@@ -2956,11 +2956,11 @@ export default function App() {
 
       {/* 🔐 Admin password prompt — appears after 5 taps on logo or Ctrl+Shift+A */}
       {showPwPrompt&&(
-        <div onClick={()=>{sShowPwPrompt(false);sPwEmail("");sPwInput("");}} style={{position:"fixed",inset:0,zIndex:9999,background:"rgba(10,6,2,0.7)",backdropFilter:"blur(6px)",display:"flex",alignItems:"center",justifyContent:"center",padding:20}}>
-          <div onClick={e=>e.stopPropagation()} style={{background:"#FDFAF6",borderRadius:20,padding:"28px 26px",maxWidth:340,width:"100%",boxShadow:"0 24px 64px rgba(0,0,0,0.4)"}} className="pop">
+        <div onClick={()=>{sShowPwPrompt(false);sPwEmail("");sPwInput("");}} style={{position:"fixed",inset:0,zIndex:9999,background:"rgba(41,37,34,0.7)",backdropFilter:"blur(6px)",display:"flex",alignItems:"center",justifyContent:"center",padding:20}}>
+          <div onClick={e=>e.stopPropagation()} style={{background:"#F8F5F1",borderRadius:20,padding:"28px 26px",maxWidth:340,width:"100%",boxShadow:"0 24px 64px rgba(0,0,0,0.4)"}} className="pop">
             <div style={{fontSize:32,textAlign:"center",marginBottom:10}}>🔐</div>
-            <div style={{fontSize:16,fontWeight:700,color:"#150E06",textAlign:"center",marginBottom:4,fontFamily:"'Cormorant Garamond',serif",fontStyle:"italic"}}>Admin Access</div>
-            <div style={{fontSize:11,color:"#96707A",textAlign:"center",marginBottom:18}}>Sign in to manage the site</div>
+            <div style={{fontSize:16,fontWeight:700,color:"#292522",textAlign:"center",marginBottom:4,fontFamily:"'Cormorant Garamond',serif",fontStyle:"italic"}}>Admin Access</div>
+            <div style={{fontSize:11,color:"#6F6863",textAlign:"center",marginBottom:18}}>Sign in to manage the site</div>
             <input
               type="email"
               value={pwEmail}
@@ -2968,7 +2968,7 @@ export default function App() {
               onKeyDown={e=>e.key==="Enter"&&document.getElementById('admin-pw-field')?.focus()}
               autoFocus
               placeholder="Email"
-              style={{width:"100%",padding:"12px 16px",borderRadius:10,border:"1.5px solid rgba(160,90,102,0.25)",fontSize:14,fontFamily:"'Jost',sans-serif",outline:"none",textAlign:"center",marginBottom:10,boxSizing:"border-box"}}
+              style={{width:"100%",padding:"12px 16px",borderRadius:10,border:"1.5px solid rgba(41,37,34,0.25)",fontSize:14,fontFamily:"'Jost',sans-serif",outline:"none",textAlign:"center",marginBottom:10,boxSizing:"border-box"}}
             />
             <input
               id="admin-pw-field"
@@ -2977,12 +2977,12 @@ export default function App() {
               onChange={e=>sPwInput(e.target.value)}
               onKeyDown={e=>e.key==="Enter"&&submitPassword()}
               placeholder="Password"
-              style={{width:"100%",padding:"12px 16px",borderRadius:10,border:`1.5px solid ${pwError?"#A84040":"rgba(160,90,102,0.25)"}`,fontSize:14,fontFamily:"'Jost',sans-serif",outline:"none",textAlign:"center",letterSpacing:"0.15em",marginBottom:pwError?8:16,boxSizing:"border-box"}}
+              style={{width:"100%",padding:"12px 16px",borderRadius:10,border:`1.5px solid ${pwError?"#A84040":"rgba(41,37,34,0.25)"}`,fontSize:14,fontFamily:"'Jost',sans-serif",outline:"none",textAlign:"center",letterSpacing:"0.15em",marginBottom:pwError?8:16,boxSizing:"border-box"}}
             />
             {pwError&&<div style={{color:"#A84040",fontSize:11,textAlign:"center",marginBottom:12}}>Incorrect email or password, try again</div>}
             <div style={{display:"flex",gap:8}}>
-              <button onClick={submitPassword} style={{flex:1,background:"linear-gradient(135deg,#C0838E,#A05A66)",border:"none",borderRadius:10,padding:"11px",cursor:"pointer",color:"#fff",fontSize:13,fontWeight:700,fontFamily:"'Jost',sans-serif"}}>Enter</button>
-              <button onClick={()=>{sShowPwPrompt(false);sPwEmail("");sPwInput("");}} style={{background:"none",border:"1px solid rgba(160,90,102,0.22)",borderRadius:10,padding:"11px 18px",cursor:"pointer",color:"#96707A",fontSize:13,fontFamily:"'Jost',sans-serif"}}>Cancel</button>
+              <button onClick={submitPassword} style={{flex:1,background:"linear-gradient(135deg,#B97A65,#A96855)",border:"none",borderRadius:10,padding:"11px",cursor:"pointer",color:"#fff",fontSize:13,fontWeight:700,fontFamily:"'Jost',sans-serif"}}>Enter</button>
+              <button onClick={()=>{sShowPwPrompt(false);sPwEmail("");sPwInput("");}} style={{background:"none",border:"1px solid rgba(41,37,34,0.22)",borderRadius:10,padding:"11px 18px",cursor:"pointer",color:"#6F6863",fontSize:13,fontFamily:"'Jost',sans-serif"}}>Cancel</button>
             </div>
           </div>
         </div>
@@ -3000,14 +3000,14 @@ export default function App() {
       {(page==="gallery"||page==="book")&&(
         <footer style={{background:"#241611",padding:"36px 28px"}}>
           <div style={{maxWidth:1200,margin:"0 auto",display:"flex",flexDirection:"column",alignItems:"center",gap:18}}>
-            <div className="serif" style={{fontSize:22,color:"#E2AEB6",fontStyle:"italic"}}>Lavish Wig</div>
+            <div className="serif" style={{fontSize:22,color:"#D7A89A",fontStyle:"italic"}}>Lavish Wig</div>
             <div style={{display:"flex",gap:10,flexWrap:"wrap",justifyContent:"center"}}>
-              <button onClick={()=>sPage("home")} style={{background:"rgba(192,131,142,.12)",border:"1px solid rgba(192,131,142,.25)",borderRadius:8,color:"#E2AEB6",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",padding:"9px 20px",cursor:"pointer"}}>🏠 Home</button>
-              <button onClick={()=>sPage("gallery")} style={{background:"rgba(192,131,142,.12)",border:"1px solid rgba(192,131,142,.25)",borderRadius:8,color:"#E2AEB6",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",padding:"9px 20px",cursor:"pointer"}}>Gallery</button>
-              <button onClick={()=>sPage("book")} style={{background:"rgba(192,131,142,.12)",border:"1px solid rgba(192,131,142,.25)",borderRadius:8,color:"#E2AEB6",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",padding:"9px 20px",cursor:"pointer"}}>Book Now</button>
+              <button onClick={()=>sPage("home")} style={{background:"rgba(185,122,101,.12)",border:"1px solid rgba(185,122,101,.25)",borderRadius:8,color:"#D7A89A",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",padding:"9px 20px",cursor:"pointer"}}>🏠 Home</button>
+              <button onClick={()=>sPage("gallery")} style={{background:"rgba(185,122,101,.12)",border:"1px solid rgba(185,122,101,.25)",borderRadius:8,color:"#D7A89A",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",padding:"9px 20px",cursor:"pointer"}}>Gallery</button>
+              <button onClick={()=>sPage("book")} style={{background:"rgba(185,122,101,.12)",border:"1px solid rgba(185,122,101,.25)",borderRadius:8,color:"#D7A89A",fontSize:11,fontFamily:"'Jost',sans-serif",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",padding:"9px 20px",cursor:"pointer"}}>Book Now</button>
             </div>
-            <div style={{fontSize:8.5,color:"rgba(192,131,142,.3)",letterSpacing:"0.2em",textTransform:"uppercase"}}>Premium Wig Care · Cape Town · © 2025</div>
-            <button onClick={()=>sPage("policy")} style={{background:"none",border:"none",cursor:"pointer",fontSize:9,color:"rgba(192,131,142,.45)",fontFamily:"'Jost',sans-serif",letterSpacing:"0.1em",marginTop:4,textDecoration:"underline"}}>Privacy Policy · Terms · Cancellation Policy</button>
+            <div style={{fontSize:8.5,color:"rgba(215,168,154,.78)",letterSpacing:"0.2em",textTransform:"uppercase"}}>Premium Wig Care · Cape Town · © 2025</div>
+            <button onClick={()=>sPage("policy")} style={{background:"none",border:"none",cursor:"pointer",fontSize:9,color:"rgba(215,168,154,.85)",fontFamily:"'Jost',sans-serif",letterSpacing:"0.1em",marginTop:4,textDecoration:"underline"}}>Privacy Policy · Terms · Cancellation Policy</button>
           </div>
         </footer>
       )}
